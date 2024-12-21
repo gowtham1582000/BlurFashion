@@ -69,7 +69,7 @@
             const itemTotal = parseFloat(item.price.replace('$', '')) * item.quantity;
             productDetails += `${item.name} (x${item.quantity}) - $${itemTotal}\n`;
             total += itemTotal;
-        });
+        }); 
 
         // Collect form data
         const formData = {

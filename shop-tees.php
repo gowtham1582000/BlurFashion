@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<!-- Meta Data -->
@@ -45,7 +45,7 @@
 								</div>
 								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 header-center">
 									<div class="">
-										<a href="index.html">
+										<a href="index.php">
 											<img width="400" height="79" src="./assets/img/B-removebg-preview (1).png" alt="Ruper – Furniture HTML Theme">
 										</a>
 									</div>
@@ -55,10 +55,10 @@
 										<div class="dropdown mini-cart top-cart">
 											<div class="remove-cart-shadow"></div>
 											<a class="dropdown-toggle cart-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<div class="icons-cart"><i class="icon-large-paper-bag"></i><span class="cart-count">2</span></div>
+												<div class="icons-cart"><i class="icon-large-paper-bag"></i><span class="cart-count">0</span></div>
 											</a>
 											<div class="dropdown-menu cart-popup">
-												<div class="cart-empty-wrap">
+												<div class="empty-cart">
 													<ul class="cart-list">
 														<li class="empty">
 															<span>No products in the cart.</span>
@@ -66,26 +66,13 @@
 														</li>
 													</ul>
 												</div>
-												<div class="cart-list-wrap">
+												<div class="product-list">
 													<ul class="cart-list ">
-														<li class="mini-cart-item">
-															<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>
-															<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/3.jpg" alt=""></a>
-															<a href="shop-details.html" class="product-name">Chair Oak Matt Lacquered</a>		
-															<div class="quantity">Qty: 1</div>
-															<div class="price">$150.00</div>
-														</li>
-														<li class="mini-cart-item">
-															<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>													
-															<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/1.jpg" alt=""></a>
-															<a href="shop-details.html" class="product-name">Zunkel Schwarz</a>
-															<div class="quantity">Qty: 1</div>
-															<div class="price">$100.00</div>						
-														</li>
+														
 													</ul>
 													<div class="total-cart">
 														<div class="title-total">Total: </div>
-														<div class="total-price"><span>$100.00</span></div>
+														<div class="total-price"><span></span></div>
 													</div>
 													<div class="free-ship">
 														<div class="title-ship">Buy <strong>$400</strong> more to enjoy <strong>FREE Shipping</strong></div>
@@ -135,9 +122,9 @@
 							<div class="section-container p-l-r">
 								<div class="row">
 									<div class="col-xl-3 col-lg-2 col-md-12 col-sm-12 col-12 header-left">
-										<div class="">
-											<a href="index.html">
-												<img width="400" height="79" src="./assets/img/B-removebg-preview (1).png" alt="Ruper – Furniture HTML Theme">
+										<div>
+											<a href="index.php">
+												<img width="400" height="200" src="./assets/img/B-removebg-preview (1).png" alt="Ruper – Furniture HTML Theme">
 											</a>
 										</div>
 									</div>
@@ -146,16 +133,16 @@
 										<div class="site-navigation">
 											<nav id="main-navigation">
 												<ul id="menu-main-menu" class="menu">
-													<li class="level-0 menu-item menu-item-has-children mega-menu">
-														<a href="index.html"><span class="menu-item-text">Home</span></a>
-														<div class="sub-menu">
+													<li class="level-0 menu-item mega-menu current-menu-item">
+														<a href="index.php"><span class="menu-item-text">Home</span></a>
+														 <!-- <div class="sub-menu">
 															<div class="row">
 																<div class="col-md-6">
 																	<div class="menu-section">
 																		<h2 class="sub-menu-title">Furniture 1</h2>
 																		<ul class="menu-list">
 																			<li>
-																				<a href="index.html"><span class="menu-item-text">Home Categories</span></a>
+																				<a href="index.php"><span class="menu-item-text">Home Categories</span></a>
 																			</li>
 																			<li>
 																				<a href="index2.html"><span class="menu-item-text">Home Clean</span></a>
@@ -210,11 +197,11 @@
 																	</div>
 																</div>
 															</div>
-														</div>
+														 </div>  -->
 													</li>
-													<li class="level-0 menu-item menu-item-has-children current-menu-item">
-														<a href="shop-grid-left.html"><span class="menu-item-text">Shop</span></a>
-														<ul class="sub-menu">
+													<li class="level-0 menu-item ">
+														<a href="shop-grid-right.php"><span class="menu-item-text">Tees</span></a>
+														<!-- <ul class="sub-menu">
 															<li class="level-1 menu-item menu-item-has-children">
 																<a href="shop-grid-left.html"><span class="menu-item-text">Shop - Products</span></a>
 																<ul class="sub-menu">
@@ -247,11 +234,11 @@
 															<li>
 																<a href="shop-wishlist.html"><span class="menu-item-text">Shop - Wishlist</span></a>
 															</li>
-														</ul>
+														</ul> -->
 													</li>
-													<li class="level-0 menu-item menu-item-has-children mega-menu mega-menu-fullwidth align-center">
-														<a href="blog-grid-left.html"><span class="menu-item-text">Blog</span></a>
-														<div class="sub-menu">
+													<li class="level-0 menu-item mega-menu mega-menu-fullwidth align-center">
+														<a href="shop-shirts.php"><span class="menu-item-text">Shirts</span></a>
+														<!-- <div class="sub-menu">
 															<div class="row">
 																<div class="col-md-5">
 																	<div class="menu-section">
@@ -339,7 +326,7 @@
 																						</h2>
 																						<div class="post-time">
 																							<span class="post-date">Dec 06, 2022</span>
-																							<span class="post-comment">1 Comment</span>	
+																							<span class="post-comment">1 Comment</span>
 																						</div>
 																					</div>
 																				</li>
@@ -348,11 +335,11 @@
 																	</div>
 																</div>
 															</div>
-														</div>
+														</div> -->
 													</li>
-													<li class="level-0 menu-item menu-item-has-children">
-														<a href="#"><span class="menu-item-text">Pages</span></a>
-														<ul class="sub-menu">
+													<li class="level-0 menu-item ">
+														<a href="shop-pants.php"><span class="menu-item-text">Pants</span></a>
+														<!-- <ul class="sub-menu">
 															<li>
 																<a href="page-login.html"><span class="menu-item-text">Login / Register</span></a>
 															</li>
@@ -374,10 +361,10 @@
 															<li>
 																<a href="page-404.html"><span class="menu-item-text">Page 404</span></a>
 															</li>
-														</ul>
+														</ul> -->
 													</li>
 													<li class="level-0 menu-item">
-														<a href="page-contact.html"><span class="menu-item-text">Contact</span></a>
+														<a href="page-contact.php"><span class="menu-item-text">Contact</span></a>
 													</li>
 												</ul>
 											</nav>
@@ -458,10 +445,10 @@
 												<div class="dropdown mini-cart top-cart">
 													<div class="remove-cart-shadow"></div>
 													<a class="dropdown-toggle cart-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-														<div class="icons-cart"><i class="icon-large-paper-bag"></i><span class="cart-count">2</span></div>
+														<div class="icons-cart"><i class="icon-large-paper-bag"></i><span class="cart-count">0</span></div>
 													</a>
 													<div class="dropdown-menu cart-popup">
-														<div class="cart-empty-wrap">
+														<div class="empty-cart">
 															<ul class="cart-list">
 																<li class="empty">
 																	<span>No products in the cart.</span>
@@ -469,26 +456,12 @@
 																</li>
 															</ul>
 														</div>
-														<div class="cart-list-wrap">
+														<div class="product-list">
 															<ul class="cart-list ">
-																<li class="mini-cart-item">
-																	<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>
-																	<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/3.jpg" alt=""></a>
-																	<a href="shop-details.html" class="product-name">Chair Oak Matt Lacquered</a>		
-																	<div class="quantity">Qty: 1</div>
-																	<div class="price">$150.00</div>
-																</li>
-																<li class="mini-cart-item">
-																	<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>													
-																	<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/1.jpg" alt=""></a>
-																	<a href="shop-details.html" class="product-name">Zunkel Schwarz</a>
-																	<div class="quantity">Qty: 1</div>
-																	<div class="price">$100.00</div>						
-																</li>
 															</ul>
 															<div class="total-cart">
 																<div class="title-total">Total: </div>
-																<div class="total-price"><span>$100.00</span></div>
+																<div class="total-price"><span></span></div>
 															</div>
 															<div class="free-ship">
 																<div class="title-ship">Buy <strong>$400</strong> more to enjoy <strong>FREE Shipping</strong></div>
@@ -522,7 +495,7 @@
 									</h1>
 								</div>
 								<div class="breadcrumbs">
-									<a href="index.html">Home</a><span class="delimiter"></span><a href="shop-grid-left.html">Shop</a><span class="delimiter"></span>Bed &amp; Bath
+									<a href="index.php">Home</a><span class="delimiter"></span><a href="shop-grid-left.html">Shop</a><span class="delimiter"></span>Bed &amp; Bath
 								</div>
 							</div>
 						</div>
@@ -573,23 +546,23 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/6.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/6-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/8.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/1.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
-																			<div class="btn-add-to-cart" data-title="Add to cart">
+																			<!-- <div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
-																			</div>
+																			</div> -->
 																			<div class="btn-wishlist" data-title="Wishlist">
 																				<button class="product-btn">Add to wishlist</button>
 																			</div>
-																			<div class="btn-compare" data-title="Compare">
+																			<!-- <div class="btn-compare" data-title="Compare">
 																				<button class="product-btn">Compare</button>
 																			</div>
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
-																			</span>		
+																			</span>	-->
 																		</div>
 																	</div>
 																	<div class="products-content">
@@ -608,8 +581,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/4.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/4-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/2.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/7.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
@@ -643,8 +616,8 @@
 																	<div class="products-thumb">
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/7.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/7-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/11.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/3.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
@@ -679,8 +652,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/8.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/8-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/13.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/4.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
@@ -718,8 +691,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/9.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/9-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/16.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/5.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
@@ -748,7 +721,7 @@
 																	</div>
 																</div>
 															</div>
-															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+															<!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
 																		<div class="product-lable">
@@ -892,7 +865,7 @@
 																		</div>
 																	</div>
 																</div>
-															</div>
+															</div> -->
 														</div>
 													</div>
 												</div>

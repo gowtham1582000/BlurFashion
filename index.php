@@ -1,4 +1,87 @@
-﻿<!DOCTYPE html>
+﻿<?php
+// Start the session
+session_start();
+
+// Database connection settings
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "bfdb"; // Your database name
+
+// Establish a PDO connection
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+
+// Handle Registration
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
+    // Collect form data
+    $full_name = trim($_POST['full_name']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+    $phone = trim($_POST['phone']);
+    $address = trim($_POST['address']);
+
+    // Validate input
+    if (!empty($full_name) && filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($password)) {
+        // Hash the password for security
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+        // Insert data into the users table
+        $sql = "INSERT INTO users (full_name, email, password, phone, address) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$full_name, $email, $hashedPassword, $phone, $address]);
+
+        // Set session variables after successful registration
+        $_SESSION['logged_in'] = true;
+        $_SESSION['username'] = $full_name; // You can use email or any unique identifier
+
+        echo "Registration successful!";
+    } else {
+        echo "Please enter all required fields: Full Name, Email, and Password.";
+    }
+}
+
+// Handle Login (optional for login)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+
+    // Query for user
+    $sql = "SELECT * FROM users WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$username]);
+    $user = $stmt->fetch();
+
+    // Check if user exists and password is correct
+    if ($user && password_verify($password, $user['password'])) {
+        // Set session variables after login
+        $_SESSION['logged_in'] = true;
+        $_SESSION['username'] = $user['full_name']; // Store full name or other unique identifier
+
+        echo "Login successful!";
+    } else {
+        echo "Invalid username or password.";
+    }
+}
+
+// Handle Logout
+if (isset($_GET['logout'])) {
+    // Destroy the session
+    session_unset();
+    session_destroy();
+    header('Location: index.php'); // Redirect to the home page
+    exit();
+}
+
+$conn = null; // Close connection
+?>
+
+
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<!-- Meta Data -->
@@ -19,7 +102,7 @@
 		<link rel="stylesheet" href="libs/elegant-icons/css/elegant.css" type="text/css">
 		<link rel="stylesheet" href="libs/slick/css/slick.css" type="text/css">
 		<link rel="stylesheet" href="libs/slick/css/slick-theme.css" type="text/css">
-		<link rel="stylesheet" href="libs/mmenu/css/mmenu.min.css" type="text/css">
+		<link rel="stylesheet" href="libs/mmenu/css/mmenu.min.css" type="text/css">	
 
 		<!-- Site Stylesheet -->
 		<link rel="stylesheet" href="assets/css/app.css" type="text/css">
@@ -244,7 +327,7 @@ function removeCartItem(productName, event) {
 												<ul id="menu-main-menu" class="menu">
 													<li class="level-0 menu-item menu-item-has-children mega-menu current-menu-item">
 														<a href="index.html"><span class="menu-item-text">Home</span></a>
-														<!-- <div class="sub-menu">
+														<div class="sub-menu">
 															<div class="row">
 																<div class="col-md-6">
 																	<div class="menu-section">
@@ -306,7 +389,7 @@ function removeCartItem(productName, event) {
 																	</div>
 																</div>
 															</div>
-														</div> -->
+														</div>
 													</li>
 													<li class="level-0 menu-item menu-item-has-children">
 														<a href="shop-grid-left.html"><span class="menu-item-text">Shop</span></a>
@@ -484,7 +567,15 @@ function removeCartItem(productName, event) {
 										<div class="header-page-link">
 											<!-- Login -->
 											<div class="login-header">
-												<a class="active-login" href="#">Login</a>
+												<div>
+													<?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) { ?>
+														<!-- Show Logout Button -->
+														<a href="index.php?logout=true" class="active-logout">Logout</a>
+													<?php } else { ?>
+														<!-- Show Login Button -->
+														<a href="#login-form" class="active-login" id="login-user">Login</a>
+													<?php } ?>
+												</div>												
 												<div class="form-login-register">
 													<div class="box-form-login">
 														<div class="active-login"></div>
@@ -517,22 +608,45 @@ function removeCartItem(productName, event) {
 																</form>
 															</div>
 															<div class="form-register">
-																<form method="post" class="register">
+																<form method="post" class="register" action="">
 																	<h2>REGISTER</h2>
 																	<div class="content">
-																		<div class="email">
-																			<input type="email" class="input-text" placeholder="Email" name="email" id="reg_email" value="">
+																		<!-- Full Name Field -->
+																		<div class="full-name">
+																			<input type="text" class="input-text" placeholder="Full Name" name="full_name" id="reg_full_name" required>
 																		</div>
+																		
+																		<!-- Email Field -->
+																		<div class="email">
+																			<input type="email" class="input-text" placeholder="Email" name="email" id="reg_email" value="" required>
+																		</div>
+																		
+																		<!-- Password Field -->
 																		<div class="password">
-																			<input type="password" class="input-text" placeholder="Password" name="password" id="reg_password">
-																		</div>															
+																			<input type="password" class="input-text" placeholder="Password" name="password" id="reg_password" required>
+																		</div>
+																		
+																		<!-- Phone Field -->
+																		<div class="phone">
+																			<input type="text" class="input-text" placeholder="Phone Number" name="phone" id="reg_phone">
+																		</div>
+																		
+																		<!-- Address Field -->
+																		<div class="address">
+																			<textarea class="input-text" placeholder="Address" name="address" id="reg_address" rows="3"></textarea>
+																		</div>
+																		
+																		<!-- Register Button -->
 																		<div class="button-register">
 																			<input type="submit" class="button" name="register" value="Register">
 																		</div>
+																		
+																		<!-- Already has an account -->
 																		<div class="button-next-login">Already has an account</div>
 																	</div>
 																</form>
 															</div>
+															
 														</div>
 													</div>
 												</div>
@@ -820,7 +934,7 @@ function removeCartItem(productName, event) {
 																			<span class="price">$100.00</span>
 																			<div class="btn-add-to-cart">
 																				<div data-title="Add to cart">
-																					<a href="#" class="button">Add to cart</a>
+																					<a href="#">Add to cart</a>
 																				</div>			
 																			</div>
 																		</div>
@@ -859,7 +973,7 @@ function removeCartItem(productName, event) {
 																			<span class="price">$200.00</span>
 																			<div class="btn-add-to-cart">
 																				<div data-title="Add to cart">
-																					<a href="#" class="button">Add to cart</a>
+																					<a href="#">Add to cart</a>
 																				</div>			
 																			</div>
 																		</div>
@@ -898,7 +1012,7 @@ function removeCartItem(productName, event) {
 																			<span class="price">$150.00</span>
 																			<div class="btn-add-to-cart">
 																				<div data-title="Add to cart">
-																					<a href="#" class="button">Add to cart</a>
+																					<a href="#">Add to cart</a>
 																				</div>			
 																			</div>
 																		</div>
@@ -940,7 +1054,7 @@ function removeCartItem(productName, event) {
 																			</span>
 																			<div class="btn-add-to-cart">
 																				<div data-title="Add to cart">
-																					<a href="#" class="button">Add to cart</a>
+																					<a href="#">Add to cart</a>
 																				</div>			
 																			</div>
 																		</div>
@@ -985,7 +1099,7 @@ function removeCartItem(productName, event) {
 																			</span>
 																			<div class="btn-add-to-cart">
 																				<div data-title="Add to cart">
-																					<a href="#" class="button">Add to cart</a>
+																					<a href="#">Add to cart</a>
 																				</div>			
 																			</div>
 																		</div>

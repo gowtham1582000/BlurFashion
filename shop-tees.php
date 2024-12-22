@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<!-- Meta Data -->
@@ -237,7 +237,7 @@
 														</ul> -->
 													</li>
 													<li class="level-0 menu-item mega-menu mega-menu-fullwidth align-center">
-														<a href="shop-grid-right.php"><span class="menu-item-text">Shirts</span></a>
+														<a href="shop-shirts.php"><span class="menu-item-text">Shirts</span></a>
 														<!-- <div class="sub-menu">
 															<div class="row">
 																<div class="col-md-5">
@@ -338,7 +338,7 @@
 														</div> -->
 													</li>
 													<li class="level-0 menu-item ">
-														<a href="shop-grid-right.php"><span class="menu-item-text">Pants</span></a>
+														<a href="shop-pants.php"><span class="menu-item-text">Pants</span></a>
 														<!-- <ul class="sub-menu">
 															<li>
 																<a href="page-login.html"><span class="menu-item-text">Login / Register</span></a>
@@ -546,23 +546,23 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/6.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/6-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/8.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/1.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
-																			<div class="btn-add-to-cart" data-title="Add to cart">
+																			<!-- <div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
-																			</div>
+																			</div> -->
 																			<div class="btn-wishlist" data-title="Wishlist">
 																				<button class="product-btn">Add to wishlist</button>
 																			</div>
-																			<div class="btn-compare" data-title="Compare">
+																			<!-- <div class="btn-compare" data-title="Compare">
 																				<button class="product-btn">Compare</button>
 																			</div>
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
-																			</span>		
+																			</span>	-->
 																		</div>
 																	</div>
 																	<div class="products-content">
@@ -581,8 +581,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/4.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/4-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/2.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/7.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
@@ -616,8 +616,8 @@
 																	<div class="products-thumb">
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/7.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/7-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/11.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/3.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
@@ -652,8 +652,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/8.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/8-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/13.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/4.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
@@ -691,8 +691,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/9.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/9-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/16.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/5.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
@@ -721,7 +721,7 @@
 																	</div>
 																</div>
 															</div>
-															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+															<!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
 																		<div class="product-lable">
@@ -865,7 +865,7 @@
 																		</div>
 																	</div>
 																</div>
-															</div>
+															</div> -->
 														</div>
 													</div>
 												</div>

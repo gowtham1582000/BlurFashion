@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<!-- Meta Data -->
@@ -200,7 +200,7 @@
 														 </div>  -->
 													</li>
 													<li class="level-0 menu-item ">
-														<a href="shop-grid-right.php"><span class="menu-item-text">Tees</span></a>
+														<a href="shop-tees.php"><span class="menu-item-text">Tees</span></a>
 														<!-- <ul class="sub-menu">
 															<li class="level-1 menu-item menu-item-has-children">
 																<a href="shop-grid-left.html"><span class="menu-item-text">Shop - Products</span></a>
@@ -237,7 +237,7 @@
 														</ul> -->
 													</li>
 													<li class="level-0 menu-item mega-menu mega-menu-fullwidth align-center">
-														<a href="shop-grid-right.php"><span class="menu-item-text">Shirts</span></a>
+														<a href="shop-shirts.php"><span class="menu-item-text">Shirts</span></a>
 														<!-- <div class="sub-menu">
 															<div class="row">
 																<div class="col-md-5">
@@ -338,7 +338,7 @@
 														</div> -->
 													</li>
 													<li class="level-0 menu-item ">
-														<a href="shop-grid-right.php"><span class="menu-item-text">Pants</span></a>
+														<a href="shop-pants.php"><span class="menu-item-text">Pants</span></a>
 														<!-- <ul class="sub-menu">
 															<li>
 																<a href="page-login.html"><span class="menu-item-text">Login / Register</span></a>

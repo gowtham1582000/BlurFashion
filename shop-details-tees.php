@@ -29,6 +29,76 @@
 		<!-- Google Web Fonts -->
 		<link href="../../css2-1?family=Barlow+Semi+Condensed:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 		<link href="../../css?family=EB+Garamond:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+		
+		<?php
+			// Database connection details
+			$host = "localhost";
+			$username = "root";
+			$password = "";
+			$dbname = "bfdb"; // Your database name
+
+			try {
+				// Establish PDO connection
+				$dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
+				$pdo = new PDO($dsn, $username, $password);
+
+				// Set error mode to exception for better error handling
+				$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+				// Get category_id from URL
+				if (isset($_GET['category_id'])) {
+					$category_id = intval($_GET['category_id']); // Sanitize input to prevent SQL injection
+
+					// Query to fetch category details for the specific category_id
+					$query = "
+						SELECT 
+							CAT_NAME, 
+							CAT_RATE, 
+							CAT_CONTENT, 
+							GROUP_CONCAT(CAT_COLOR) AS COLORS, 
+							GROUP_CONCAT(CAT_HEXCODE) AS DRESSCOLOR,
+							GROUP_CONCAT(CAT_PATHLOCATION) AS IMAGE_LOCATIONS 
+						FROM category_details 
+						WHERE CAT_CATID = :category_id
+						GROUP BY CAT_NAME, CAT_RATE, CAT_CONTENT
+						order by CAT_ID";
+
+					// Prepare and execute the query
+					$stmt = $pdo->prepare($query);
+					$stmt->bindParam(':category_id', $category_id, PDO::PARAM_INT);
+					$stmt->execute();
+
+					// Fetch the result
+					$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+					$images = [];
+					$colors=[];
+					if ($result && count($result) > 0) { // Check if the result is not false and contains rows
+						foreach ($result as $row) { // Loop through the result array
+							// Explode the IMAGE_LOCATIONS column into individual image paths
+							$colorsChange=explode(',', $row['DRESSCOLOR']);
+							$colors = array_merge($colors, $colorsChange);
+							$imagePaths = explode(',', $row['IMAGE_LOCATIONS']); // Correct column alias
+							$images = array_merge($images, $imagePaths); // Add all image paths to $images array
+						}
+					}
+					// Output the result for debugging (optional)
+					// echo "<pre>";
+					// print_r($images);
+					// print_r($colors);
+					// echo "</pre>";
+
+				} else {
+					die("No category_id provided.");
+				}
+			} catch (PDOException $e) {
+				die("Database error: " . $e->getMessage());
+			}
+		?>
+
+	
 	</head>
 	
 	<body class="shop">
@@ -148,233 +218,15 @@
 												<ul id="menu-main-menu" class="menu">
 													<li class="level-0 menu-item mega-menu current-menu-item">
 														<a href="index.php"><span class="menu-item-text">Home</span></a>
-														 <!-- <div class="sub-menu">
-															<div class="row">
-																<div class="col-md-6">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Furniture 1</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="index.php"><span class="menu-item-text">Home Categories</span></a>
-																			</li>
-																			<li>
-																				<a href="index2.html"><span class="menu-item-text">Home Clean</span></a>
-																			</li>
-																			<li>
-																				<a href="index3.html"><span class="menu-item-text">Home Collection</span></a>
-																			</li>
-																			<li>
-																				<a href="index4.html"><span class="menu-item-text">Home Grid</span></a>
-																			</li>
-																			<li>
-																				<a href="index5.html"><span class="menu-item-text">Home Minimal</span></a>
-																			</li>
-																			<li>
-																				<a href="index6.html"><span class="menu-item-text">Home Modern</span></a>
-																			</li>
-																			<li>
-																				<a href="index7.html"><span class="menu-item-text">Home Stylish</span></a>
-																			</li>
-																			<li>
-																				<a href="index8.html"><span class="menu-item-text">Home Unique</span></a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="col-md-6">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Furniture 2</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="index9.html"><span class="menu-item-text">Home Split</span></a>
-																			</li>
-																			<li>
-																				<a href="index10.html"><span class="menu-item-text">Home Gothic</span></a>
-																			</li>
-																			<li>
-																				<a href="index11.html"><span class="menu-item-text">Home Luxury</span></a>
-																			</li>
-																			<li>
-																				<a href="index12.html"><span class="menu-item-text">Home Scandinavian</span></a>
-																			</li>
-																			<li>
-																				<a href="index13.html"><span class="menu-item-text">Home Mid-Century</span></a>
-																			</li>
-																			<li>
-																				<a href="index14.html"><span class="menu-item-text">Home Retro</span></a>
-																			</li>
-																			<li>
-																				<a href="index15.html"><span class="menu-item-text">Home Color Block</span></a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														 </div>  -->
 													</li>
 													<li class="level-0 menu-item ">
 														<a href="shop-tees.php"><span class="menu-item-text">Tees</span></a>
-														<!-- <ul class="sub-menu">
-															<li class="level-1 menu-item menu-item-has-children">
-																<a href="shop-grid-left.html"><span class="menu-item-text">Shop - Products</span></a>
-																<ul class="sub-menu">
-																	<li>
-																		<a href="shop-grid-left.html"><span class="menu-item-text">Shop Grid - Left Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-list-left.html"><span class="menu-item-text">Shop List - Left Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-grid-right.html"><span class="menu-item-text">Shop Grid - Right Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-list-right.html"><span class="menu-item-text">Shop List - Right Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-grid-fullwidth.html"><span class="menu-item-text">Shop Grid - No Sidebar</span></a>
-																	</li>
-																</ul>
-															</li>
-															<li>
-																<a href="shop-details.html"><span class="menu-item-text">Shop Details</span></a>
-															</li>
-															<li>
-																<a href="shop-cart.html"><span class="menu-item-text">Shop - Cart</span></a>
-															</li>
-															<li>
-																<a href="shop-checkout.html"><span class="menu-item-text">Shop - Checkout</span></a>
-															</li>
-															<li>
-																<a href="shop-wishlist.html"><span class="menu-item-text">Shop - Wishlist</span></a>
-															</li>
-														</ul> -->
 													</li>
 													<li class="level-0 menu-item mega-menu mega-menu-fullwidth align-center">
 														<a href="shop-shirts.php"><span class="menu-item-text">Shirts</span></a>
-														<!-- <div class="sub-menu">
-															<div class="row">
-																<div class="col-md-5">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Blog Category</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="blog-grid-left.html"><span class="menu-item-text">Blog Grid - Left Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-grid-right.html"><span class="menu-item-text">Blog Grid - Right Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-list-left.html"><span class="menu-item-text">Blog List - Left Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-list-right.html"><span class="menu-item-text">Blog List - Right Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-grid-fullwidth.html"><span class="menu-item-text">Blog Grid - No Sidebar</span></a>
-																			</li>
-																		</ul>
-																	</div>
-
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Blog Details</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="blog-details-left.html"><span class="menu-item-text">Blog Details - Left Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-details-right.html"><span class="menu-item-text">Blog Details - Right Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-details-fullwidth.html"><span class="menu-item-text">Blog Details - No Sidebar</span></a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="col-md-7">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Recent Posts</h2>
-																		<div class="block block-posts recent-posts p-t-5">
-																			<ul class="posts-list">
-																				<li class="post-item">
-																					<a href="blog-details-right.html" class="post-image">
-																						<img src="media/blog/1.jpg">
-																					</a>
-																					<div class="post-content">
-																						<h2 class="post-title">
-																							<a href="blog-details-right.html">
-																								Easy Fixes For Home Decor
-																							</a>
-																						</h2>
-																						<div class="post-time">
-																							<span class="post-date">May 30, 2022</span>
-																							<span class="post-comment">4 Comments</span>
-																						</div>
-																					</div>
-																				</li>
-																				<li class="post-item">
-																					<a href="blog-details-right.html" class="post-image">
-																						<img src="media/blog/2.jpg">
-																					</a>
-																					<div class="post-content">
-																						<h2 class="post-title">
-																							<a href="blog-details-right.html">
-																								How To Make Your Home A Showplace
-																							</a>
-																						</h2>
-																						<div class="post-time">
-																							<span class="post-date">Aug 24, 2022</span>
-																							<span class="post-comment">2 Comments</span>
-																						</div>
-																					</div>
-																				</li>
-																				<li class="post-item">
-																					<a href="blog-details-right.html" class="post-image">
-																						<img src="media/blog/3.jpg">
-																					</a>
-																					<div class="post-content">
-																						<h2 class="post-title">
-																							<a href="blog-details-right.html">
-																								Stunning Furniture With Aesthetic Appeal
-																							</a>
-																						</h2>
-																						<div class="post-time">
-																							<span class="post-date">Dec 06, 2022</span>
-																							<span class="post-comment">1 Comment</span>
-																						</div>
-																					</div>
-																				</li>
-																			</ul>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div> -->
 													</li>
 													<li class="level-0 menu-item ">
 														<a href="shop-pants.php"><span class="menu-item-text">Pants</span></a>
-														<!-- <ul class="sub-menu">
-															<li>
-																<a href="page-login.html"><span class="menu-item-text">Login / Register</span></a>
-															</li>
-															<li>
-																<a href="page-forgot-password.html"><span class="menu-item-text">Forgot Password</span></a>
-															</li>
-															<li>
-																<a href="page-my-account.html"><span class="menu-item-text">My Account</span></a>
-															</li>
-															<li>
-																<a href="page-about.html"><span class="menu-item-text">About Us</span></a>
-															</li>
-															<li>
-																<a href="page-contact.html"><span class="menu-item-text">Contact</span></a>
-															</li>
-															<li>
-																<a href="page-faq.html"><span class="menu-item-text">FAQ</span></a>
-															</li>
-															<li>
-																<a href="page-404.html"><span class="menu-item-text">Page 404</span></a>
-															</li>
-														</ul> -->
 													</li>
 													<li class="level-0 menu-item">
 														<a href="page-contact.php"><span class="menu-item-text">Contact</span></a>
@@ -523,53 +375,27 @@
 													<div class="row">
 														<div class="col-md-2">
 															<div class="content-thumbnail-scroll">
-																<div class="image-thumbnail slick-carousel slick-vertical" data-asnavfor=".image-additional" data-centermode="true" data-focusonselect="true" data-columns4="5" data-columns3="4" data-columns2="4" data-columns1="4" data-columns="4" data-nav="true" data-vertical="&quot;true&quot;" data-verticalswiping="&quot;true&quot;">
-																	<div class="img-item slick-slide">
-																		<span class="img-thumbnail-scroll">
-																			<img width="600" height="600" src="media/product/Tees/17.jpg" alt="">
-																		</span>
-																	</div>
-																	<div class="img-item slick-slide">
-																		<span class="img-thumbnail-scroll">
-																			<img width="600" height="600" src="media/product/Tees/10.jpg" alt="">
-																		</span>
-																	</div>
-																	<div class="img-item slick-slide">
-																		<span class="img-thumbnail-scroll">
-																			<img width="600" height="600" src="media/product/Tees/16.jpg" alt="">
-																		</span>
-																	</div>
-																	<div class="img-item slick-slide">
-																		<span class="img-thumbnail-scroll">
-																			<img width="600" height="600" src="media/product/Tees/12.jpg" alt="">
-																		</span>
-																	</div>
-																	<div class="img-item slick-slide">
-																		<span class="img-thumbnail-scroll">
-																			<img width="600" height="600" src="media/product/Tees/9.jpg" alt="">
-																		</span>
-																	</div>
+																<div class="image-thumbnail slick-carousel slick-vertical" data-asnavfor=".image-additional" data-centermode="true" data-focusonselect="true" data-columns4="5" data-columns3="4" data-columns2="4" data-columns1="4" data-columns="4" data-nav="true" data-vertical="true" data-verticalswiping="true">
+																	<?php foreach ($images as $index => $image) : ?>
+																		<div class="img-item slick-slide">
+																			<span class="img-thumbnail-scroll">
+																				<img class="thumbnail-image" width="600" height="600" src="<?php echo $image; ?>" alt="Product Image" data-color="<?php echo $colors[$index]; ?>">
+																			</span>
+																		</div>
+																	<?php endforeach; ?>
 																</div>
 															</div>
 														</div>
 														<div class="col-md-10">
 															<div class="scroll-image main-image">
 																<div class="image-additional slick-carousel" data-asnavfor=".image-thumbnail" data-fade="true" data-columns4="1" data-columns3="1" data-columns2="1" data-columns1="1" data-columns="1" data-nav="true">
+																<?php foreach ($images as $index => $image) : ?>
 																	<div class="img-item slick-slide">
-																		<img width="900" height="900" src="media/product/Tees/17.jpg" alt="" title="">
+																		<span class="img-thumbnail-scroll">
+																		<img class="main-image" width="600" height="600" src="<?php echo $image; ?>" alt="Product Image" data-color="<?php echo $colors[$index]; ?>">
+																		</span>
 																	</div>
-																	<div class="img-item slick-slide">
-																		<img width="900" height="900" src="media/product/Tees/10.jpg" alt="" title="">
-																	</div>
-																	<div class="img-item slick-slide">
-																		<img width="900" height="900" src="media/product/Tees/16.jpg" alt="" title="">
-																	</div>
-																	<div class="img-item slick-slide">
-																		<img width="900" height="900" src="media/product/Tees/12.jpg" alt="" title="">
-																	</div>
-																	<div class="img-item slick-slide">
-																		<img width="900" height="900" src="media/product/Tees/9.jpg" alt="" title="">
-																	</div>
+																<?php endforeach; ?>
 																</div>
 															</div>
 														</div>
@@ -577,19 +403,26 @@
 												</div>
 
 												<div class="product-info col-lg-5 col-md-12 col-12 ">
-													<h1 class="title">Bora Armchair</h1>
+													<?php if ($result && count($result) > 0):
+														// Extract static details from the first row
+														$row = $result[0];
+														$productName = htmlspecialchars($row['CAT_NAME'], ENT_QUOTES, 'UTF-8');
+														$productRate = htmlspecialchars($row['CAT_RATE'], ENT_QUOTES, 'UTF-8');
+														$productContent = htmlspecialchars($row['CAT_CONTENT'], ENT_QUOTES, 'UTF-8');
+														$colors = explode(',', htmlspecialchars($row['DRESSCOLOR'], ENT_QUOTES, 'UTF-8'));
+													?>
+													 <h1 class="title"><?php echo $productName; ?></h1>
 													<span class="price">
-														<del aria-hidden="true"><span>$100.00</span></del> 
-														<ins><span>$90.00</span></ins>
+														<ins><span>$<?php echo $productRate; ?></span></ins>
 													</span>
-													<div class="rating">
+													<!-- <div class="rating">
 														<div class="star star-5"></div>
 														<div class="review-count">
 															(3<span> reviews</span>)
 														</div>
-													</div>
+													</div> -->
 													<div class="description">
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+														<p><?php echo $productContent; ?></p>
 													</div>
 													<div class="variations">
 														<table cellspacing="0">
@@ -598,9 +431,9 @@
 																	<td class="label">Size</td>
 																	<td class="attributes">
 																		<ul class="text">
+																			<li><span>XL</span></li>
 																			<li><span>L</span></li>
 																			<li><span>M</span></li>
-																			<li><span>S</span></li>
 																		</ul>
 																	</td>
 																</tr>
@@ -608,9 +441,14 @@
 																	<td class="label">Color</td>
 																	<td class="attributes">
 																		<ul class="colors">
-																			<li><span class="color-1"></span></li>
-																			<li><span class="color-2"></span></li>
-																			<li><span class="color-3"></span></li>
+																			<?php foreach ($colors as $index => $color): ?>
+																				<li>
+																					<span class="color-<?php echo ($index + 1); ?>" 
+																					style="background-color: <?php echo $color; ?>;" 
+																					data-image="<?php echo $imagePaths[$index]; ?>" 
+																					data-color="<?php echo $color; ?>"></span>
+																				</li>
+																			<?php endforeach; ?>
 																		</ul>
 																	</td>
 																</tr>
@@ -634,119 +472,23 @@
 														<div class="btn-wishlist" data-title="Wishlist">
 															<button class="product-btn">Add to wishlist</button>
 														</div>
-														<div class="btn-compare" data-title="Compare">
-															<button class="product-btn">Compare</button>
-														</div>
+														
 													</div>
-													<div class="product-meta">
-														<span class="sku-wrapper">SKU: <span class="sku">D2300-3-2-2</span></span>
-														<span class="posted-in">Category: <a href="shop-grid-left.html" rel="tag">Furniture</a></span>
-														<span class="tagged-as">Tags: <a href="shop-grid-left.html" rel="tag">Hot</a>, <a href="shop-grid-left.html" rel="tag">Trend</a></span>
-													</div>
+													<br>
 													<div class="social-share">
 														<a href="#" title="Facebook" class="share-facebook" target="_blank"><i class="fa fa-facebook"></i>Facebook</a>
 														<a href="#" title="Twitter" class="share-twitter"><i class="fa fa-twitter"></i>Twitter</a>
 														<a href="#" title="Pinterest" class="share-pinterest"><i class="fa fa-pinterest"></i>Pinterest</a>
-													</div>					
+													</div>			
+													<?php else: ?>
+														<p>No product details found.</p>
+													<?php endif; ?>		
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="product-tabs">
-									<div class="section-padding">
-										<div class="section-container p-l-r">
-											<div class="product-tabs-wrap">
-												<ul class="nav nav-tabs" role="tablist">
-													<li class="nav-item">
-														<a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link" data-toggle="tab" href="#additional-information" role="tab">Additional information</a>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a>
-													</li>
-												</ul>
-												<div class="tab-content">
-													<div class="tab-pane fade show active" id="description" role="tabpanel">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-														<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-													</div>
-													<div class="tab-pane fade" id="additional-information" role="tabpanel">
-														<table class="product-attributes">
-															<tbody>
-																<tr class="attribute-item">
-																	<th class="attribute-label">Color</th>
-																	<td class="attribute-value">Black, Blue, Green</td>
-																</tr>
-															</tbody>
-														</table>
-													</div>
-													<div class="tab-pane fade" id="reviews" role="tabpanel">
-														<div id="reviews" class="product-reviews">
-															<div id="comments">
-																<h2 class="reviews-title">1 review for <span>Bora Armchair</span></h2>
-																<ol class="comment-list">
-																	<li class="review">
-																		<div class="content-comment-container">
-																			<div class="comment-container">
-																				<img src="media/user.jpg" class="avatar" height="60" width="60" alt="">
-																				<div class="comment-text">
-																					<div class="rating small">
-																						<div class="star star-5"></div>
-																					</div>
-																					<div class="review-author">Peter Capidal</div>
-																					<div class="review-time">January 12, 2022</div>
-																				</div>
-																			</div>
-																			<div class="description">
-																				<p>good</p>
-																			</div>	
-																		</div>
-																	</li>
-																</ol>
-															</div>
-															<div id="review-form">
-																<div id="respond" class="comment-respond">
-																	<span id="reply-title" class="comment-reply-title">Add a review</span>
-																	<form action="" method="post" id="comment-form" class="comment-form">
-																		<p class="comment-notes">
-																			<span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span>
-																		</p>
-																		<div class="comment-form-rating">
-																			<label for="rating">Your rating</label>
-																			<p class="stars">
-																				<span>
-																					<a class="star-1" href="#">1</a><a class="star-2" href="#">2</a><a class="star-3" href="#">3</a><a class="star-4" href="#">4</a><a class="star-5" href="#">5</a>						
-																				</span>					
-																			</p>
-																		</div>
-																		<p class="comment-form-comment">
-																			<textarea id="comment" name="comment" placeholder="Your Reviews *" cols="45" rows="8" aria-required="true" required=""></textarea>
-																		</p>
-																		<div class="content-info-reviews">
-																			<p class="comment-form-author">
-																				<input id="author" name="author" placeholder="Name *" type="text" value="" size="30" aria-required="true" required="">
-																			</p>
-																			<p class="comment-form-email">
-																				<input id="email" name="email" placeholder="Email *" type="email" value="" size="30" aria-required="true" required="">
-																			</p>
-																			<p class="form-submit">
-																				<input name="submit" type="submit" id="submit" class="submit" value="Submit"> 
-																			</p>	
-																		</div>
-																	</form><!-- #respond -->
-																</div>
-															</div>
-															<div class="clear"></div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								
 								<div class="product-related">
 									<div class="section-padding">
 										<div class="section-container p-l-r">
@@ -1326,18 +1068,70 @@
 
 		<!-- Dependency Scripts -->
 		<script src="libs/popper/js/popper.min.js"></script>
-		<script src="libs/jquery/js/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+		<!-- <script src="libs/jquery/js/jquery.min.js"></script>  -->
 		<script src="libs/bootstrap/js/bootstrap.min.js"></script>
-		<script src="libs/slick/js/slick.min.js"></script>
+		<!-- <script src="libs/slick/js/slick.min.js"></script> -->
 		<script src="libs/countdown/js/jquery.countdown.min.js"></script>
 		<script src="libs/mmenu/js/jquery.mmenu.all.min.js"></script>
 		<script src="libs/slider/js/tmpl.js"></script>
 		<script src="libs/slider/js/jquery.dependClass-0.1.js"></script>
 		<script src="libs/slider/js/draggable-0.1.js"></script>
-		<script src="libs/slider/js/jquery.slider.js"></script>
-		<script src="libs/elevatezoom/js/jquery.elevatezoom.js"></script>
-		
-		<!-- Site Scripts -->
+		 <script src="libs/slider/js/jquery.slider.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script src="assets/js/app.js"></script>
+		<script src="libs/elevatezoom/js/jquery.elevatezoom.js"></script>
+
+
+		<!-- Site Scripts -->
+
+		<script>
+
+			$(document).ready(function() {
+				console.log($('.image-thumbnail')); // Check if it exists
+				console.log($('.image-additional')); 
+
+				// Initialize the slick carousel
+				setTimeout(function() {
+        $('.image-thumbnail').slick({
+            vertical: true,
+            focusOnSelect: true,
+            slidesToShow: 4,
+            slidesToScroll: 1
+        });
+
+        $('.image-additional').slick({
+            fade: true,
+            arrows: true,
+            asNavFor: '.image-thumbnail'
+        });
+    }, 1000);
+
+        // Select all color swatches
+        const colorOptions = document.querySelectorAll('.colors span');
+        
+        // Handle color click event
+        colorOptions.forEach(color => {
+            color.addEventListener('click', function() {
+                const selectedColor = this.getAttribute('data-color'); // Get the selected color
+                const selectedIndex = this.getAttribute('data-index'); // Get the index for the corresponding image
+                
+                // Select the main image carousel and thumbnails carousel
+                const thumbnails = document.querySelectorAll('.thumbnail-image');
+                const mainImages = document.querySelectorAll('.main-image');
+
+                // Loop through the thumbnails and main images to find the matching color
+                thumbnails.forEach((img, index) => {
+                    if (img.getAttribute('data-color') === selectedColor) {
+                        // Use slickGoTo to go to the specific image
+                        $('.image-additional').slick('slickGoTo', index);
+                        $('.image-thumbnail').slick('slickGoTo', index); // Sync the thumbnails with main image
+                    }
+                });
+            });
+        });
+    });
+		</script>
 	</body>
 </html>

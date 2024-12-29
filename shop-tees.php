@@ -545,8 +545,8 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/Tees/8.jpg" class="post-image" alt="">
+																			<a href="shop-details-tees.php?category_id=1">
+																				<img width="600" height="600" src="media/product/Tees/8.jpg" aria-valuetext="" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/Tees/1.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		

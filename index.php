@@ -244,7 +244,7 @@ function removeCartItem(productName, event) {
 												<ul id="menu-main-menu" class="menu">
 													<li class="level-0 menu-item mega-menu current-menu-item">
 														<a href="index.php"><span class="menu-item-text">Home</span></a>
-														 <div class="sub-menu">
+														 <!-- <div class="sub-menu">
 															<div class="row">
 																<div class="col-md-6">
 																	<div class="menu-section">
@@ -306,10 +306,10 @@ function removeCartItem(productName, event) {
 																	</div>
 																</div>
 															</div>
-														</div> 
+														 </div>  -->
 													</li>
 													<li class="level-0 menu-item ">
-														<a href="shop-grid-right.php"><span class="menu-item-text">Tees</span></a>
+														<a href="shop-tees.php"><span class="menu-item-text">Tees</span></a>
 														<!-- <ul class="sub-menu">
 															<li class="level-1 menu-item menu-item-has-children">
 																<a href="shop-grid-left.html"><span class="menu-item-text">Shop - Products</span></a>
@@ -346,7 +346,7 @@ function removeCartItem(productName, event) {
 														</ul> -->
 													</li>
 													<li class="level-0 menu-item mega-menu mega-menu-fullwidth align-center">
-														<a href="shop-grid-right.php"><span class="menu-item-text">Shirts</span></a>
+														<a href="shop-shirts.php"><span class="menu-item-text">Shirts</span></a>
 														<!-- <div class="sub-menu">
 															<div class="row">
 																<div class="col-md-5">
@@ -447,7 +447,7 @@ function removeCartItem(productName, event) {
 														</div> -->
 													</li>
 													<li class="level-0 menu-item ">
-														<a href="shop-grid-right.php"><span class="menu-item-text">Pants</span></a>
+														<a href="shop-pants.php"><span class="menu-item-text">Pants</span></a>
 														<!-- <ul class="sub-menu">
 															<li>
 																<a href="page-login.html"><span class="menu-item-text">Login / Register</span></a>
@@ -604,15 +604,15 @@ function removeCartItem(productName, event) {
 										<div class="item slick-slide">
 											<div class="item-content">
 												<div class="content-image">
-													<img width="1920" height="1080" src="media/slider/banner.png" alt="Image Slider">
+													<img width="1920" height="1080" src="media/slider/zara-men-bg.jpg" alt="Image Slider">
 												</div>
 												<div class="section-padding">
 													<div class="section-container">
 														<div class="item-info horizontal-start vertical-middle">
 															<div class="content">
-																<div class="subtitle-slider">20%OFF.END MONDAY</div>
-																<h2 class="title-slider">Chair Collection</h2>
-																<div class="description-slider">Save up to $500 on outdoor packages </div>
+																<div style="color: white;" class="subtitle-slider">Elevate Your Style with – </div>
+																<h2 style="color: white;" class="title-slider">BlurFashion</h2>
+																<div style="color: white;" class="description-slider">Shop Now!</div>
 																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
 															</div>
 														</div>
@@ -623,15 +623,15 @@ function removeCartItem(productName, event) {
 										<div class="item slick-slide">
 											<div class="item-content">
 												<div class="content-image">
-													<img width="1920" height="1080" src="media/slider/banner-2.jpg" alt="Image Slider">
+													<img width="1920" height="1080" src="media/slider/Outerwear1.webp" alt="Image Slider">
 												</div>
 												<div class="section-padding">
 													<div class="section-container">
 														<div class="item-info horizontal-start vertical-middle">
 															<div class="content">
-																<div class="subtitle-slider">20%OFF.END MONDAY</div>
-																<h2 class="title-slider">Interior lighting</h2>
-																<div class="description-slider">Save up to $500 on outdoor packages </div>
+																<div style="color: black;" class="subtitle-slider">Unleash Your Confidence with - </div>
+																<h2 style="color: black;" class="title-slider">Our BlurFashion</h2>
+																<div style="color: black;" class="description-slider">Save up to 10% on outdoor packages </div>
 																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
 															</div>
 														</div>
@@ -648,9 +648,9 @@ function removeCartItem(productName, event) {
 													<div class="section-container">
 														<div class="item-info horizontal-start vertical-middle">
 															<div class="content">
-																<div class="subtitle-slider">20%OFF.END MONDAY</div>
-																<h2 class="title-slider">Home office</h2>
-																<div class="description-slider">Save up to $500 on outdoor packages </div>
+																<div style="color: white;" class="subtitle-slider">20%OFF.END MONDAY</div>
+																<h2 style="color: white;" class="title-slider">Home office</h2>
+																<div style="color: white;" class="description-slider">Save up to $500 on outdoor packages </div>
 																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
 															</div>
 														</div>
@@ -661,6 +661,75 @@ function removeCartItem(productName, event) {
 									</div>
 								</div>
 							</section>
+                             
+                            <section class="section section-padding m-b-70">
+								<div class="section-container">
+									<!-- Block Banners (Layout 2) -->
+									<div class="block block-banners layout-2 banners-effect">
+										<div class="section-row">
+											<div class="section-column left sm-m-b">
+												<div class="section-column-wrap">
+													<div class="block-widget-wrap">
+														<div class="block-widget-banner layout-2">
+															<div class="bg-banner">
+																<div class="banner-wrapper banners">
+																	<div class="banner-image">
+																		<a href="shop-grid-left.html">
+																			<img width="825" height="475" src="media/banner/banner-1.jpg" alt="Banner Image">
+																		</a>
+																	</div>
+																	<div class="banner-wrapper-infor">
+																		<div class="info">
+																			<div class="content">
+																				<a class="link-title" href="shop-grid-left.html">
+																					<h3 class="title-banner">Let the adventure<br> begin. </h3>
+																				</a>
+																				<div class="banner-image-description">
+																					Sed lectus. Aliquam lorem ante, <br>dapibus in, viverra quis, feugiat a, tellus
+																				</div>
+																				<a class="button button-outline" href="shop-grid-left.html">SHOP NOW</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="section-column right">
+												<div class="section-column-wrap">
+													<div class="block-widget-wrap">
+														<div class="block-widget-banner layout-3">
+															<div class="bg-banner">
+																<div class="banner-wrapper banners">
+																	<div class="banner-image">
+																		<a href="shop-grid-left.html">
+																			<img width="571" height="475" src="media/banner/banner-2.jpg" alt="Banner Image">
+																		</a>
+																	</div>
+																	<div class="banner-wrapper-infor">
+																		<div class="info">
+																			<div class="content">
+																				<a class="link-title" href="shop-grid-left.html">
+																					<h3 class="title-banner">UP TO <span>20% OFF</span></h3>
+																				</a>
+																				<div class="banner-image-description">
+																					Don't miss savings on bedroom, living,
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>								
+									</div>
+								</div>
+							</section> 
 
 							<section class="section section-padding m-b-60">
 								<div class="section-container">
@@ -681,7 +750,7 @@ function removeCartItem(productName, event) {
 																	<div class="banner-wrapper-infor">
 																		<div class="info">
 																			<div class="content">
-																				<a class="button button-white" href="shop-grid-left.html">Shirts</a>
+																				<a class="button button-white" href="shop-shirts.php">Shirts</a>
 																			</div>
 																		</div>
 																	</div>
@@ -710,7 +779,7 @@ function removeCartItem(productName, event) {
 																						<div class="banner-wrapper-infor">
 																							<div class="info">
 																								<div class="content">
-																									<a class="button button-white" href="shop-grid-left.html">T-Shirts</a>
+																									<a class="button button-white" href="shop-tees.php">T-Shirts</a>
 																								</div>
 																							</div>
 																						</div>
@@ -732,7 +801,7 @@ function removeCartItem(productName, event) {
 																						<div class="banner-wrapper-infor">
 																							<div class="info">
 																								<div class="content">
-																									<a class="button button-white" href="shop-grid-left.html">Pants</a>
+																									<a class="button button-white" href="shop-pants.php">Pants</a>
 																								</div>
 																							</div>
 																						</div>
@@ -760,7 +829,7 @@ function removeCartItem(productName, event) {
 																						<div class="banner-wrapper-infor">
 																							<div class="info">
 																								<div class="content">
-																									<a class="button button-white" href="shop-grid-left.html">Accessories</a>
+																									<a class="button button-white" href="shop-grid-right.php">Accessories</a>
 																								</div>
 																							</div>
 																						</div>
@@ -1001,74 +1070,7 @@ function removeCartItem(productName, event) {
 								</div>
 							</section>
 
-							<section class="section section-padding m-b-70">
-								<div class="section-container">
-									<!-- Block Banners (Layout 2) -->
-									<div class="block block-banners layout-2 banners-effect">
-										<div class="section-row">
-											<div class="section-column left sm-m-b">
-												<div class="section-column-wrap">
-													<div class="block-widget-wrap">
-														<div class="block-widget-banner layout-2">
-															<div class="bg-banner">
-																<div class="banner-wrapper banners">
-																	<div class="banner-image">
-																		<a href="shop-grid-left.html">
-																			<img width="825" height="475" src="media/banner/banner-1.jpg" alt="Banner Image">
-																		</a>
-																	</div>
-																	<div class="banner-wrapper-infor">
-																		<div class="info">
-																			<div class="content">
-																				<a class="link-title" href="shop-grid-left.html">
-																					<h3 class="title-banner">Let the adventure<br> begin. </h3>
-																				</a>
-																				<div class="banner-image-description">
-																					Sed lectus. Aliquam lorem ante, <br>dapibus in, viverra quis, feugiat a, tellus
-																				</div>
-																				<a class="button button-outline" href="shop-grid-left.html">SHOP NOW</a>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="section-column right">
-												<div class="section-column-wrap">
-													<div class="block-widget-wrap">
-														<div class="block-widget-banner layout-3">
-															<div class="bg-banner">
-																<div class="banner-wrapper banners">
-																	<div class="banner-image">
-																		<a href="shop-grid-left.html">
-																			<img width="571" height="475" src="media/banner/banner-2.jpg" alt="Banner Image">
-																		</a>
-																	</div>
-																	<div class="banner-wrapper-infor">
-																		<div class="info">
-																			<div class="content">
-																				<a class="link-title" href="shop-grid-left.html">
-																					<h3 class="title-banner">UP TO <span>20% OFF</span></h3>
-																				</a>
-																				<div class="banner-image-description">
-																					Don't miss savings on bedroom, living,
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>								
-									</div>
-								</div>
-							</section>
+							
 
 							<section class="section section-padding background-1 section-mb-l">
 								<div class="section-container">

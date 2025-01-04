@@ -92,7 +92,7 @@
 														<div class="total-percent"><div class="percent" style="width:20%"></div></div>
 													</div>
 													<div class="buttons">
-														<a href="shop-cart.html" class="button btn view-cart btn-primary">View cart</a>
+														<a href="shop-cart.php" class="button btn view-cart btn-primary">View cart</a>
 														<a href="shop-checkout.html" class="button btn checkout btn-default">Check out</a>
 													</div>
 												</div>
@@ -239,7 +239,7 @@
 																<a href="shop-details.html"><span class="menu-item-text">Shop Details</span></a>
 															</li>
 															<li>
-																<a href="shop-cart.html"><span class="menu-item-text">Shop - Cart</span></a>
+																<a href="shop-cart.php"><span class="menu-item-text">Shop - Cart</span></a>
 															</li>
 															<li>
 																<a href="shop-checkout.html"><span class="menu-item-text">Shop - Checkout</span></a>
@@ -481,7 +481,7 @@
 																<div class="total-percent"><div class="percent" style="width:20%"></div></div>
 															</div>
 															<div class="buttons">
-																<a href="shop-cart.html" class="button btn view-cart btn-primary">View cart</a>
+																<a href="shop-cart.php" class="button btn view-cart btn-primary">View cart</a>
 																<a href="shop-checkout.html" class="button btn checkout btn-default">Check out</a>
 															</div>
 														</div>

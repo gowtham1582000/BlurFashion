@@ -318,7 +318,7 @@
 																<a href="shop-details.html"><span class="menu-item-text">Shop Details</span></a>
 															</li>
 															<li>
-																<a href="shop-cart.html"><span class="menu-item-text">Shop - Cart</span></a>
+																<a href="shop-cart.php"><span class="menu-item-text">Shop - Cart</span></a>
 															</li>
 															<li>
 																<a href="shop-checkout.html"><span class="menu-item-text">Shop - Checkout</span></a>

@@ -1,4 +1,4 @@
-﻿﻿<?php
+﻿<?php
 // Start the session
 session_start();
 
@@ -263,456 +263,7 @@ function updateCartTotal(cartItems) {
 	
 	<body class="home">
 		<div id="page" class="hfeed page-wrapper">
-			<header id="site-header" class="site-header header-v1">
-				<div class="header-mobile">
-					<div class="section-padding">
-						<div class="section-container">
-							<div class="row">
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-left">
-									<div class="navbar-header">
-										<button type="button" id="show-megamenu" class="navbar-toggle"></button>
-									</div>
-								</div>
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 header-center">
-									<div class="">
-										<a href="index.php">
-											<img width="400" height="79" src="./assets/img/B-removebg-preview (1).png" alt="Ruper – Furniture HTML Theme">
-										</a>
-									</div>
-								</div>
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-right">
-									<div class="ruper-topcart dropdown">
-										<div class="dropdown mini-cart top-cart">
-											<div class="remove-cart-shadow"></div>
-											<a class="dropdown-toggle cart-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<div class="icons-cart"><i class="icon-large-paper-bag"></i><span class="cart-count">0</span></div>
-											</a>
-											<div class="dropdown-menu cart-popup">
-												<div class="empty-cart">
-													<ul class="cart-list">
-														<li class="empty">
-															<span>No products in the cart.</span>
-															<a class="go-shop" href="shop-grid-left.html">GO TO SHOP<i aria-hidden="true" class="arrow_right"></i></a>
-														</li>
-													</ul>
-												</div>
-												<div class="product-list">
-													<ul class="cart-list ">
-														
-													</ul>
-													<div class="total-cart">
-														<div class="title-total">Total: </div>
-														<div class="total-price"><span></span></div>
-													</div>
-													<div class="free-ship">
-														<div class="title-ship">Buy <strong>$400</strong> more to enjoy <strong>FREE Shipping</strong></div>
-														<div class="total-percent"><div class="percent" style="width:20%"></div></div>
-													</div>
-													<div class="buttons">
-														<a href="shop-cart.php" class="button btn view-cart btn-primary">View cart</a>
-														<a href="shop-checkout.html" class="button btn checkout btn-default">Check out</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="header-mobile-fixed">
-						<!-- Shop -->
-						<div class="shop-page">
-							<a href="shop-grid-left.html"><i class="wpb-icon-shop"></i></a>
-						</div>
-
-						<!-- Login -->
-						<div class="my-account">
-							<div class="login-header">
-								<a href="page-my-account.html"><i class="wpb-icon-user"></i></a>
-							</div>
-						</div>
-
-						<!-- Search -->
-						<div class="search-box">
-							<div class="search-toggle"><i class="wpb-icon-magnifying-glass"></i></div>
-						</div>
-
-						<!-- Wishlist -->
-						<div class="wishlist-box">
-							<a href="shop-wishlist.html"><i class="wpb-icon-heart"></i></a>
-						</div>
-					</div>
-				</div>
-
-				<div class="header-desktop">
-					<div class="header-wrapper">
-						<div class="section-padding">
-							<div class="section-container p-l-r">
-								<div class="row">
-									<div class="col-xl-3 col-lg-2 col-md-12 col-sm-12 col-12 header-left">
-										<div>
-											<a href="index.php">
-												<img width="400" height="200" src="./assets/img/B-removebg-preview (1).png" alt="Ruper – Furniture HTML Theme">
-											</a>
-										</div>
-									</div>
-
-									<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-center header-center">
-										<div class="site-navigation">
-											<nav id="main-navigation">
-												<ul id="menu-main-menu" class="menu">
-													<li class="level-0 menu-item mega-menu current-menu-item">
-														<a href="index.php"><span class="menu-item-text">Home</span></a>
-														 <!-- <div class="sub-menu">
-															<div class="row">
-																<div class="col-md-6">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Furniture 1</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="index.php"><span class="menu-item-text">Home Categories</span></a>
-																			</li>
-																			<li>
-																				<a href="index2.html"><span class="menu-item-text">Home Clean</span></a>
-																			</li>
-																			<li>
-																				<a href="index3.html"><span class="menu-item-text">Home Collection</span></a>
-																			</li>
-																			<li>
-																				<a href="index4.html"><span class="menu-item-text">Home Grid</span></a>
-																			</li>
-																			<li>
-																				<a href="index5.html"><span class="menu-item-text">Home Minimal</span></a>
-																			</li>
-																			<li>
-																				<a href="index6.html"><span class="menu-item-text">Home Modern</span></a>
-																			</li>
-																			<li>
-																				<a href="index7.html"><span class="menu-item-text">Home Stylish</span></a>
-																			</li>
-																			<li>
-																				<a href="index8.html"><span class="menu-item-text">Home Unique</span></a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="col-md-6">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Furniture 2</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="index9.html"><span class="menu-item-text">Home Split</span></a>
-																			</li>
-																			<li>
-																				<a href="index10.html"><span class="menu-item-text">Home Gothic</span></a>
-																			</li>
-																			<li>
-																				<a href="index11.html"><span class="menu-item-text">Home Luxury</span></a>
-																			</li>
-																			<li>
-																				<a href="index12.html"><span class="menu-item-text">Home Scandinavian</span></a>
-																			</li>
-																			<li>
-																				<a href="index13.html"><span class="menu-item-text">Home Mid-Century</span></a>
-																			</li>
-																			<li>
-																				<a href="index14.html"><span class="menu-item-text">Home Retro</span></a>
-																			</li>
-																			<li>
-																				<a href="index15.html"><span class="menu-item-text">Home Color Block</span></a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														 </div>  -->
-													</li>
-													<li class="level-0 menu-item ">
-														<a href="shop-tees.php"><span class="menu-item-text">Tees</span></a>
-														<!-- <ul class="sub-menu">
-															<li class="level-1 menu-item menu-item-has-children">
-																<a href="shop-grid-left.html"><span class="menu-item-text">Shop - Products</span></a>
-																<ul class="sub-menu">
-																	<li>
-																		<a href="shop-grid-left.html"><span class="menu-item-text">Shop Grid - Left Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-list-left.html"><span class="menu-item-text">Shop List - Left Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-grid-right.html"><span class="menu-item-text">Shop Grid - Right Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-list-right.html"><span class="menu-item-text">Shop List - Right Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-grid-fullwidth.html"><span class="menu-item-text">Shop Grid - No Sidebar</span></a>
-																	</li>
-																</ul>
-															</li>
-															<li>
-																<a href="shop-details.html"><span class="menu-item-text">Shop Details</span></a>
-															</li>
-															<li>
-																<a href="shop-cart.php"><span class="menu-item-text">Shop - Cart</span></a>
-															</li>
-															<li>
-																<a href="shop-checkout.html"><span class="menu-item-text">Shop - Checkout</span></a>
-															</li>
-															<li>
-																<a href="shop-wishlist.html"><span class="menu-item-text">Shop - Wishlist</span></a>
-															</li>
-														</ul> -->
-													</li>
-													<li class="level-0 menu-item mega-menu mega-menu-fullwidth align-center">
-														<a href="shop-shirts.php"><span class="menu-item-text">Shirts</span></a>
-														<!-- <div class="sub-menu">
-															<div class="row">
-																<div class="col-md-5">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Blog Category</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="blog-grid-left.html"><span class="menu-item-text">Blog Grid - Left Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-grid-right.html"><span class="menu-item-text">Blog Grid - Right Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-list-left.html"><span class="menu-item-text">Blog List - Left Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-list-right.html"><span class="menu-item-text">Blog List - Right Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-grid-fullwidth.html"><span class="menu-item-text">Blog Grid - No Sidebar</span></a>
-																			</li>
-																		</ul>
-																	</div>
-
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Blog Details</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="blog-details-left.html"><span class="menu-item-text">Blog Details - Left Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-details-right.html"><span class="menu-item-text">Blog Details - Right Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-details-fullwidth.html"><span class="menu-item-text">Blog Details - No Sidebar</span></a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="col-md-7">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Recent Posts</h2>
-																		<div class="block block-posts recent-posts p-t-5">
-																			<ul class="posts-list">
-																				<li class="post-item">
-																					<a href="blog-details-right.html" class="post-image">
-																						<img src="media/blog/1.jpg">
-																					</a>
-																					<div class="post-content">
-																						<h2 class="post-title">
-																							<a href="blog-details-right.html">
-																								Easy Fixes For Home Decor
-																							</a>
-																						</h2>
-																						<div class="post-time">
-																							<span class="post-date">May 30, 2022</span>
-																							<span class="post-comment">4 Comments</span>
-																						</div>
-																					</div>
-																				</li>
-																				<li class="post-item">
-																					<a href="blog-details-right.html" class="post-image">
-																						<img src="media/blog/2.jpg">
-																					</a>
-																					<div class="post-content">
-																						<h2 class="post-title">
-																							<a href="blog-details-right.html">
-																								How To Make Your Home A Showplace
-																							</a>
-																						</h2>
-																						<div class="post-time">
-																							<span class="post-date">Aug 24, 2022</span>
-																							<span class="post-comment">2 Comments</span>
-																						</div>
-																					</div>
-																				</li>
-																				<li class="post-item">
-																					<a href="blog-details-right.html" class="post-image">
-																						<img src="media/blog/3.jpg">
-																					</a>
-																					<div class="post-content">
-																						<h2 class="post-title">
-																							<a href="blog-details-right.html">
-																								Stunning Furniture With Aesthetic Appeal
-																							</a>
-																						</h2>
-																						<div class="post-time">
-																							<span class="post-date">Dec 06, 2022</span>
-																							<span class="post-comment">1 Comment</span>
-																						</div>
-																					</div>
-																				</li>
-																			</ul>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div> -->
-													</li>
-													<li class="level-0 menu-item ">
-														<a href="shop-pants.php"><span class="menu-item-text">Pants</span></a>
-														<!-- <ul class="sub-menu">
-															<li>
-																<a href="page-login.html"><span class="menu-item-text">Login / Register</span></a>
-															</li>
-															<li>
-																<a href="page-forgot-password.html"><span class="menu-item-text">Forgot Password</span></a>
-															</li>
-															<li>
-																<a href="page-my-account.html"><span class="menu-item-text">My Account</span></a>
-															</li>
-															<li>
-																<a href="page-about.html"><span class="menu-item-text">About Us</span></a>
-															</li>
-															<li>
-																<a href="page-contact.html"><span class="menu-item-text">Contact</span></a>
-															</li>
-															<li>
-																<a href="page-faq.html"><span class="menu-item-text">FAQ</span></a>
-															</li>
-															<li>
-																<a href="page-404.html"><span class="menu-item-text">Page 404</span></a>
-															</li>
-														</ul> -->
-													</li>
-													<li class="level-0 menu-item">
-														<a href="page-contact.php"><span class="menu-item-text">Contact</span></a>
-													</li>
-												</ul>
-											</nav>
-										</div>
-									</div>
-
-									<div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 header-right">
-										<div class="header-page-link">
-											<!-- Login -->
-											<div class="login-header">
-												<a class="active-login" href="#">Login</a>
-												<div class="form-login-register">
-													<div class="box-form-login">
-														<div class="active-login"></div>
-														<div class="box-content">
-															<div class="form-login active">
-																<form id="login_ajax" method="post" class="login">
-																	<h2>Sign in</h2>
-																	<p class="status"></p>
-																	<div class="content">
-																		<div class="username">
-																			<input type="text" required="required" class="input-text" name="username" id="username" placeholder="Your name">
-																		</div>
-																		<div class="password">
-																			<input class="input-text" required="required" type="password" name="password" id="password" placeholder="Password">
-																		</div>
-																		<div class="rememberme-lost">
-																			<div class="rememberme">
-																				<input name="rememberme" type="checkbox" id="rememberme" value="forever">
-																				<label for="rememberme" class="inline">Remember me</label>
-																			</div>
-																			<div class="lost_password">
-																				<a href="forgot-password.html">Lost your password?</a>
-																			</div>
-																		</div>
-																		<div class="button-login">
-																			<input type="submit" class="button" name="login" value="Login">
-																		</div>
-																		<div class="button-next-reregister">Create An Account</div>
-																	</div>						
-																</form>
-															</div>
-															<div class="form-register">
-																<form method="post" class="register">
-																	<h2>REGISTER</h2>
-																	<div class="content">
-																		<div class="email">
-																			<input type="email" class="input-text" placeholder="Email" name="email" id="reg_email" value="">
-																		</div>
-																		<div class="password">
-																			<input type="password" class="input-text" placeholder="Password" name="password" id="reg_password">
-																		</div>															
-																		<div class="button-register">
-																			<input type="submit" class="button" name="register" value="Register">
-																		</div>
-																		<div class="button-next-login">Already has an account</div>
-																	</div>
-																</form>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<!-- Search -->
-											<div class="search-box">
-												<div class="search-toggle"><i class="icon-search"></i></div>
-											</div>
-											
-											<!-- Wishlist -->
-											<div class="wishlist-box">
-												<a href="shop-wishlist.html"><i class="icon-heart"></i></a>
-												<span class="count-wishlist">1</span>
-											</div>
-											
-											<!-- Cart -->
-											<div class="ruper-topcart dropdown light">
-												<div class="dropdown mini-cart top-cart">
-													<div class="remove-cart-shadow"></div>
-													<a class="dropdown-toggle cart-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-														<div class="icons-cart"><i class="icon-large-paper-bag"></i><span class="cart-count">0</span></div>
-													</a>
-													<div class="dropdown-menu cart-popup">
-														<div class="empty-cart">
-															<ul class="cart-list">
-																<li class="empty">
-																	<span>No products in the cart.</span>
-																	<a class="go-shop" href="shop-grid-left.html">GO TO SHOP<i aria-hidden="true" class="arrow_right"></i></a>
-																</li>
-															</ul>
-														</div>
-														<div class="product-list">
-															<ul class="cart-list ">
-															</ul>
-															<div class="total-cart">
-																<div class="title-total">Total: </div>
-																<div class="total-price"><span></span></div>
-															</div>
-															<div class="free-ship">
-																<div class="title-ship">Buy <strong>$400</strong> more to enjoy <strong>FREE Shipping</strong></div>
-																<div class="total-percent"><div class="percent" style="width:20%"></div></div>
-															</div>
-															<div class="buttons">
-																<a href="shop-cart.php" class="button btn view-cart btn-primary">View cart</a>
-																<a href="shop-checkout.html" class="button btn checkout btn-default">Check out</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</header>
+		<?php include('header.php'); ?>
 
 			<div id="site-main" class="site-main">
 				<div id="main-content" class="main-content">
@@ -750,9 +301,9 @@ function updateCartTotal(cartItems) {
 													<div class="section-container">
 														<div class="item-info horizontal-start vertical-middle">
 															<div class="content">
-																<div style="color: black;" class="subtitle-slider">Unleash Your Confidence with - </div>
-																<h2 style="color: black;" class="title-slider">Our BlurFashion</h2>
-																<div style="color: black;" class="description-slider">Save up to 10% on outdoor packages </div>
+																<div style="color: white;" class="subtitle-slider">Unleash Your Confidence with - </div>
+																<h2 style="color: white;" class="title-slider"><b>Our BlurFashion</b></h2>
+																<div style="color: white;" class="description-slider">Save up to 10% on outdoor packages </div>
 																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
 															</div>
 														</div>
@@ -769,9 +320,9 @@ function updateCartTotal(cartItems) {
 													<div class="section-container">
 														<div class="item-info horizontal-start vertical-middle">
 															<div class="content">
-																<div style="color: white;" class="subtitle-slider">20%OFF.END MONDAY</div>
-																<h2 style="color: white;" class="title-slider">Home office</h2>
-																<div style="color: white;" class="description-slider">Save up to $500 on outdoor packages </div>
+																<div style="color: white;" class="subtitle-slider">Discover the Perfect Fit –</div>
+																<h2 style="color: white;" class="title-slider">Trendy & Timeless Men’s Apparel</h2>
+																<div style="color: white;" class="description-slider">Save up to 50%</div>
 																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
 															</div>
 														</div>
@@ -988,11 +539,11 @@ function updateCartTotal(cartItems) {
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/1.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/1-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/2.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/7.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-wishlist" data-title="Wishlist">
 																				<button class="product-btn">Add to wishlist</button>
 																			</div>
@@ -1002,16 +553,16 @@ function updateCartTotal(cartItems) {
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents">
-																			<h3 class="product-title"><a href="shop-details.html">Zunkel Schwarz</a></h3>
+																			<h3 class="product-title"><a href="shop-details.html">Category 1</a></h3>
 																			<span class="price">$100.00</span>
 																			<div class="btn-add-to-cart">
-																				<div data-title="Add to cart">
+																				<!-- <div data-title="Add to cart">
 																					<a href="#" class="button">Add to cart</a>
-																				</div>			
+																				</div> -->
 																			</div>
 																		</div>
 																	</div>
@@ -1027,11 +578,11 @@ function updateCartTotal(cartItems) {
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/2.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/2-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shirts/11.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/14.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-wishlist" data-title="Wishlist">
 																				<button class="product-btn">Add to wishlist</button>
 																			</div>
@@ -1041,16 +592,16 @@ function updateCartTotal(cartItems) {
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents">
-																			<h3 class="product-title"><a href="shop-details.html">Namaste Vase</a></h3>
+																			<h3 class="product-title"><a href="shop-details.html">Category 2</a></h3>
 																			<span class="price">$200.00</span>
 																			<div class="btn-add-to-cart">
-																				<div data-title="Add to cart">
+																				<!-- <div data-title="Add to cart">
 																					<a href="#" class="button">Add to cart</a>
-																				</div>			
+																				</div>-->
 																			</div>
 																		</div>
 																	</div>
@@ -1066,11 +617,11 @@ function updateCartTotal(cartItems) {
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/3.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/3-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shirts/31.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/30.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-wishlist" data-title="Wishlist">
 																				<button class="product-btn">Add to wishlist</button>
 																			</div>
@@ -1080,16 +631,16 @@ function updateCartTotal(cartItems) {
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents">
-																			<h3 class="product-title"><a href="shop-details.html">Chair Oak Matt Lacquered</a></h3>
+																			<h3 class="product-title"><a href="shop-details.html">Category 3</a></h3>
 																			<span class="price">$150.00</span>
 																			<div class="btn-add-to-cart">
-																				<div data-title="Add to cart">
+																				<!-- <div data-title="Add to cart">
 																					<a href="#" class="button">Add to cart</a>
-																				</div>			
+																				</div>-->
 																			</div>
 																		</div>
 																	</div>
@@ -1105,11 +656,11 @@ function updateCartTotal(cartItems) {
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/4.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/4-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shirts/22.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/24.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-wishlist" data-title="Wishlist">
 																				<button class="product-btn">Add to wishlist</button>
 																			</div>
@@ -1119,20 +670,20 @@ function updateCartTotal(cartItems) {
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div>-->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents">
-																			<h3 class="product-title"><a href="shop-details.html">Pillar Dining Table Round</a></h3>
+																			<h3 class="product-title"><a href="shop-details.html">Category 4</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$150.00</span></del>
 																				<ins><span>$100.00</span></ins>
 																			</span>
-																			<div class="btn-add-to-cart">
+																			<!-- <div class="btn-add-to-cart">
 																				<div data-title="Add to cart">
 																					<a href="#" class="button">Add to cart</a>
 																				</div>			
-																			</div>
+																			</div>-->
 																		</div>
 																	</div>
 																</div>
@@ -1147,11 +698,11 @@ function updateCartTotal(cartItems) {
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/5.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/5-2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shirts/18.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/16.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-wishlist" data-title="Wishlist">
 																				<button class="product-btn">Add to wishlist</button>
 																			</div>
@@ -1161,23 +712,23 @@ function updateCartTotal(cartItems) {
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																		<div class="product-stock">    
 																			<span class="stock">Out Of Stock</span>
 																		</div>
 																	</div>
 																	<div class="products-content">
 																		<div class="contents">
-																			<h3 class="product-title"><a href="shop-details.html">Amp Pendant Light Large</a></h3>
+																			<h3 class="product-title"><a href="shop-details.html">Category 5</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$150.00</span></del> 
 																				<ins><span>$140.00</span></ins>
 																			</span>
-																			<div class="btn-add-to-cart">
+																			<!-- <div class="btn-add-to-cart">
 																				<div data-title="Add to cart">
 																					<a href="#" class="button">Add to cart</a>
 																				</div>			
-																			</div>
+																			</div> -->
 																		</div>
 																	</div>
 																</div>
@@ -1330,116 +881,7 @@ function updateCartTotal(cartItems) {
 				</div><!-- #main-content -->
 			</div>
 
-			<footer id="site-footer" class="site-footer">
-				<div class="footer">
-					<div class="section-padding">
-						<div class="section-container">
-							<div class="block-widget-wrap">
-								<div class="row">
-									<div class="col-lg-3 col-md-3">
-										<div class="block block-image1">
-											<img width="100" src="./assets/img/blurfashion-final.jpg" alt="">
-										</div>
-									</div>
-									<div class="col-lg-3 col-md-6">
-										<div class="block block-menu">
-											<h2 class="block-title">Contact Us</h2>
-											<div class="block-content">
-												<ul>
-													<li>
-														<a href="page-contact.html">616.774.0561</a>
-													</li>
-													<li>
-														<a href="page-contact.html">866.453.4748</a>
-													</li>
-													<li>
-														<a href="page-contact.html">HR Fax: 810.222.5439</a>
-													</li>
-													<li>
-														<a href="page-contact.html">sales@ruperfurniture.com</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-3 col-md-6">
-										<div class="block block-menu">
-											<h2 class="block-title">Services</h2>
-											<div class="block-content">
-												<ul>
-													<li>
-														<a href="page-about.html">Sale</a>
-													</li>
-													<li>
-														<a href="page-about.html">Quick Ship</a>
-													</li>
-													<li>
-														<a href="page-about.html">New Designs</a>
-													</li>
-													<li>
-														<a href="page-about.html">Accidental Fabric Protection</a>
-													</li>
-													<li>
-														<a href="page-about.html">Furniture Care</a>
-													</li>
-													<li>
-														<a href="page-about.html">Gift Cards</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-3 col-md-6">
-										<div class="block block-newsletter">
-											<h2 class="block-title">Newsletter</h2>
-											<div class="block-content">
-												<div class="newsletter-text">Enter your email below to be the first to know about new collections and product launches.</div>
-												<form action="" method="post" class="newsletter-form">
-													<input type="email" name="your-email" value="" size="40" placeholder="Email address">
-													<span class="btn-submit">
-														<input type="submit" value="Subscribe">
-													</span>
-												</form>
-											</div>
-										</div>
-
-										<div class="block block-image">
-											<img width="400" height="79" src="media/payments.png" alt="">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="footer-bottom">
-					<div class="section-padding">
-						<div class="section-container">
-							<div class="block-widget-wrap">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="footer-left">
-											<p class="copyright">Copyright © 2022. All Right Reserved</p>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="footer-right">
-											<div class="block block-social">
-												<ul class="social-link">
-													<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-													<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-													<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-													<li><a href="#"><i class="fa fa-behance"></i></a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
+			<?php include('footer.php'); ?>
 		</div>
 
 		<!-- Back Top button -->

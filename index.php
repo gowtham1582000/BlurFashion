@@ -750,9 +750,9 @@ function updateCartTotal(cartItems) {
 													<div class="section-container">
 														<div class="item-info horizontal-start vertical-middle">
 															<div class="content">
-																<div style="color: black;" class="subtitle-slider">Unleash Your Confidence with - </div>
-																<h2 style="color: black;" class="title-slider">Our BlurFashion</h2>
-																<div style="color: black;" class="description-slider">Save up to 10% on outdoor packages </div>
+																<div style="color: white;" class="subtitle-slider">Unleash Your Confidence with - </div>
+																<h2 style="color: white;" class="title-slider"><b>Our BlurFashion</b></h2>
+																<div style="color: white;" class="description-slider">Save up to 10% on outdoor packages </div>
 																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
 															</div>
 														</div>
@@ -769,9 +769,9 @@ function updateCartTotal(cartItems) {
 													<div class="section-container">
 														<div class="item-info horizontal-start vertical-middle">
 															<div class="content">
-																<div style="color: white;" class="subtitle-slider">20%OFF.END MONDAY</div>
-																<h2 style="color: white;" class="title-slider">Home office</h2>
-																<div style="color: white;" class="description-slider">Save up to $500 on outdoor packages </div>
+																<div style="color: white;" class="subtitle-slider">Discover the Perfect Fit –</div>
+																<h2 style="color: white;" class="title-slider">Trendy & Timeless Men’s Apparel</h2>
+																<div style="color: white;" class="description-slider">Save up to 50%</div>
 																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
 															</div>
 														</div>

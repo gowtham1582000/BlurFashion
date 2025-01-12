@@ -1,4 +1,27 @@
-﻿<!DOCTYPE html>
+﻿<?php
+require 'razorpay-php/Razorpay.php'; 
+use Razorpay\Api\Api;
+
+
+// Your Razorpay credentials
+$apiKey = "rzp_test_gH7uWmfygand8W";
+$apiSecret = "wWxnJ1oKTRSDqPnGrGYlIVKk";
+$receiptId = "receipt_" . uniqid();
+// Initialize Razorpay API
+$api = new Api($apiKey, $apiSecret);
+
+// Create an order
+$order = $api->order->create([
+    'receipt' => $receiptId,
+    'amount' => 50000, // Amount in paise (500.00 INR)
+    'currency' => 'INR',
+]);
+
+$orderId = $order['id'];
+?>
+
+
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<!-- Meta Data -->
@@ -33,6 +56,7 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
 		<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+		<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 	<style>
 		.payment-box p {
@@ -53,93 +77,129 @@
 
 	</style>
 	<script>
-		(function() {
-        	emailjs.init("BIoLYEo_fWh2BovfX"); // Replace with your EmailJS Public Key
-    	})();
-		document.addEventListener("DOMContentLoaded", function() {
+		const userId = localStorage.getItem("userid");
 
-		document.querySelector('form[name="checkout"]').addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent default form submission
-		var cart = JSON.parse(localStorage.getItem('cart')) || [];
-        // Prepare dynamic cart item details
-        let productDetails = "";
-        let total = 0;
+		// Check if user_id exists
+		if (!userId) {
+			alert("User ID not found. Please log in again.");
+			window.location.href = "index.php"; // Redirect to login if user_id is missing
+		}
 
-        cart.forEach(item => {
-            const itemTotal = parseFloat(item.price.replace('$', '')) * item.quantity;
-            productDetails += `${item.name} (x${item.quantity}) - $${itemTotal}\n`;
-            total += itemTotal;
-        }); 
+		const options = {
+			key: "rzp_test_gH7uWmfygand8W", // Enter the Key ID generated from the Razorpay Dashboard
+			amount: "50000", // Amount in paise
+			currency: "INR",
+			name: "Blur Fashion",
+			description: "Test Transaction",
+			// image: "https://example.com/logo.png", // Optional: Your company logo
+			order_id: "<?php echo $orderId; ?>", // Order ID generated in the backend
+			handler: function (response) {
+				// After successful payment
+				alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+				// Call your server to verify the payment and save it
+			},
+			prefill: {
+				name: "John Doe",   // Prefill customer name
+				email: "john.doe@example.com",  // Prefill customer email
+				contact: "9999999999", // Prefill customer phone
+			},
+			theme: {
+				color: "#F37254",
+			},
+		};
+		const rzp = new Razorpay(options);
 
-        // Collect form data
-        const formData = {
-            billing_first_name: document.querySelector('[name="billing_first_name"]').value,
-            billing_last_name: document.querySelector('[name="billing_last_name"]').value,
-            billing_email: document.querySelector('[name="billing_email"]').value,
-            billing_phone: document.querySelector('[name="billing_phone"]').value,
-            billing_address_1: document.querySelector('[name="billing_address_1"]').value,
-            billing_address_2: document.querySelector('[name="billing_address_2"]').value,
-            billing_city: document.querySelector('[name="billing_city"]').value,
-            billing_state: document.querySelector('[name="billing_state"]').value,
-            billing_postcode: document.querySelector('[name="billing_postcode"]').value,
-            order_comments: document.querySelector('[name="order_comments"]').value,
-            productName: productDetails, // List of products
-            price: total,                // Total price
-            quantity: cart.reduce((sum, item) => sum + item.quantity, 0), // Total quantity
-            total: total                 // Grand total
-        };
-		console.log(formData)
-        // Send form data via EmailJS
-        emailjs.send("service_l5n2nfh", "template_pjnd6n8", formData)
-            .then(function(response) {
-                console.log("SUCCESS!", response.status, response.text);
-                alert("Your order has been placed successfully!");	
-            }, function(error) {
-                console.log("FAILED...", error);
-                alert("Failed to place the order. Please try again.");
-            });
-    });
-});
+		function RazorpayCheckOut(event){
+			const formData = new FormData(document.getElementById("checkout-form"));
+			formData.append("user_id", userId); // Add user_id to the form data
+			
+			rzp.open();
+			event.preventDefault();
 
-		$(document).ready(function () {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+			fetch("Place_order.php", {
+				method: "POST",
+				body: formData,
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					if (data.status === "success") {
+						alert("Order placed successfully!");
+						window.location.href = "index.php";
+					} else {
+						alert("Error placing order: " + data.message);
+					}
+				})
+			.catch((error) => {
+				console.error("Error:", error);
+			});
 
-    // Function to populate the checkout page
-    function populateCheckoutPage() {
-        if (cart.length > 0) {
-            let cartItemsHTML = '';
-            let subtotal = 0;
+			
+		}
+		
+	</script>
 
-            cart.forEach((product) => {
-                const productTotal = parseFloat(product.price.replace('$', '')) * product.quantity;
-                subtotal += productTotal;
+	<script>
 
-                cartItemsHTML += `
-                    <div class="cart-item">
-                        <div class="info-product">
-                            <div class="product-thumbnail">
+		document.addEventListener("DOMContentLoaded", function () {
+    const userId = localStorage.getItem('userid'); // Replace with the user's ID or fetch dynamically if logged in
+
+    // Fetch cart details for the user
+	function fetchCartDetails() {
+    	$.get('getCartDetails.php', { user_id: userId })
+       	 .done(function(response) {
+            if (response.error) {
+                // Handle error response
+                console.error("Error fetching cart details:", response.error);
+                $('.checkout-review-order-table').html('<p>Your cart could not be loaded. Please try again later.</p>');
+                return;
+            }
+
+            const cartItems = response; // Assuming the response is an array of cart items
+            if (cartItems.length > 0) {
+                $('.checkout-review-order-table').show();
+                $('.cart-empty-message').hide();
+
+                let cartItemsHTML = '';
+                let subtotal = 0;
+
+                cartItems.forEach((product, index) => {
+                    const productTotal = parseFloat(product.price) * product.quantity;
+                    subtotal += productTotal;
+
+                    cartItemsHTML += `
+					 <div class="cart-item">
+                         <div class="info-product">
+                             <div class="product-thumbnail">
                                 <img width="600" height="600" src="${product.image}" alt="">					
-                            </div>
-                            <div class="product-name">
-                                ${product.name}
-                                <strong class="product-quantity">QTY : ${product.quantity}</strong>											
-                            </div>
-                        </div>
-                        <div class="product-total">
-                            <span>$${productTotal.toFixed(2)}</span>
-                        </div>
-                    </div>
-                `;
-            });
+                             </div>
+                             <div class="product-name">
+                                 ${product.product_name}
+                                 <strong class="product-quantity">QTY : ${product.quantity}</strong>											
+                             </div>
+                         </div>
+                         <div class="product-total">
+                             <span>$${productTotal.toFixed(2)}</span>
+                         </div>
+                     </div>
+                    `;
+                });
 
-            // Populate cart items and update subtotal and total
-            $('.cart-items').html(cartItemsHTML);
-            updateCheckoutTotals(subtotal);
-        } else {
-            // If cart is empty, show an empty message or redirect
-            $('.checkout-review-order-table').html('<p>Your cart is empty. Please add items to the cart before checking out.</p>');
-        }
-    }
+                // Append the HTML to the cart table body
+                $('.cart-items').html(cartItemsHTML);
+
+                // Update cart totals
+                updateCheckoutTotals(subtotal);
+            } else {
+                // If cart is empty
+                $('.checkout-review-order-table').hide();
+                $('.cart-empty-message').show().html('<p>Your cart is empty. Please add items to the cart.</p>');
+            }
+        })
+        .fail(function(xhr, status, error) {
+            console.error("Failed to fetch cart details:", error);
+            $('.checkout-review-order-table').html('<p>Failed to load your cart. Please try again later.</p>');
+        });
+}
 
     // Function to update checkout totals
     function updateCheckoutTotals(subtotal) {
@@ -147,24 +207,8 @@
         $('.total-price span').text(`$${subtotal.toFixed(2)}`); // Update the total to match subtotal (if no additional charges)
     }
 
-    // Event handler for shipping method selection (optional)
-    $(document).on('change', '.shipping_method', function () {
-        const shippingValue = $(this).val();
-
-        // Example: Adjust total based on selected shipping method
-        let shippingCost = 0;
-        if (shippingValue === 'flat_rate') {
-            shippingCost = 20.0; // Add a flat rate shipping cost
-        }
-
-        const subtotal = parseFloat($('.subtotal-price span').text().replace('$', ''));
-        const total = subtotal + shippingCost;
-
-        $('.total-price span').text(`$${total.toFixed(2)}`);
-    });
-
-    // Populate the checkout page on page load
-    populateCheckoutPage();
+    // Fetch cart details on page load
+    fetchCartDetails();
 });
 
 	</script>
@@ -234,7 +278,7 @@
 													</div>
 													<div class="buttons">
 														<a href="shop-cart.php" class="button btn view-cart btn-primary">View cart</a>
-														<a href="shop-checkout.html" class="button btn checkout btn-default">Check out</a>
+														<a href="shop-checkout.php" class="button btn checkout btn-default">Check out</a>
 													</div>
 												</div>
 											</div>
@@ -383,7 +427,7 @@
 																<a href="shop-cart.php"><span class="menu-item-text">Shop - Cart</span></a>
 															</li>
 															<li>
-																<a href="shop-checkout.html"><span class="menu-item-text">Shop - Checkout</span></a>
+																<a href="shop-checkout.php"><span class="menu-item-text">Shop - Checkout</span></a>
 															</li>
 															<li>
 																<a href="shop-wishlist.html"><span class="menu-item-text">Shop - Wishlist</span></a>
@@ -637,7 +681,7 @@
 															</div>
 															<div class="buttons">
 																<a href="shop-cart.php" class="button btn view-cart btn-primary">View cart</a>
-																<a href="shop-checkout.html" class="button btn checkout btn-default">Check out</a>
+																<a href="shop-checkout.php" class="button btn checkout btn-default">Check out</a>
 															</div>
 														</div>
 													</div>
@@ -672,7 +716,7 @@
 							<div class="section-padding">
 								<div class="section-container p-l-r">
 									<div class="shop-checkout">
-										<form name="checkout" method="post" class="checkout" action="" autocomplete="on">
+										<form name="checkout" id="checkout-form" class="checkout" action="" autocomplete="on">
 											<div class="row">
 												<div class="col-xl-8 col-lg-7 col-md-12 col-12">
 													<div class="customer-details">
@@ -934,7 +978,7 @@
 																<div class="terms-and-conditions-wrapper">
 																	<div class="privacy-policy-text"></div>
 																</div>
-																<button type="submit" class="button alt" name="checkout_place_order" value="Place order">Place order</button>
+																<button type="submit" class="button alt" onclick="RazorpayCheckOut(event)" id="checkout-button" name="checkout_place_order" value="Place order">Place order</button>
 															</div>
 														</div>
 													</div>

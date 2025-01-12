@@ -120,9 +120,11 @@ $conn = null; // Close connection
 	<!-- jQuery CDN -->
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
 		<script>
+			debugger
+			localStorage.clear();
 			let cartCount = 0; // Cart count
 			const userId = <?php echo json_encode($_SESSION['user_id']); ?>; // Replace with the logged-in user's ID
-
+			localStorage.setItem("userid", userId);
 $(document).ready(function () {
     // Fetch cart data on page load
     fetchCart();

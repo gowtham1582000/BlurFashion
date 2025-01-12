@@ -18,19 +18,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $image = $_POST['image'];
     $quantity = intval($_POST['quantity']);
 
-    $sql = "INSERT INTO cart_details (user_id, product_name, price, image, quantity) 
-            VALUES (?, ?, ?, ?, ?) 
-            ON DUPLICATE KEY UPDATE quantity = quantity + ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("isdsii", $user_id, $product_name, $price, $image, $quantity, $quantity);
+    // Check if the product already exists in the cart for the user
+    $checkSql = "SELECT * FROM cart_details WHERE user_id = ? AND product_name = ?";
+    $checkStmt = $conn->prepare($checkSql);
+    $checkStmt->bind_param("is", $user_id, $product_name);
+    $checkStmt->execute();
+    $result = $checkStmt->get_result();
 
-    if ($stmt->execute()) {
-        echo json_encode(["status" => "success", "message" => "Item added to cart!"]);
+    if ($result->num_rows > 0) {
+        // If product exists, update the quantity
+        $updateSql = "UPDATE cart_details SET quantity = quantity + ? WHERE user_id = ? AND product_name = ?";
+        $updateStmt = $conn->prepare($updateSql);
+        $updateStmt->bind_param("iis", $quantity, $user_id, $product_name);
+
+        if ($updateStmt->execute()) {
+            echo json_encode(["status" => "success", "message" => "Quantity updated successfully!"]);
+        } else {
+            echo json_encode(["status" => "error", "message" => $updateStmt->error]);
+        }
+
+        $updateStmt->close();
     } else {
-        echo json_encode(["status" => "error", "message" => $stmt->error]);
+        // If product does not exist, insert a new record
+        $insertSql = "INSERT INTO cart_details (user_id, product_name, price, image, quantity) VALUES (?, ?, ?, ?, ?)";
+        $insertStmt = $conn->prepare($insertSql);
+        $insertStmt->bind_param("isdsi", $user_id, $product_name, $price, $image, $quantity);
+
+        if ($insertStmt->execute()) {
+            echo json_encode(["status" => "success", "message" => "Product added to cart!"]);
+        } else {
+            echo json_encode(["status" => "error", "message" => $insertStmt->error]);
+        }
+
+        $insertStmt->close();
     }
 
-    $stmt->close();
+    $checkStmt->close();
 }
+
 $conn->close();
 ?>

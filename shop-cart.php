@@ -32,131 +32,130 @@
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
 
 	<script>
-		$(document).ready(function () {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    $(document).ready(function () {
+        // Function to populate the cart page with data from the server
+		var userId=localStorage.getItem("userid")
+        function populateCartPage() {
+            $.get('fetch_cart.php', { user_id:userId}).done(function (response) {
+                const res = JSON.parse(response);
+                if (res.status === 'success') {
+                    const cartItems = res.cart_items;
+                    if (cartItems.length > 0) {
+                        $('.shop-cart-empty').hide();
+                        $('.shop-cart').show();
 
-    // Function to populate the cart page from localStorage
-    function populateCartPage() {
-        if (cart.length > 0) {
-            $('.shop-cart-empty').hide();
-            $('.shop-cart').show();
+                        let cartItemsHTML = '';
+                        let total = 0;
 
-            let cartItemsHTML = '';
-            let total = 0;
+                        cartItems.forEach((product, index) => {
+                            const productTotal = parseFloat(product.price) * product.quantity;
+                            total += productTotal;
 
-            cart.forEach((product, index) => {
-                const productTotal = parseFloat(product.price.replace('$', '')) * product.quantity;
-                total += productTotal;
+                            cartItemsHTML += `
+                                <tr class="cart-item">		
+                                    <td class="product-thumbnail">
+                                        <a href="shop-details.html">
+                                            <img width="600" height="600" src="${product.image}" class="product-image" alt="">
+                                        </a>				
+                                        <div class="product-name">
+                                            <a href="shop-details.html">${product.product_name}</a>								
+                                        </div>
+                                    </td>
+                                    <td class="product-price">
+                                        <span class="price">$${parseFloat(product.price).toFixed(2)}</span>
+                                    </td>
+                                    <td class="product-quantity">
+                                        <div class="quantity">
+                                            <button type="button" class="minus" data-index="${index}" data-id="${product.product_id}">-</button>	
+                                            <input type="number" class="qty" step="1" min="1" name="quantity" value="${product.quantity}" data-index="${index}" data-id="${product.product_id}" title="Qty" size="4" inputmode="numeric" autocomplete="off">
+                                            <button type="button" class="plus" data-index="${index}" data-id="${product.product_id}">+</button>
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal">
+                                        <span>$${productTotal.toFixed(2)}</span>
+                                    </td>
+                                    <td class="product-remove">
+                                        <a href="#" class="remove" data-index="${index}" data-id="${product.product_id}">×</a>								
+                                    </td>
+                                </tr>
+                            `;
+                        });
 
-                cartItemsHTML += `
-                    <tr class="cart-item">		
-                        <td class="product-thumbnail">
-                            <a href="shop-details.html">
-                                <img width="600" height="600" src="${product.image}" class="product-image" alt="">
-                            </a>				
-                            <div class="product-name">
-                                <a href="shop-details.html">${product.name}</a>								
-                            </div>
-                        </td>
-                        <td class="product-price">
-                            <span class="price">${product.price}</span>
-                        </td>
-                        <td class="product-quantity">
-                            <div class="quantity">
-                                <button type="button" class="minus" data-index="${index}">-</button>	
-                                <input type="number" class="qty" step="1" min="1" name="quantity" value="${product.quantity}" data-index="${index}" title="Qty" size="4" inputmode="numeric" autocomplete="off">
-                                <button type="button" class="plus" data-index="${index}">+</button>
-                            </div>
-                        </td>
-                        <td class="product-subtotal">
-                            <span>$${productTotal.toFixed(2)}</span>
-                        </td>
-                        <td class="product-remove">
-                            <a href="#" class="remove" data-index="${index}">×</a>								
-                        </td>
-                    </tr>
-                `;
+                        cartItemsHTML += `
+                            <tr>
+                                <td colspan="6" class="actions">
+                                    <div class="bottom-cart">
+                                        <div class="coupon">
+                                            <input type="text" name="coupon_code" class="input-text" id="coupon-code" value="" placeholder="Coupon code"> 
+                                            <button type="submit" name="apply_coupon" class="button" value="Apply coupon">Apply coupon</button>
+                                        </div>
+                                        <h2><a href="shop-grid-left.html">Continue Shopping</a></h2>
+                                    </div>	
+                                </td>
+                            </tr>
+                        `;
+
+                        $('.cart-items tbody').html(cartItemsHTML);
+                        updateCartTotals(total);
+                    } else {
+                        $('.shop-cart').hide();
+                        $('.shop-cart-empty').show();
+                    }
+                } else {
+                    alert('Failed to fetch cart data.');
+                }
             });
-			cartItemsHTML+=`<tr>
-								<td colspan="6" class="actions">
-									<div class="bottom-cart">
-										<div class="coupon">
-											<input type="text" name="coupon_code" class="input-text" id="coupon-code" value="" placeholder="Coupon code"> 
-											<button type="submit" name="apply_coupon" class="button" value="Apply coupon">Apply coupon</button>
-										</div>
-										<h2><a href="shop-grid-left.html">Continue Shopping</a></h2>
-									</div>	
-								</td>
-							</tr>`
-
-            $('.cart-items tbody').html(cartItemsHTML);
-            updateCartTotals(total);
-        } else {
-            $('.shop-cart').hide();
-            $('.shop-cart-empty').show();
         }
-    }
 
-    // Update cart totals
-    function updateCartTotals(total) {
-        $('.cart-subtotal span').text(`$${total.toFixed(2)}`);
-        $('.order-total span').text(`$${total.toFixed(2)}`);
-    }
+        // Update cart totals
+        function updateCartTotals(total) {
+            $('.cart-subtotal span').text(`$${total.toFixed(2)}`);
+            $('.order-total span').text(`$${total.toFixed(2)}`);
+        }
 
-    // Update cart in localStorage and refresh UI
-    function updateLocalStorageAndUI() {
-        localStorage.setItem('cart', JSON.stringify(cart));
+        // Handle quantity change (plus and minus buttons)
+        $(document).on('click', '.plus, .minus', function () {
+            const productId = $(this).data('id');
+            const isPlus = $(this).hasClass('plus');
+
+            $.post('update_cart.php', {
+                user_id: userId,
+                product_id: productId,
+                action: isPlus ? 'increase' : 'decrease'
+            }).done(function (response) {
+                populateCartPage();
+            });
+        });
+
+        // Handle quantity input change directly
+        $(document).on('change', '.qty', function () {
+            const productId = $(this).data('id');
+            const quantity = parseInt($(this).val());
+
+            $.post('update_cart.php', {
+                user_id: userId,
+                product_id: productId,
+                quantity: quantity
+            }).done(function (response) {
+                populateCartPage();
+            });
+        });
+
+        // Handle item removal
+        $(document).on('click', '.remove', function (e) {
+            e.preventDefault();
+            const productId = $(this).data('id');
+
+            $.post('remove_cart_item.php', { user_id: userId, product_id: productId }).done(function (response) {
+                populateCartPage();
+            });
+        });
+
+        // Populate the cart page on page load
         populateCartPage();
-    }
-
-    // Handle quantity change (plus and minus buttons)
-    $(document).on('click', '.plus, .minus', function () {
-        const index = $(this).data('index');
-        const isPlus = $(this).hasClass('plus');
-
-        if (isPlus) {
-            cart[index].quantity++;
-        } else if (cart[index].quantity > 1) {
-            cart[index].quantity--;
-        }
-
-        updateLocalStorageAndUI();
     });
+</script>
 
-    // Handle quantity input change directly
-    $(document).on('change', '.qty', function () {
-        const index = $(this).data('index');
-        const quantity = parseInt($(this).val());
-
-        if (quantity > 0) {
-            cart[index].quantity = quantity;
-        } else {
-            cart[index].quantity = 1; // Set to 1 if invalid input
-        }
-
-        updateLocalStorageAndUI();
-    });
-
-    // Handle item removal
-    $(document).on('click', '.remove', function (e) {
-        e.preventDefault();
-        const index = $(this).data('index');
-
-        cart.splice(index, 1); // Remove item from cart
-        updateLocalStorageAndUI();
-    });
-
-    // Handle cart update button
-    $('.cart-form').on('submit', function (e) {
-        e.preventDefault();
-        populateCartPage(); // Refresh cart UI
-    });
-
-    // Populate the cart page on page load
-    populateCartPage();
-});
-
-	</script>
 	
 	</head>
 	
@@ -235,7 +234,7 @@
 														</div>
 													</div>
 													<div class="proceed-to-checkout">		
-														<a href="shop-checkout.html" class="checkout-button button">
+														<a href="shop-checkout.php" class="checkout-button button">
 															Proceed to checkout
 														</a>
 													</div>

@@ -105,9 +105,6 @@
 																			<!-- <div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div> -->
-																			<div class="btn-wishlist" data-title="Wishlist">
-																				<button class="product-btn">Add to wishlist</button>
-																			</div>
 																			<!-- <div class="btn-compare" data-title="Compare">
 																				<button class="product-btn">Compare</button>
 																			</div>
@@ -115,10 +112,10 @@
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>	-->
 																		</div>
-																	</div>
+																	</div>	
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details.html">Dining Table</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=1">Category 1</a></h3>
 																			<span class="price">$150.00</span>
 																		</div>
 																	</div>
@@ -131,12 +128,12 @@
 																			<div class="onsale">-33%</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/Tees/2.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/Tees/7.jpg" class="hover-image back" alt="">
+																			<a href="shop-details-tees.php?category_id=2">
+																				<img width="600" height="600" src="media/product/Tees/t-1.jpeg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/l-t-1.jpeg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div>
@@ -149,11 +146,11 @@
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details.html">Pillar Dining Table Round</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=2">Category 2</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$150.00</span></del> 
 																				<ins><span>$100.00</span></ins>
@@ -166,12 +163,12 @@
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
 																		<div class="product-thumb-hover">
-																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/Tees/11.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/Tees/3.jpg" class="hover-image back" alt="">
+																			<a href="shop-details-tees.php?category_id=3">
+																				<img width="600" height="600" src="media/product/Tees/t-3.jpeg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/t-4.jpeg	" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div>
@@ -184,11 +181,11 @@
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details.html">Mags Sofa 2.5 Seater</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=3">Category 3</a></h3>
 																			<span class="price">$150.00</span>
 																		</div>
 																	</div>
@@ -202,12 +199,12 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details.html">
+																			<a href="shop-details-tees.php?category_id=4">
 																				<img width="600" height="600" src="media/product/Tees/13.jpg" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/Tees/4.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div>
@@ -220,11 +217,11 @@
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details.html">Spinning pendant lamp</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=4">Category 4</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$150.00</span></del> 
 																				<ins><span>$100.00</span></ins>
@@ -241,12 +238,12 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details.html">
+																			<a href="shop-details-tees.php?category_id=5">
 																				<img width="600" height="600" src="media/product/Tees/16.jpg" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/Tees/5.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div>
@@ -259,11 +256,11 @@
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details.html">Bora Armchair</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=5">Category 5</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$100.00</span></del> 
 																				<ins><span>$90.00</span></ins>

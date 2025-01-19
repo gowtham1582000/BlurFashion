@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         $_SESSION['logged_in'] = true;
         $_SESSION['username'] = $user['full_name']; // Store full name or other unique identifier
 
-        echo "Login successful!";
+        //echo "Login successful!";
     } else {
         echo "Invalid username or password.";
     }

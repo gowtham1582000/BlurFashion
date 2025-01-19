@@ -74,14 +74,14 @@
 															<li><a href="#">Sort by price: high to low</a></li>
 														</ul> -->
 													</div>
-													<ul class="layout-toggle nav nav-tabs">
+													<!-- <ul class="layout-toggle nav nav-tabs">
 														<li class="nav-item">
 															<a class="layout-grid nav-link active" data-toggle="tab" href="#layout-grid" role="tab"><span class="icon-column"><span class="layer first"><span></span><span></span><span></span></span><span class="layer middle"><span></span><span></span><span></span></span><span class="layer last"><span></span><span></span><span></span></span></span></a>
 														</li>
 														<li class="nav-item">
 															<a class="layout-list nav-link" data-toggle="tab" href="#layout-list" role="tab"><span class="icon-column"><span class="layer first"><span></span><span></span></span><span class="layer middle"><span></span><span></span></span><span class="layer last"><span></span><span></span></span></span></a>
 														</li>
-													</ul>
+													</ul> -->
 												</div>
 											</div>
 
@@ -96,7 +96,7 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details.html">
+																			<a href="shop-details-tees.php?category_id=101">
 																				<img width="600" height="600" src="media/product/shirts/18.jpg" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/shirts/19.jpg" class="hover-image back" alt="">
 																			</a>
@@ -105,9 +105,7 @@
 																			<!-- <div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div> -->
-																			<div class="btn-wishlist" data-title="Wishlist">
-																				<button class="product-btn">Add to wishlist</button>
-																			</div>
+																			
 																			<!-- <div class="btn-compare" data-title="Compare">
 																				<button class="product-btn">Compare</button>
 																			</div>
@@ -118,7 +116,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details.html">Dining Table</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=101">Category 101</a></h3>
 																			<span class="price">$150.00</span>
 																		</div>
 																	</div>
@@ -131,12 +129,12 @@
 																			<div class="onsale">-33%</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details.html">
+																			<a href="shop-details-tees.php?category_id=102">
 																				<img width="600" height="600" src="media/product/shirts/1.jpg" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/shirts/2.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div>
@@ -149,11 +147,11 @@
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details.html">Pillar Dining Table Round</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=102">Category 102</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$150.00</span></del> 
 																				<ins><span>$100.00</span></ins>
@@ -171,7 +169,7 @@
 																				<img width="600" height="600" src="media/product/shirts/8.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div>
@@ -184,11 +182,11 @@
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details.html">Mags Sofa 2.5 Seater</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=103">Category 103</a></h3>
 																			<span class="price">$150.00</span>
 																		</div>
 																	</div>
@@ -202,12 +200,12 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details.html">
+																			<a href="shop-details-tees.php?category_id=103">
 																				<img width="600" height="600" src="media/product/shirts/31.jpg" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/shirts/27.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div>
@@ -220,11 +218,11 @@
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details.html">Spinning pendant lamp</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=104">Category 104</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$150.00</span></del> 
 																				<ins><span>$100.00</span></ins>
@@ -241,12 +239,12 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details.html">
+																			<a href="shop-details-tees.php?category_id=105">
 																				<img width="600" height="600" src="media/product/shirts/25.jpg" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/shirts/22.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div>
@@ -259,14 +257,54 @@
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details.html">Spinning pendant lamp</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=105">Category 105</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$150.00</span></del> 
 																				<ins><span>$100.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=106">
+																				<img width="600" height="600" src="media/product/shirts/33.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/34.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=106">Category 106</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
 																			</span>
 																		</div>
 																	</div>
@@ -280,12 +318,12 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details.html">
+																			<a href="shop-details-tees.php?category_id=107">
 																				<img width="600" height="600" src="media/product/shirts/33.jpg" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/shirts/34.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<div class="product-button">
+																		<!-- <div class="product-button">
 																			<div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div>
@@ -298,11 +336,89 @@
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div>
+																		</div> -->
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details.html">Bora Armchair</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=107">Category 107</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=108">
+																				<img width="600" height="600" src="media/product/shirts/33.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/34.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=108">Category 108</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=109">
+																				<img width="600" height="600" src="media/product/shirts/33.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/34.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=109">Category 109</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$100.00</span></del> 
 																				<ins><span>$90.00</span></ins>

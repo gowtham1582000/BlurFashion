@@ -96,7 +96,7 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details-tees.php?category_id=101">
+																			<a href="shop-details-tees.php?category_id=5">
 																				<img width="600" height="600" src="media/product/shirts/18.jpg" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/shirts/19.jpg" class="hover-image back" alt="">
 																			</a>
@@ -116,7 +116,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=101">Category 101</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=5">Smiley printed- premium drop shoulder</a></h3>
 																			<span class="price">$150.00</span>
 																		</div>
 																	</div>
@@ -129,7 +129,7 @@
 																			<div class="onsale">-33%</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details-tees.php?category_id=102">
+																			<a href="shop-details-tees.php?category_id=2">
 																				<img width="600" height="600" src="media/product/shirts/1.jpg" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/shirts/2.jpg" class="hover-image back" alt="">
 																			</a>
@@ -151,7 +151,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=102">Category 102</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=2">Kerala printed- premium L-shaped drop shoulder</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$150.00</span></del> 
 																				<ins><span>$100.00</span></ins>
@@ -164,7 +164,7 @@
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
 																		<div class="product-thumb-hover">
-																			<a href="shop-details.html">
+																			<a href="shop-details-tees.php?category_id=3">
 																				<img width="600" height="600" src="media/product/shirts/10.jpg" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/shirts/8.jpg" class="hover-image back" alt="">
 																			</a>
@@ -186,7 +186,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=103">Category 103</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=3">Arrow pocket- premium drop shoulder</a></h3>
 																			<span class="price">$150.00</span>
 																		</div>
 																	</div>
@@ -200,7 +200,7 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details-tees.php?category_id=103">
+																			<a href="shop-details-tees.php?category_id=7">
 																				<img width="600" height="600" src="media/product/shirts/31.jpg" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/shirts/27.jpg" class="hover-image back" alt="">
 																			</a>
@@ -222,7 +222,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=104">Category 104</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=7">Eagle printed- premium drop shoulder</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$150.00</span></del> 
 																				<ins><span>$100.00</span></ins>
@@ -239,7 +239,7 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details-tees.php?category_id=105">
+																			<a href="shop-details-tees.php?category_id=6">
 																				<img width="600" height="600" src="media/product/shirts/25.jpg" class="post-image" alt="">
 																				<img width="600" height="600" src="media/product/shirts/22.jpg" class="hover-image back" alt="">
 																			</a>
@@ -261,7 +261,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=105">Category 105</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=6">Butterfly printed- premium drop shoulder</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$150.00</span></del> 
 																				<ins><span>$100.00</span></ins>
@@ -301,7 +301,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=106">Category 106</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=8">Category 8</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$100.00</span></del> 
 																				<ins><span>$90.00</span></ins>
@@ -318,9 +318,9 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details-tees.php?category_id=107">
-																				<img width="600" height="600" src="media/product/shirts/33.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shirts/34.jpg" class="hover-image back" alt="">
+																			<a href="shop-details-tees.php?category_id=8">
+																				<img width="600" height="600" src="media/product/shirts/s-1.jpeg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/s-10.jpeg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -340,7 +340,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=107">Category 107</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=8">Satin party wear - Plain</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$100.00</span></del> 
 																				<ins><span>$90.00</span></ins>

@@ -87,7 +87,7 @@
 					// Output the result for debugging (optional)
 					// echo "<pre>";
 					// print_r($images);
-					// print_r($colors);
+					 print_r($result);
 					// echo "</pre>";
 
 				} else {

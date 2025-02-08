@@ -10564,7 +10564,7 @@ body i[class~="slick-arrow"][class~="fa-angle-right"] {
   text-transform: capitalize;
 }
 [class~="site-main"] [class~="page-title"] {
-  background-image: url("../../media/site-header.jpg");
+  background-image: url("../../media/product/Contact-Us-Hero-Image.webp");
 }
 [class~="site-main"] [class~="page-title"] {
   padding-left: 0.9375pc;
@@ -21668,6 +21668,9 @@ body i[class~="slick-arrow"][class~="fa-angle-right"] {
 [class~="block-contact-form"] [class~="contact-us-form"] input[type="text"] {
   border-bottom-color: #000;
 }
+[class~="block-contact-form"] [class~="contact-us-form"] input[type="number"] {
+  border-color: #000;
+}
 [class~="block-contact-info"]
   [class~="info-item"]
   [class~="item-content"][class~="small-width"],
@@ -21843,6 +21846,9 @@ body i[class~="slick-arrow"][class~="fa-angle-right"] {
   border-top-color: #dbdbdb;
 }
 [class~="block-contact-form"] [class~="contact-us-form"] input[type="text"] {
+  background: #fff;
+}
+[class~="block-contact-form"] [class~="contact-us-form"] input[type="number"] {
   background: #fff;
 }
 [class~="block-product-filter"]

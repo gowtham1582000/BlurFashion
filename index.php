@@ -278,15 +278,15 @@ function updateCartTotal(cartItems) {
 										<div class="item slick-slide">
 											<div class="item-content">
 												<div class="content-image">
-													<img width="1920" height="1080" src="media/slider/zara-men-bg.jpg" alt="Image Slider">
+													<img width="1920" height="1080" src="media/product/photo-1489987707025-afc232f7ea0f.jpg" alt="Image Slider">
 												</div>
 												<div class="section-padding">
 													<div class="section-container">
 														<div class="item-info horizontal-start vertical-middle">
 															<div class="content">
-																<div style="color: white;" class="subtitle-slider">Elevate Your Style with – </div>
-																<h2 style="color: white;" class="title-slider">BlurFashion</h2>
-																<div style="color: white;" class="description-slider">Shop Now!</div>
+																<div class="subtitle-slider">Elevate Your Style with – </div>
+																<h2 class="title-slider">BlurFashion</h2>
+																<div class="description-slider">Shop Now!</div>
 																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
 															</div>
 														</div>
@@ -297,15 +297,15 @@ function updateCartTotal(cartItems) {
 										<div class="item slick-slide">
 											<div class="item-content">
 												<div class="content-image">
-													<img width="1920" height="1080" src="media/slider/Outerwear1.webp" alt="Image Slider">
+													<img width="1920" height="1080" src="media/product/workshop-woman-clothing-dress.jpg" alt="Image Slider">
 												</div>
 												<div class="section-padding">
 													<div class="section-container">
 														<div class="item-info horizontal-start vertical-middle">
 															<div class="content">
-																<div style="color: white;" class="subtitle-slider">Unleash Your Confidence with - </div>
-																<h2 style="color: white;" class="title-slider"><b>Our BlurFashion</b></h2>
-																<div style="color: white;" class="description-slider">Save up to 10% on outdoor packages </div>
+																<div class="subtitle-slider">Unleash Your Confidence with - </div>
+																<h2 class="title-slider"><b>Our BlurFashion</b></h2>
+																<div class="description-slider">Save up to 10% on outdoor packages </div>
 																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
 															</div>
 														</div>
@@ -316,15 +316,15 @@ function updateCartTotal(cartItems) {
 										<div class="item slick-slide">
 											<div class="item-content">
 												<div class="content-image">
-													<img width="1920" height="1080" src="media/slider/siwilai-banner03.webp" alt="Image Slider">
+													<img width="1920" height="1080" src="media/product/tshirt-shirts-t-shirt-casual.jpg" alt="Image Slider">
 												</div>
 												<div class="section-padding">
 													<div class="section-container">
 														<div class="item-info horizontal-start vertical-middle">
 															<div class="content">
-																<div style="color: white;" class="subtitle-slider">Discover the Perfect Fit –</div>
-																<h2 style="color: white;" class="title-slider">Trendy & Timeless Men’s Apparel</h2>
-																<div style="color: white;" class="description-slider">Save up to 50%</div>
+																<div  class="subtitle-slider">Discover the Perfect Fit –</div>
+																<h2  class="title-slider">Trendy & Timeless Men’s Apparel</h2>
+																<div class="description-slider">Save up to 50%</div>
 																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
 															</div>
 														</div>
@@ -349,19 +349,19 @@ function updateCartTotal(cartItems) {
 																<div class="banner-wrapper banners">
 																	<div class="banner-image">
 																		<a href="shop-grid-left.html">
-																			<img width="825" height="475" src="media/banner/banner-1.jpg" alt="Banner Image">
+																			<img width="825" height="475" src="media/product/2f39df6e-0d0f-487d-8754-3fae6770af87.jpg" alt="Banner Image">
 																		</a>
 																	</div>
 																	<div class="banner-wrapper-infor">
 																		<div class="info">
 																			<div class="content">
 																				<a class="link-title" href="shop-grid-left.html">
-																					<h3 class="title-banner">Let the adventure<br> begin. </h3>
+																					<h3 class="title-banner" style="color: white;" >Let the adventure<br> begin. </h3>
 																				</a>
-																				<div class="banner-image-description">
+																				<!-- <div class="banner-image-description">
 																					Sed lectus. Aliquam lorem ante, <br>dapibus in, viverra quis, feugiat a, tellus
-																				</div>
-																				<a class="button button-outline" href="shop-grid-left.html">SHOP NOW</a>
+																				</div> -->
+																				<a class="button button-outline" href="shop-grid-left.html" style="color:aliceblue">SHOP NOW</a>
 																			</div>
 																		</div>
 																	</div>
@@ -379,16 +379,16 @@ function updateCartTotal(cartItems) {
 																<div class="banner-wrapper banners">
 																	<div class="banner-image">
 																		<a href="shop-grid-left.html">
-																			<img width="571" height="475" src="media/banner/banner-2.jpg" alt="Banner Image">
+																			<img width="571" height="475" src="media/product/133f6560-e5fb-471b-bab7-23c6d8584203.jpg" alt="Banner Image">
 																		</a>
 																	</div>
 																	<div class="banner-wrapper-infor">
 																		<div class="info">
 																			<div class="content">
 																				<a class="link-title" href="shop-grid-left.html">
-																					<h3 class="title-banner">UP TO <span>20% OFF</span></h3>
+																					<h3 class="title-banner" style="color:azure">UP TO <span>20% OFF</span></h3>
 																				</a>
-																				<div class="banner-image-description">
+																				<div class="banner-image-description" style="color:azure">
 																					Don't miss savings on bedroom, living,
 																				</div>
 																			</div>
@@ -404,126 +404,7 @@ function updateCartTotal(cartItems) {
 									</div>
 								</div>
 							</section> 
-
-							<section class="section section-padding m-b-60">
-								<div class="section-container">
-									<!-- Block Banners (Layout 1) -->
-									<div class="block block-banners layout-1 banners-effect">
-										<div class="section-row">
-											<div class="section-column left sm-m-b">
-												<div class="section-column-wrap">
-													<div class="block-widget-wrap">
-														<div class="block-widget-banner layout-1">
-															<div class="bg-banner">
-																<div class="banner-wrapper banners">
-																	<div class="banner-image">
-																		<a href="shop-grid-left.html">
-																			<img width="571" height="622" src="./assets/img/seraj.jpg" alt="Banner Image">
-																		</a>
-																	</div>
-																	<div class="banner-wrapper-infor">
-																		<div class="info">
-																			<div class="content">
-																				<a class="button button-white" href="shop-shirts.php">Shirts</a>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="section-column right">
-												<div class="section-column-wrap">
-													<div class="block-widget-wrap p-0">
-														<div class="block-section m-b-15">
-															<div class="section-container">
-																<div class="section-row">
-																	<div class="section-column column-50 sm-m-b">
-																		<div class="block-widget-wrap">
-																			<div class="block-widget-banner layout-1">
-																				<div class="bg-banner">
-																					<div class="banner-wrapper banners">
-																						<div class="banner-image">
-																							<a href="shop-grid-left.html" style="height: 423px;">
-																								<img width="406" src="./assets/img/suraj-1.jpg" alt="Banner Image">
-																							</a>
-																						</div>
-																						<div class="banner-wrapper-infor">
-																							<div class="info">
-																								<div class="content">
-																									<a class="button button-white" href="shop-tees.php">T-Shirts</a>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="section-column column-50">
-																		<div class="block-widget-wrap">
-																			<div class="block-widget-banner layout-1">
-																				<div class="bg-banner">
-																					<div class="banner-wrapper banners">
-																						<div class="banner-image">
-																							<a href="shop-grid-left.html" style="height: 423xpx;">
-																								<img width="406" height="304" src="./assets/img/baggy-pant.jpg" alt="Banner Image">
-																							</a>
-																						</div>
-																						<div class="banner-wrapper-infor">
-																							<div class="info">
-																								<div class="content">
-																									<a class="button button-white" href="shop-pants.php">Pants</a>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="block-section">
-															<div class="section-container">
-																<div class="section-row">
-																	<div class="section-column">
-																		<div class="block-widget-wrap">
-																			<div class="block-widget-banner layout-1">
-																				<div class="bg-banner">
-																					<div class="banner-wrapper banners">
-																						<div class="banner-image">
-																							<a href="shop-grid-left.html">
-																								<img width="406" height="304" src="./assets/img/accessiors.jpg" alt="Banner Image">
-																							</a>
-																						</div>
-																						<div class="banner-wrapper-infor">
-																							<div class="info">
-																								<div class="content">
-																									<a class="button button-white" href="shop-grid-right.php">Accessories</a>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>								
-									</div>
-								</div>
-							</section>
-
-							<section class="section section-padding">
+                            <section class="section section-padding">
 								<div class="section-container">
 									<!-- Block Products -->
 									<div class="block block-products slider">
@@ -691,7 +572,7 @@ function updateCartTotal(cartItems) {
 																</div>
 															</div>
 														</div>
-														<div class="item-product slick-slide">
+														<!-- <div class="item-product slick-slide">
 															<div class="items">
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
@@ -704,7 +585,7 @@ function updateCartTotal(cartItems) {
 																				<img width="600" height="600" src="media/product/shirts/16.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>
-																		<!-- <div class="product-button">
+																		<div class="product-button">
 																			<div class="btn-wishlist" data-title="Wishlist">
 																				<button class="product-btn">Add to wishlist</button>
 																			</div>
@@ -714,7 +595,7 @@ function updateCartTotal(cartItems) {
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div> -->
+																		</div>
 																		<div class="product-stock">    
 																			<span class="stock">Out Of Stock</span>
 																		</div>
@@ -726,16 +607,16 @@ function updateCartTotal(cartItems) {
 																				<del aria-hidden="true"><span>$150.00</span></del> 
 																				<ins><span>$140.00</span></ins>
 																			</span>
-																			<!-- <div class="btn-add-to-cart">
+																			 <div class="btn-add-to-cart">
 																				<div data-title="Add to cart">
 																					<a href="#" class="button">Add to cart</a>
 																				</div>			
-																			</div> -->
+																			</div>
 																		</div>
 																	</div>
 																</div>
 															</div>
-														</div>
+														</div> -->
 													</div>
 												</div>
 											</div>
@@ -744,34 +625,26 @@ function updateCartTotal(cartItems) {
 								</div>
 							</section>
 
-							
-
-							<section class="section section-padding background-1 section-mb-l">
+							<section class="section section-padding m-b-60">
 								<div class="section-container">
-									<!-- Block Video -->
-									<div class="block block-video">
+									<!-- Block Banners (Layout 1) -->
+									<div class="block block-banners layout-1 banners-effect">
 										<div class="section-row">
-											<div class="section-column left">
+											<div class="section-column left sm-m-b">
 												<div class="section-column-wrap">
 													<div class="block-widget-wrap">
-														<div class="block-widget-video">
-															<div class="video-thumb">
-																<img width="565" height="635" class="img-responsive" src="media/banner/video-1.jpg" alt="Image Video">
-															</div>
-															<div class="video-wrap">
-																<div class="video" data-src="https://www.youtube.com/embed/VQOJaYUPZR8" data-toggle="modal" data-target="#video-popup">
-																	<i class="fa fa-play" aria-hidden="true"></i>
-																</div>
-																<div class="content-video modal fade" id="video-popup" tabindex="-1" role="dialog" aria-hidden="true">
-																	<div class="modal-dialog modal-dialog-centered" role="document">
-																		<div class="modal-content">
-																			<div class="modal-body">
-																				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																					<span aria-hidden="true">&times;</span>
-																				</button>
-																				<div class="embed-responsive embed-responsive-16by9">
-																					<iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always" allow="autoplay"></iframe>
-																				</div>
+														<div class="block-widget-banner layout-1">
+															<div class="bg-banner">
+																<div class="banner-wrapper banners">
+																	<div class="banner-image">
+																		<a href="shop-grid-left.html">
+																			<img width="571" height="622" src="./assets/img/seraj.jpg" alt="Banner Image">
+																		</a>
+																	</div>
+																	<div class="banner-wrapper-infor">
+																		<div class="info">
+																			<div class="content">
+																				<a class="button button-white" href="shop-shirts.php">T-Shirts</a>
 																			</div>
 																		</div>
 																	</div>
@@ -783,22 +656,94 @@ function updateCartTotal(cartItems) {
 											</div>
 											<div class="section-column right">
 												<div class="section-column-wrap">
-													<div class="block-widget-wrap">
-														<div class="block-widget-video">
-															<div class="video-text">
-																<h2 class="title">From bottle <br>to chair</h2>
-																<div class="description">In our design and production processes, we are always looking at where environmental thinking and economic improvement intersect – resulting in minimal waste in every aspect. The way we utilise PET Technology, emphasizes this vision.</div>
-																<a href="#" class="button button-white">OUR STORIES</a>
+													<div class="block-widget-wrap p-0">
+														<div class="block-section m-b-15">
+															<div class="section-container">
+																<div class="section-row">
+																	<div class="section-column column-50 sm-m-b">
+																		<div class="block-widget-wrap">
+																			<div class="block-widget-banner layout-1">
+																				<div class="bg-banner">
+																					<div class="banner-wrapper banners">
+																						<div class="banner-image">
+																							<a href="shop-grid-left.html" style="height: 423px;">
+																								<img width="406" src="./assets/img/suraj-1.jpg" alt="Banner Image">
+																							</a>
+																						</div>
+																						<div class="banner-wrapper-infor">
+																							<div class="info">
+																								<div class="content">
+																									<a class="button button-white" href="shop-tees.php">Shirts</a>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="section-column column-50">
+																		<div class="block-widget-wrap">
+																			<div class="block-widget-banner layout-1">
+																				<div class="bg-banner">
+																					<div class="banner-wrapper banners">
+																						<div class="banner-image">
+																							<a href="shop-grid-left.html" style="height: 423xpx;">
+																								<img width="406" height="304" src="./assets/img/baggy-pant.jpg" alt="Banner Image">
+																							</a>
+																						</div>
+																						<div class="banner-wrapper-infor">
+																							<div class="info">
+																								<div class="content">
+																									<a class="button button-white" href="shop-pants.php">Shorts</a>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="block-section">
+															<div class="section-container">
+																<div class="section-row">
+																	<div class="section-column">
+																		<div class="block-widget-wrap">
+																			<div class="block-widget-banner layout-1">
+																				<div class="bg-banner">
+																					<div class="banner-wrapper banners">
+																						<div class="banner-image">
+																							<a href="shop-grid-left.html">
+																								<img width="406" height="304" src="./assets/img/accessiors.jpg" alt="Banner Image">
+																							</a>
+																						</div>
+																						<div class="banner-wrapper-infor">
+																							<div class="info">
+																								<div class="content">
+																									<a class="button button-white" href="shop-grid-right.php">Accessories</a>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-										</div>
+										</div>								
 									</div>
 								</div>
 							</section>
 
+							
 							<section class="section section-padding m-b-70">
 								<div class="section-container">
 									<!-- Block Feature -->
@@ -848,10 +793,10 @@ function updateCartTotal(cartItems) {
 														</div>
 														<div class="box-title-wrap">
 															<h3 class="box-title">
-																07 Day Returns
+																04 Day Returns
 															</h3>
 															<p class="box-description">
-																Within 30 days for an exchange.
+																Within 07 days for an exchange.
 															</p>
 														</div>
 													</div>
@@ -868,7 +813,7 @@ function updateCartTotal(cartItems) {
 																Online Support
 															</h3>
 															<p class="box-description">
-																24 hours a day, 7 days a week
+																12 hours a day, 7 days a week
 															</p>
 														</div>
 													</div>
@@ -878,6 +823,61 @@ function updateCartTotal(cartItems) {
 									</div>
 								</div>
 							</section>
+
+							<section class="section section-padding background-1 section-mb-l">
+								<div class="section-container">
+									<!-- Block Video -->
+									<div class="block block-video">
+										<div class="section-row">
+											<div class="section-column left">
+												<div class="section-column-wrap">
+													<div class="block-widget-wrap">
+														<div class="block-widget-video">
+															<div class="video-thumb">
+																<img width="565" height="635" class="img-responsive" src="media/banner/video-1.jpg" style="HEIGHT: 782PX;" alt="Image Video">
+															</div>
+															<div class="video-wrap">
+																<div class="video" data-src="https://www.youtube.com/embed/VQOJaYUPZR8" data-toggle="modal" data-target="#video-popup">
+																	<i class="fa fa-play" aria-hidden="true"></i>
+																</div>
+																<div class="content-video modal fade" id="video-popup" tabindex="-1" role="dialog" aria-hidden="true">
+																	<div class="modal-dialog modal-dialog-centered" role="document">
+																		<div class="modal-content">
+																			<div class="modal-body">
+																				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																					<span aria-hidden="true">&times;</span>
+																				</button>
+																				<div class="embed-responsive embed-responsive-16by9">
+																					<iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always" allow="autoplay"></iframe>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="section-column right">
+												<div class="section-column-wrap">
+													<div class="block-widget-wrap">
+														<div class="block-widget-video">
+															<div class="video-text">
+																<h2 class="title">From bottle <br>to chair</h2>
+																<div class="description">In our design and production processes, we are always looking at where environmental thinking and economic improvement intersect – resulting in minimal waste in every aspect. The way we utilise PET Technology, emphasizes this vision.</div>
+																<a href="#" class="button button-white">OUR STORIES</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+
+							
 						</div><!-- #content -->
 					</div><!-- #primary -->
 				</div><!-- #main-content -->

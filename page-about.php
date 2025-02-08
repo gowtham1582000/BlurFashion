@@ -33,488 +33,12 @@
 	
 	<body class="page">
 		<div id="page" class="hfeed page-wrapper">
-			<header id="site-header" class="site-header header-v1 absolute">
-				<div class="header-mobile">
-					<div class="section-padding">
-						<div class="section-container">
-							<div class="row">
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-left">
-									<div class="navbar-header">
-										<button type="button" id="show-megamenu" class="navbar-toggle"></button>
-									</div>
-								</div>
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 header-center">
-									<div class="">
-										<a href="index.php">
-											<img width="400" height="79" src="./assets/img/B-removebg-preview (1).png" alt="Ruper – Furniture HTML Theme">
-										</a>
-									</div>
-								</div>
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-right">
-									<div class="ruper-topcart dropdown">
-										<div class="dropdown mini-cart top-cart">
-											<div class="remove-cart-shadow"></div>
-											<a class="dropdown-toggle cart-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<div class="icons-cart"><i class="icon-large-paper-bag"></i><span class="cart-count">2</span></div>
-											</a>
-											<div class="dropdown-menu cart-popup">
-												<div class="cart-empty-wrap">
-													<ul class="cart-list">
-														<li class="empty">
-															<span>No products in the cart.</span>
-															<a class="go-shop" href="shop-grid-left.html">GO TO SHOP<i aria-hidden="true" class="arrow_right"></i></a>
-														</li>
-													</ul>
-												</div>
-												<div class="cart-list-wrap">
-													<ul class="cart-list ">
-														<li class="mini-cart-item">
-															<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>
-															<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/3.jpg" alt=""></a>
-															<a href="shop-details.html" class="product-name">Chair Oak Matt Lacquered</a>		
-															<div class="quantity">Qty: 1</div>
-															<div class="price">$150.00</div>
-														</li>
-														<li class="mini-cart-item">
-															<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>													
-															<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/1.jpg" alt=""></a>
-															<a href="shop-details.html" class="product-name">Zunkel Schwarz</a>
-															<div class="quantity">Qty: 1</div>
-															<div class="price">$100.00</div>						
-														</li>
-													</ul>
-													<div class="total-cart">
-														<div class="title-total">Total: </div>
-														<div class="total-price"><span>$100.00</span></div>
-													</div>
-													<div class="free-ship">
-														<div class="title-ship">Buy <strong>$400</strong> more to enjoy <strong>FREE Shipping</strong></div>
-														<div class="total-percent"><div class="percent" style="width:20%"></div></div>
-													</div>
-													<div class="buttons">
-														<a href="shop-cart.php" class="button btn view-cart btn-primary">View cart</a>
-														<a href="shop-checkout.php" class="button btn checkout btn-default">Check out</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="header-mobile-fixed">
-						<!-- Shop -->
-						<div class="shop-page">
-							<a href="shop-grid-left.html"><i class="wpb-icon-shop"></i></a>
-						</div>
-
-						<!-- Login -->
-						<div class="my-account">
-							<div class="login-header">
-								<a href="page-my-account.html"><i class="wpb-icon-user"></i></a>
-							</div>
-						</div>
-
-						<!-- Search -->
-						<div class="search-box">
-							<div class="search-toggle"><i class="wpb-icon-magnifying-glass"></i></div>
-						</div>
-
-						<!-- Wishlist -->
-						<div class="wishlist-box">
-							<a href="shop-wishlist.html"><i class="wpb-icon-heart"></i></a>
-						</div>
-					</div>
-				</div>
-
-				<div class="header-desktop">
-					<div class="header-wrapper">
-						<div class="section-padding">
-							<div class="section-container p-l-r">
-								<div class="row">
-									<div class="col-xl-3 col-lg-2 col-md-12 col-sm-12 col-12 header-left">
-										<div class="">
-											<a href="index.php">
-												<img width="400" height="79" src="./assets/img/B-removebg-preview (1).png" alt="Ruper – Furniture HTML Theme">
-											</a>
-										</div>
-									</div>
-
-									<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-center header-center">
-										<div class="site-navigation">
-											<nav id="main-navigation">
-												<ul id="menu-main-menu" class="menu">
-													<li class="level-0 menu-item menu-item-has-children mega-menu">
-														<a href="index.php"><span class="menu-item-text">Home</span></a>
-														<div class="sub-menu">
-															<div class="row">
-																<div class="col-md-6">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Furniture 1</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="index.php"><span class="menu-item-text">Home Categories</span></a>
-																			</li>
-																			<li>
-																				<a href="index2.html"><span class="menu-item-text">Home Clean</span></a>
-																			</li>
-																			<li>
-																				<a href="index3.html"><span class="menu-item-text">Home Collection</span></a>
-																			</li>
-																			<li>
-																				<a href="index4.html"><span class="menu-item-text">Home Grid</span></a>
-																			</li>
-																			<li>
-																				<a href="index5.html"><span class="menu-item-text">Home Minimal</span></a>
-																			</li>
-																			<li>
-																				<a href="index6.html"><span class="menu-item-text">Home Modern</span></a>
-																			</li>
-																			<li>
-																				<a href="index7.html"><span class="menu-item-text">Home Stylish</span></a>
-																			</li>
-																			<li>
-																				<a href="index8.html"><span class="menu-item-text">Home Unique</span></a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="col-md-6">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Furniture 2</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="index9.html"><span class="menu-item-text">Home Split</span></a>
-																			</li>
-																			<li>
-																				<a href="index10.html"><span class="menu-item-text">Home Gothic</span></a>
-																			</li>
-																			<li>
-																				<a href="index11.html"><span class="menu-item-text">Home Luxury</span></a>
-																			</li>
-																			<li>
-																				<a href="index12.html"><span class="menu-item-text">Home Scandinavian</span></a>
-																			</li>
-																			<li>
-																				<a href="index13.html"><span class="menu-item-text">Home Mid-Century</span></a>
-																			</li>
-																			<li>
-																				<a href="index14.html"><span class="menu-item-text">Home Retro</span></a>
-																			</li>
-																			<li>
-																				<a href="index15.html"><span class="menu-item-text">Home Color Block</span></a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</li>
-													<li class="level-0 menu-item menu-item-has-children">
-														<a href="shop-grid-left.html"><span class="menu-item-text">Shop</span></a>
-														<ul class="sub-menu">
-															<li class="level-1 menu-item menu-item-has-children">
-																<a href="shop-grid-left.html"><span class="menu-item-text">Shop - Products</span></a>
-																<ul class="sub-menu">
-																	<li>
-																		<a href="shop-grid-left.html"><span class="menu-item-text">Shop Grid - Left Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-list-left.html"><span class="menu-item-text">Shop List - Left Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-grid-right.html"><span class="menu-item-text">Shop Grid - Right Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-list-right.html"><span class="menu-item-text">Shop List - Right Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-grid-fullwidth.html"><span class="menu-item-text">Shop Grid - No Sidebar</span></a>
-																	</li>
-																</ul>
-															</li>
-															<li>
-																<a href="shop-details.html"><span class="menu-item-text">Shop Details</span></a>
-															</li>
-															<li>
-																<a href="shop-cart.php"><span class="menu-item-text">Shop - Cart</span></a>
-															</li>
-															<li>
-																<a href="shop-checkout.php"><span class="menu-item-text">Shop - Checkout</span></a>
-															</li>
-															<li>
-																<a href="shop-wishlist.html"><span class="menu-item-text">Shop - Wishlist</span></a>
-															</li>
-														</ul>
-													</li>
-													<li class="level-0 menu-item menu-item-has-children mega-menu mega-menu-fullwidth align-center">
-														<a href="blog-grid-left.html"><span class="menu-item-text">Blog</span></a>
-														<div class="sub-menu">
-															<div class="row">
-																<div class="col-md-5">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Blog Category</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="blog-grid-left.html"><span class="menu-item-text">Blog Grid - Left Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-grid-right.html"><span class="menu-item-text">Blog Grid - Right Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-list-left.html"><span class="menu-item-text">Blog List - Left Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-list-right.html"><span class="menu-item-text">Blog List - Right Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-grid-fullwidth.html"><span class="menu-item-text">Blog Grid - No Sidebar</span></a>
-																			</li>
-																		</ul>
-																	</div>
-
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Blog Details</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="blog-details-left.html"><span class="menu-item-text">Blog Details - Left Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-details-right.html"><span class="menu-item-text">Blog Details - Right Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-details-fullwidth.html"><span class="menu-item-text">Blog Details - No Sidebar</span></a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="col-md-7">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Recent Posts</h2>
-																		<div class="block block-posts recent-posts p-t-5">
-																			<ul class="posts-list">
-																				<li class="post-item">
-																					<a href="blog-details-right.html" class="post-image">
-																						<img src="media/blog/1.jpg">
-																					</a>
-																					<div class="post-content">
-																						<h2 class="post-title">
-																							<a href="blog-details-right.html">
-																								Easy Fixes For Home Decor
-																							</a>
-																						</h2>
-																						<div class="post-time">
-																							<span class="post-date">May 30, 2022</span>
-																							<span class="post-comment">4 Comments</span>
-																						</div>
-																					</div>
-																				</li>
-																				<li class="post-item">
-																					<a href="blog-details-right.html" class="post-image">
-																						<img src="media/blog/2.jpg">
-																					</a>
-																					<div class="post-content">
-																						<h2 class="post-title">
-																							<a href="blog-details-right.html">
-																								How To Make Your Home A Showplace
-																							</a>
-																						</h2>
-																						<div class="post-time">
-																							<span class="post-date">Aug 24, 2022</span>
-																							<span class="post-comment">2 Comments</span>
-																						</div>
-																					</div>
-																				</li>
-																				<li class="post-item">
-																					<a href="blog-details-right.html" class="post-image">
-																						<img src="media/blog/3.jpg">
-																					</a>
-																					<div class="post-content">
-																						<h2 class="post-title">
-																							<a href="blog-details-right.html">
-																								Stunning Furniture With Aesthetic Appeal
-																							</a>
-																						</h2>
-																						<div class="post-time">
-																							<span class="post-date">Dec 06, 2022</span>
-																							<span class="post-comment">1 Comment</span>
-																						</div>
-																					</div>
-																				</li>
-																			</ul>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</li>
-													<li class="level-0 menu-item menu-item-has-children current-menu-item">
-														<a href="#"><span class="menu-item-text">Pages</span></a>
-														<ul class="sub-menu">
-															<li>
-																<a href="page-login.html"><span class="menu-item-text">Login / Register</span></a>
-															</li>
-															<li>
-																<a href="page-forgot-password.html"><span class="menu-item-text">Forgot Password</span></a>
-															</li>
-															<li>
-																<a href="page-my-account.html"><span class="menu-item-text">My Account</span></a>
-															</li>
-															<li>
-																<a href="page-about.html"><span class="menu-item-text">About Us</span></a>
-															</li>
-															<li>
-																<a href="page-contact.html"><span class="menu-item-text">Contact</span></a>
-															</li>
-															<li>
-																<a href="page-faq.html"><span class="menu-item-text">FAQ</span></a>
-															</li>
-															<li>
-																<a href="page-404.html"><span class="menu-item-text">Page 404</span></a>
-															</li>
-														</ul>
-													</li>
-													<li class="level-0 menu-item">
-														<a href="page-contact.html"><span class="menu-item-text">Contact</span></a>
-													</li>
-												</ul>
-											</nav>
-										</div>
-									</div>
-
-									<div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 header-right">
-										<div class="header-page-link">
-											<!-- Login -->
-											<div class="login-header">
-												<a class="active-login" href="#">Login</a>
-												<div class="form-login-register">
-													<div class="box-form-login">
-														<div class="active-login"></div>
-														<div class="box-content">
-															<div class="form-login active">
-																<form id="login_ajax" method="post" class="login">
-																	<h2>Sign in</h2>
-																	<p class="status"></p>
-																	<div class="content">
-																		<div class="username">
-																			<input type="text" required="required" class="input-text" name="username" id="username" placeholder="Your name">
-																		</div>
-																		<div class="password">
-																			<input class="input-text" required="required" type="password" name="password" id="password" placeholder="Password">
-																		</div>
-																		<div class="rememberme-lost">
-																			<div class="rememberme">
-																				<input name="rememberme" type="checkbox" id="rememberme" value="forever">
-																				<label for="rememberme" class="inline">Remember me</label>
-																			</div>
-																			<div class="lost_password">
-																				<a href="forgot-password.html">Lost your password?</a>
-																			</div>
-																		</div>
-																		<div class="button-login">
-																			<input type="submit" class="button" name="login" value="Login">
-																		</div>
-																		<div class="button-next-reregister">Create An Account</div>
-																	</div>						
-																</form>
-															</div>
-															<div class="form-register">
-																<form method="post" class="register">
-																	<h2>REGISTER</h2>
-																	<div class="content">
-																		<div class="email">
-																			<input type="email" class="input-text" placeholder="Email" name="email" id="reg_email" value="">
-																		</div>
-																		<div class="password">
-																			<input type="password" class="input-text" placeholder="Password" name="password" id="reg_password">
-																		</div>															
-																		<div class="button-register">
-																			<input type="submit" class="button" name="register" value="Register">
-																		</div>
-																		<div class="button-next-login">Already has an account</div>
-																	</div>
-																</form>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<!-- Search -->
-											<div class="search-box">
-												<div class="search-toggle"><i class="icon-search"></i></div>
-											</div>
-											
-											<!-- Wishlist -->
-											<div class="wishlist-box">
-												<a href="shop-wishlist.html"><i class="icon-heart"></i></a>
-												<span class="count-wishlist">1</span>
-											</div>
-											
-											<!-- Cart -->
-											<div class="ruper-topcart dropdown light">
-												<div class="dropdown mini-cart top-cart">
-													<div class="remove-cart-shadow"></div>
-													<a class="dropdown-toggle cart-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-														<div class="icons-cart"><i class="icon-large-paper-bag"></i><span class="cart-count">2</span></div>
-													</a>
-													<div class="dropdown-menu cart-popup">
-														<div class="cart-empty-wrap">
-															<ul class="cart-list">
-																<li class="empty">
-																	<span>No products in the cart.</span>
-																	<a class="go-shop" href="shop-grid-left.html">GO TO SHOP<i aria-hidden="true" class="arrow_right"></i></a>
-																</li>
-															</ul>
-														</div>
-														<div class="cart-list-wrap">
-															<ul class="cart-list ">
-																<li class="mini-cart-item">
-																	<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>
-																	<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/3.jpg" alt=""></a>
-																	<a href="shop-details.html" class="product-name">Chair Oak Matt Lacquered</a>		
-																	<div class="quantity">Qty: 1</div>
-																	<div class="price">$150.00</div>
-																</li>
-																<li class="mini-cart-item">
-																	<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>													
-																	<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/1.jpg" alt=""></a>
-																	<a href="shop-details.html" class="product-name">Zunkel Schwarz</a>
-																	<div class="quantity">Qty: 1</div>
-																	<div class="price">$100.00</div>						
-																</li>
-															</ul>
-															<div class="total-cart">
-																<div class="title-total">Total: </div>
-																<div class="total-price"><span>$100.00</span></div>
-															</div>
-															<div class="free-ship">
-																<div class="title-ship">Buy <strong>$400</strong> more to enjoy <strong>FREE Shipping</strong></div>
-																<div class="total-percent"><div class="percent" style="width:20%"></div></div>
-															</div>
-															<div class="buttons">
-																<a href="shop-cart.php" class="button btn view-cart btn-primary">View cart</a>
-																<a href="shop-checkout.php" class="button btn checkout btn-default">Check out</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</header>
+		<?php include('header.php'); ?>
 
 			<div id="site-main" class="site-main">
 				<div id="main-content" class="main-content">
 					<div id="primary" class="content-area">
-						<div id="title" class="page-title">
+						<div id="title" class="page-title" style="background-position: center; background-image: url(../../media/About.avif) !important;">
 							<div class="section-container">
 								<div class="content-title-heading">
 									<h1 class="text-title-heading">
@@ -556,8 +80,8 @@
 										<div class="block block-banners banners-effect">
 											<div class="block-widget-wrap">
 												<div class="block-title">
-													<h2>Great Design For All</h2>
-													<div class="sub-title">At Ruper, we create affordable designs for the modern home</div>
+													<h2>Style That Speaks, Comfort That Lasts</h2>
+													<div class="sub-title">Elevate Your Look, Redefine Your Style</div>
 												</div>
 												<div class="block-content">
 													<div class="block-widget-banner layout-16 no-space">
@@ -578,10 +102,10 @@
 																					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><g><path xmlns="http://www.w3.org/2000/svg" d="m125.533 372.73a6 6 0 1 0 -8.484 8.486l14.821 14.821a6 6 0 1 0 8.484-8.486z" fill="" data-original="" style=""></path><path xmlns="http://www.w3.org/2000/svg" d="m128.675 241.7a6 6 0 0 0 8.484-8.485l-63.036-63.036 20.662-20.433 17.063 17.063 77.822 77.822-123.2 123.2a16 16 0 0 0 0 22.628l56.15 56.15a16.02 16.02 0 0 0 22.627 0l123.2-123.2 88.818 88.818a5.933 5.933 0 0 0 .83.678c.081.057.163.11.247.162a5.957 5.957 0 0 0 .806.425c.043.018.084.043.128.061a6.09 6.09 0 0 0 .8.257l64.1 15.793a6 6 0 0 0 7.261-7.261l-15.794-64.1a6.042 6.042 0 0 0 -.257-.8c-.018-.044-.043-.085-.062-.129a6 6 0 0 0 -.424-.805c-.052-.084-.106-.166-.163-.248a5.965 5.965 0 0 0 -.678-.83l-88.817-88.817 122.458-122.449a16 16 0 0 0 0-22.628l-56.15-56.151a16.019 16.019 0 0 0 -22.627 0l-32.188 32.187-90.267 90.268-99.037-99.04a6 6 0 0 0 -8.485 0l-2.936 2.936-8.126-8.262a29.823 29.823 0 0 0 -21.4-8.976h-.022a30.042 30.042 0 0 0 -21.241 51.285l8.319 8.317-32.14 31.789a6 6 0 0 0 -.024 8.509zm272.66 117.978-39.824 39.822-236.934-236.932 39.823-39.824zm-264.57 78.451a4.008 4.008 0 0 1 -5.659 0l-56.15-56.15a4 4 0 0 1 0-5.657l83.967-83.967 26.8 26.8a6 6 0 1 0 8.484-8.486l-26.8-26.8 30.751-30.75 61.808 61.807zm236.511-33.423 33.264-33.263 10.875 44.138zm-92.984-233.72 26.8 26.8a6 6 0 1 0 8.484-8.486l-26.8-26.8 52.2-52.2 15.861 15.861a6 6 0 1 0 8.484-8.485l-15.861-15.859 27.946-27.946a4.007 4.007 0 0 1 5.658 0l56.151 56.15a4.006 4.006 0 0 1 0 5.657l-122.454 122.455-61.808-61.808zm-124.376-56.727-39.824 39.824-12.728-12.728 39.824-39.824zm-62.207 3.041a18.042 18.042 0 0 1 12.757-30.8h.013a17.911 17.911 0 0 1 12.85 5.391l8.2 8.332-24.329 24.324-1.13 1.117z" fill="" data-original="" style=""></path></g></svg>
 																				</div>
 																				<a class="link-title" href="blog-grid-right.html">
-																					<h3 class="title-banner">Designs You Desire</h3>
+																					<h3 class="title-banner">Designs Your Lifestyle</h3>
 																				</a>
-																				<div class="banner-image-description">
-																	 		 		We love creating furniture you want and will love for years to come. Our designs feature a fusion of unique styles that inspire us – from mid-century modern to contemporary. 
+																				<div class="banner-image-description" style="font-size: 19px;">
+																				"Your dress is a reflection of your personality wear confidence, and you’ll own every room you step into." 
 																				</div>
 																				<a class="button button-outline" href="blog-grid-right.html">READ MORE</a>
 																			</div>
@@ -646,10 +170,10 @@
 															</div>
 															<div class="box-title-wrap">
 																<h3 class="box-title">
-																	14 Day Returns
+																	04 Day Returns
 																</h3>
 																<p class="box-description">
-																	Within 30 days for an exchange.
+																	Within 7 days for an exchange.
 																</p>
 															</div>
 														</div>
@@ -666,7 +190,7 @@
 																	Online Support
 																</h3>
 																<p class="box-description">
-																	24 hours a day, 7 days a week
+																	12 hours a day, 7 days a week
 																</p>
 															</div>
 														</div>
@@ -696,8 +220,8 @@
 																				<a class="link-title" href="blog-grid-right.html">
 																					<h3 class="title-banner">Quality At Every Step</h3>
 																				</a>
-																				<div class="banner-image-description">
-																			 		Rest easy. From choice materials and expert hands, to precision tools and tests, we ensure your product is made of hardy stuff
+																				<div class="banner-image-description"style="font-size: 0.2in">
+																				"Impeccable Craftsmanship: Every Stitch, Every Detail Perfected."
 																				</div>
 																				<a class="button button-outline" href="blog-grid-right.html">READ MORE</a>
 																			</div>
@@ -848,111 +372,8 @@
 				</div><!-- #main-content -->
 			</div>
 
-			<footer id="site-footer" class="site-footer background m-t-0">
-				<div class="footer">
-					<div class="section-padding">
-						<div class="section-container">
-							<div class="block-widget-wrap">
-								<div class="row">
-									<div class="col-lg-3 col-md-6">
-										<div class="block block-menu m-b-20">
-											<h2 class="block-title">Contact Us</h2>
-											<div class="block-content">
-												<ul>
-													<li>
-														<a href="page-contact.html">616.774.0561</a>
-													</li>
-													<li>
-														<a href="page-contact.html">866.453.4748</a>
-													</li>
-													<li>
-														<a href="page-contact.html">HR Fax: 810.222.5439</a>
-													</li>
-													<li>
-														<a href="page-contact.html">sales@ruperfurniture.com</a>
-													</li>
-												</ul>
-											</div>
-										</div>
+			<?php include('footer.php'); ?>
 
-										<div class="block block-social">
-											<ul class="social-link">
-												<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-												<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-												<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-												<li><a href="#"><i class="fa fa-behance"></i></a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-lg-3 col-md-6">
-										<div class="block block-menu">
-											<h2 class="block-title">Showroom</h2>
-											<div class="block-content">
-												<p>1000 84th Street SW , Byron Center, MI 49315</p>
-												<p>AmericasMart Bldg. #1</p>
-												<p>Suite 5C-1, Atlanta, GA 30303</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-3 col-md-6">
-										<div class="block block-menu">
-											<h2 class="block-title">Services</h2>
-											<div class="block-content">
-												<ul>
-													<li>
-														<a href="page-about.html">Sale</a>
-													</li>
-													<li>
-														<a href="page-about.html">Quick Ship</a>
-													</li>
-													<li>
-														<a href="page-about.html">New Designs</a>
-													</li>
-													<li>
-														<a href="page-about.html">Accidental Fabric Protection</a>
-													</li>
-													<li>
-														<a href="page-about.html">Furniture Care</a>
-													</li>
-													<li>
-														<a href="page-about.html">Gift Cards</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-3 col-md-6">
-										<div class="block block-newsletter">
-											<h2 class="block-title">Newsletter</h2>
-											<div class="block-content">
-												<div class="newsletter-text">Enter your email below to be the first to know about new collections and product launches.</div>
-												<form action="" method="post" class="newsletter-form">
-													<input type="email" class="bg-white" name="your-email" value="" size="40" placeholder="Email address">
-													<span class="btn-submit">
-														<input type="submit" value="Subscribe">
-													</span>
-												</form>
-											</div>
-										</div>
-										<div class="block block-image">
-											<img width="309" height="32" src="media/payments.png" alt="">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="footer-bottom">
-					<div class="section-padding">
-						<div class="section-container">
-							<div class="block-widget-wrap">
-								<p class="copyright text-center">Copyright © 2022. All Right Reserved</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
 		</div>
 
 		<!-- Back Top button -->

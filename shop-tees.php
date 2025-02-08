@@ -38,7 +38,7 @@
 			<div id="site-main" class="site-main">
 				<div id="main-content" class="main-content">
 					<div id="primary" class="content-area">
-						<div id="title" class="page-title">
+						<div id="title" class="page-title"  style="background-image: url(../../media/product/2f39df6e-0d0f-487d-8754-3fae6770af87.jpg) !important;">
 							<div class="section-container">
 								<div class="content-title-heading">
 									<h1 class="text-title-heading">

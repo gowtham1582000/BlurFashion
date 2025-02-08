@@ -5,6 +5,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Contact | Ruper</title>
 		
 		<!-- Favicon -->
@@ -29,6 +30,22 @@
 		<!-- Google Web Fonts -->
 		<link href="../../css2-1?family=Barlow+Semi+Condensed:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 		<link href="../../css?family=EB+Garamond:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&display=swap" rel="stylesheet">
+		<style>
+    .phone-icon-div {
+      width: 100px;
+      height: 100px;
+      background-color: #4CAF50;  /* Green background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+    svg {
+      width: 40px;
+      height: 40px;
+      fill: white;
+    }
+   </style> 
 	</head>
 	
 	<body class="page">
@@ -38,7 +55,7 @@
 			<div id="site-main" class="site-main">
 				<div id="main-content" class="main-content">
 					<div id="primary" class="content-area">
-						<div id="title" class="page-title">
+						<div id="title" class="page-title" style="background-position: center; background-image: url(../../media/contact.jpg) !important;">
 							<div class="section-container">
 								<div class="content-title-heading">
 									<h1 class="text-title-heading">
@@ -58,7 +75,7 @@
 										<!-- Block Contact Map -->
 										<div class="block block-contact-map">
 											<div class="block-widget-wrap">
-												<iframe src="https://maps.google.com/maps?q=London%20Eye%2C%20London%2C%20United%20Kingdom&t=m&z=10&output=embed&iwloc=near" aria-label="London Eye, London, United Kingdom"></iframe>
+											<iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3884.690722037189!2d80.3079640750801!3d13.181889987153134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTPCsDEwJzU0LjgiTiA4MMKwMTgnMzcuOSJF!5e0!3m2!1sen!2sin!4v1737897475045!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 											</div>
 										</div>
 									</div>
@@ -78,37 +95,28 @@
 												<div class="info-items">
 													<div class="row">
 														<div class="col-md-4 sm-m-b-30">
-															<div class="info-item">
-																<div class="item-tilte">
-																	<h2>Phone</h2>
-																</div>
-																<div class="item-content">
-																	810.222.5439
-																</div>
-															</div>
+															
 														</div>
 														<div class="col-md-4 sm-m-b-30">
 															<div class="info-item">
-																<div class="item-tilte">
-																	<h2>Customer Service</h2>
-																</div>
-																<div class="item-content">
-																	<p>Monday to Friday</p>
-																	<p>8:00am – 4:00pm Sydney, NSW time (UTC +10)</p>
-																	<p>Saturday and Sunday closed</p>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-4">
+																	<div class="item-tilte">
+																		<h2>Phone</h2>
+																	</div>
+																	<div class="item-content">
+																	<p>Click to call: <a href="tel:+91 93630 00656">+91 93630 00656</a></p>
+																	</div>
+																</div><br>
 															<div class="info-item">
 																<div class="item-tilte">
-																	<h2>Returns</h2>
+																	<h2>Visiting hours/Customer Service</h2>
 																</div>
-																<div class="item-content small-width">
-																	For information on Returns and Refunds, please click <a href="#">here.</a>
+																<div class="item-content">
+																	<p><b>Monday to Saturday</b></p> <p>9:00 am – 9:00 pm </p>
+																	<p><b>Sunday</b></p> <p>10:00 am - 3:00 pm </p>
 																</div>
 															</div>
 														</div>
+														
 													</div>
 												</div>
 											</div>
@@ -121,8 +129,30 @@
 										<!-- Block Contact Form -->
 										<div class="block block-contact-form">
 											<div class="block-widget-wrap">
+											<div class="">
+												<div class="info-item">
+													<div class="block-title">
+														<h1>Return Policy</h1>
+														<div class="sub-title">
+														We want you to love your purchase! If for any reason you are not completely satisfied with your clothing item, we offer a <b style="color:black">4-day return policy</b> from the date of delivery. 
+														Please review the following guidelines to ensure a smooth return process.
+												        </div>
+														<h3>Eligibility for Return</h3>
+														<div class="sub-title">
+														<li>Items must be <b style="color:black">returned within 4 days</b> from the date of delivery.<br></li>
+                                                        <li>The clothing must be unused, unwashed, and in new condition with all original tags still attached.<br></li>
+                                                        <li>For hygiene reasons, intimate wear, swimwear, and jewelry cannot be returned unless faulty.</li>
+														</div>
+														<h3>Important Disclaimer</h3>
+														<div class="sub-title">
+														<li>We cannot accept returns for items that are damaged, worn, or altered. Please make sure that the clothing is returned in its original condition (free from dust, stains, or odors).<br></li>
+                                                        <li>We reserve the right to refuse returns that do not meet the above criteria or are returned in a condition unsuitable for resale. Items that have been damaged or have missing tags are non-returnable.<br></li>
+														</div>
+													</div>
+										 	    </div>
+											</div>
 												<div class="block-title">
-													<h2>Send Us Your Questions!</h2>
+													<h2>Send Us Your Request!</h2>
 													<div class="sub-title">We’ll get back to you within two days.</div>
 												</div>
 												<div class="block-content">
@@ -141,7 +171,13 @@
 														        		<input type="email" name="email" value="" size="40" class="form-control" aria-required="true">
 														        	</span>
 															    </div>
-															</div>
+																<div class="col-sm-12 col-md-6">
+															        <label class="required">Contact number</label><br>
+															        <span class="form-control-wrap">
+														        		<input type="number" name="Contact number" value="" size="40" class="form-control" aria-required="true">
+														        	</span>
+															    </div>
+															</div><br>
 															<div class="row">
 																<div class="col-sm-12">
 																	<label class="required">Message</label><br>

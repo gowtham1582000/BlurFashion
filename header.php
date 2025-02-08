@@ -83,7 +83,7 @@
 					</div>
 				</div>
 
-				<div class="header-desktop">
+				<div class="header-desktop" style="background: white">
 					<div class="header-wrapper">
 						<div class="section-padding">
 							<div class="section-container p-l-r">
@@ -305,7 +305,7 @@
 														</div> -->
 													</li>
 													<li class="level-0 menu-item ">
-														<a href="shop-pants.php"><span class="menu-item-text">Pants</span></a>
+														<a href="shop-pants.php"><span class="menu-item-text">Shorts</span></a>
 														<!-- <ul class="sub-menu">
 															<li>
 																<a href="page-login.html"><span class="menu-item-text">Login / Register</span></a>
@@ -332,6 +332,9 @@
 													</li>
 													<li class="level-0 menu-item">
 														<a href="page-contact.php"><span class="menu-item-text">Contact</span></a>
+													</li>
+													<li class="level-0 menu-item">
+														<a href="page-about.php"><span class="menu-item-text">About us</span></a>
 													</li>
 												</ul>
 											</nav>

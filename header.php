@@ -1,4 +1,215 @@
-<body class="home">
+<?php
+// Start the session
+//session_start();
+
+// Database connection settings
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "bfdb"; // Your database name
+
+// Establish a PDO connection
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+$_SESSION['user_id']=0;
+// Handle Registration
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
+    // Collect form data
+    $full_name = trim($_POST['full_name']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+    $phone = trim($_POST['phone']);
+ 
+    // Validate input
+    if (!empty($full_name) && filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($password)) {
+        // Hash the password for security
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+        // Insert data into the users table
+        $sql = "INSERT INTO users (full_name, email, password, phone) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$full_name, $email, $hashedPassword, $phone]);
+		$userId = $conn->lastInsertId();
+
+		// Store user_id in the session
+		$_SESSION['user_id'] = $userId;
+
+        // Set session variables after successful registration
+        $_SESSION['logged_in'] = true;
+        $_SESSION['username'] = $full_name; // You can use email or any unique identifier
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "Please enter all required fields: Full Name, Email, and Password.";
+    }
+}
+
+// Handle Login (optional for login)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+
+    // Query for user
+    $sql = "SELECT * FROM users WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$username]);
+    $user = $stmt->fetch();
+
+    // Check if user exists and password is correct
+    if ($user && password_verify($password, $user['password'])) {
+        // Set session variables after login
+		$_SESSION['user_id'] = $user['user_id'];
+        $_SESSION['logged_in'] = true;
+        $_SESSION['username'] = $user['full_name']; // Store full name or other unique identifier
+
+       // echo "Login successful!";
+    } else {
+        echo "Invalid username or password.";
+    }
+}
+
+// Handle Logout
+if (isset($_GET['logout'])) {
+    // Destroy the session
+    session_unset();
+    session_destroy();
+    header('Location: index.php'); // Redirect to the home page
+    exit();
+}
+
+$conn = null; // Close connection
+?>
+ 
+<head>
+
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+ 		<script>
+			debugger
+			
+			let cartCount = 0; // Cart count
+			const userId = localStorage.getItem("userid") || <?php echo $_SESSION['user_id']?>;
+			if(userId!=localStorage.getItem("userid") &&  <?php echo $_SESSION['user_id']?> != 0){
+				localStorage.clear();
+				localStorage.setItem("userid", userId);
+			}
+			
+			$(document).ready(function () {
+				// Fetch cart data on page load
+				fetchCart();
+				console.log(document.title);
+			});
+
+			// Fetch cart items
+			function fetchCart() {
+				$.get('fetch_cart.php', { user_id: userId }).done(function (response) {
+					const res = JSON.parse(response);
+					if (res.status === 'success') {
+						const cartItems = res.cart_items;
+						//const combinedItems = combineCartItems(cartItems);
+						cartCount = cartItems.length;
+						$('.cart-count').text(cartCount);
+						if(cartCount==0){
+							if(document.title=='Shop Cart | Blur Fashion'){
+								//window.location.reload()
+								// if (window.location.pathname.includes('shop-cart.php')) {
+								// 	window.onload = function() {
+								// 		populateCartPage();
+								// 	};
+								// }
+								//populateCartPage()
+							}
+							$('.cart-list').empty();
+							const cartItem = `
+								<li class="empty">
+									<span>No products in the cart.</span>
+									<a class="go-shop" href="shop-grid-left.html">GO TO SHOP<i aria-hidden="true" class="arrow_right"></i></a>
+								</li>`;
+							$('.cart-list').append(cartItem);
+							$('.product-list').hide();
+							$('.empty-cart').show();
+						}else{
+							
+							$('.cart-list').empty();
+							//$('.cart-list').show();
+							$('.product-list').show();
+							$('.empty-cart').hide();
+						}
+						cartItems.forEach(item => appendCartItem(item));
+
+						updateCartTotal(cartItems);
+					}
+				});
+			}
+			// function combineCartItems(cartItems) {
+			//     const combined = {};
+
+			//     cartItems.forEach(item => {
+			//         const itemName = item.product_name;
+
+			//         if (combined[itemName]) {
+			//             // If the product already exists, update quantity and price
+			//             combined[itemName].quantity += item.quantity;
+			//             combined[itemName].price += parseFloat(item.price) * item.quantity;
+			//         } else {
+			//             // Add new product with initial quantity and price
+			//             combined[itemName] = {
+			//                 ...item,
+			//                 quantity: item.quantity,
+			//                 price: parseFloat(item.price) * item.quantity
+			//             };
+			//         }
+			//     });
+
+			//     // Convert the object back to an array
+			//     return Object.values(combined);
+			// }
+			// Append a cart item
+
+			function appendCartItem(item) {
+				const cartItem = `
+					<li class="mini-cart-item">
+						<a href="#" class="remove" title="Remove this item" onclick="removeCartItem('${item.product_id}','${item.product_name}', event)"><i class="icon_close"></i></a>
+						<a href="shop-details.html" class="product-image"><img width="600" height="600" src="${item.image}" alt=""></a>
+						<a href="shop-details.html" class="product-name">${item.product_name}</a>
+						<div class="quantity">Qty: ${item.quantity}</div>
+						<div class="price">₹${parseFloat(item.price).toFixed(2)}</div>
+					</li>`;
+				$('.cart-list').append(cartItem);
+			}
+
+			// Remove an item from the cart
+			function removeCartItem(id,productName, event) {
+				event.preventDefault();
+
+				$.post('remove_cart_item.php', {
+					user_id: userId,
+					product_id:id,
+					product_name: productName
+				}).done(function (response) {
+					const res = JSON.parse(response);
+					if (res.status === 'success') {
+						fetchCart();
+					} else {
+						alert(res.message);
+					}
+				});
+			}
+
+			// Update total price
+			function updateCartTotal(cartItems) {
+				const total = cartItems.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+				$('.total-price span').text(`₹${total.toFixed(2)}`);
+			}
+
+
+		</script>
+</head>
+
+	<body class="home">
 		<div id="page" class="hfeed page-wrapper">
 			<header id="site-header" class="site-header header-v1">
 				<div class="header-mobile">
@@ -47,7 +258,7 @@
 													</div>
 													<div class="buttons">
 														<a href="shop-cart.php" class="button btn view-cart btn-primary">View cart</a>
-														<a href="shop-checkout.html" class="button btn checkout btn-default">Check out</a>
+														<a href="shop-checkout.php" class="button btn checkout btn-default">Check out</a>
 													</div>
 												</div>
 											</div>
@@ -386,7 +597,13 @@
 																		</div>
 																		<div class="password">
 																			<input type="password" class="input-text" placeholder="Password" name="password" id="reg_password">
-																		</div>															
+																		</div>
+																		<div class="full_name">
+																			<input type="text" class="input-text" placeholder="Name" name="full_name" id="full_name" value="">
+																		</div>	
+																		<div class="password">
+																			<input type="number" class="input-text" placeholder="phone" name="phone" id="reg_phone">
+																		</div>													
 																		<div class="button-register">
 																			<input type="submit" class="button" name="register" value="Register">
 																		</div>
@@ -439,7 +656,7 @@
 															</div>
 															<div class="buttons">
 																<a href="shop-cart.php" class="button btn view-cart btn-primary">View cart</a>
-																<a href="shop-checkout.html" class="button btn checkout btn-default">Check out</a>
+																<a href="shop-checkout.php" class="button btn checkout btn-default">Check out</a>
 															</div>
 														</div>
 													</div>
@@ -453,3 +670,5 @@
 					</div>
 				</div>
 			</header>
+		</div>
+	</body> 

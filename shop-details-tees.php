@@ -1,38 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- Meta Data -->
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Shop Details | Ruper</title>
-		
-		<!-- Favicon -->
-		<link rel="shortcut icon" type="image/x-icon" href="media/favicon.png">
-		
-		<!-- Dependency Styles -->
-		<link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" type="text/css">
-		<link rel="stylesheet" href="libs/feather-font/css/iconfont.css" type="text/css">
-		<link rel="stylesheet" href="libs/icomoon-font/css/icomoon.css" type="text/css">
-		<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.css" type="text/css">
-		<link rel="stylesheet" href="libs/wpbingofont/css/wpbingofont.css" type="text/css">
-		<link rel="stylesheet" href="libs/elegant-icons/css/elegant.css" type="text/css">
-		<link rel="stylesheet" href="libs/slick/css/slick.css" type="text/css">
-		<link rel="stylesheet" href="libs/slick/css/slick-theme.css" type="text/css">
-		<link rel="stylesheet" href="libs/mmenu/css/mmenu.min.css" type="text/css">
-		<link rel="stylesheet" href="libs/slider/css/jslider.css">
-
-		<!-- Site Stylesheet -->
-		<link rel="stylesheet" href="assets/css/app.css" type="text/css">
-		<link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
-		
-		<!-- Google Web Fonts -->
-		<link href="../../css2-1?family=Barlow+Semi+Condensed:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-		<link href="../../css?family=EB+Garamond:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&display=swap" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-		
-		<?php
+<?php
 			// Database connection details
 			$host = "localhost";
 			$username = "root";
@@ -78,6 +44,7 @@
 					if ($result && count($result) > 0) { // Check if the result is not false and contains rows
 						foreach ($result as $row) { // Loop through the result array
 							// Explode the IMAGE_LOCATIONS column into individual image paths
+							$dressColor=explode(',', $row['COLORS']);
 							$colorsChange=explode(',', $row['DRESSCOLOR']);
 							$colors = array_merge($colors, $colorsChange);
 							$imagePaths = explode(',', $row['IMAGE_LOCATIONS']); // Correct column alias
@@ -98,12 +65,79 @@
 			}
 		?>
 
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta Data -->
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Shop Details | Ruper</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="image/x-icon" href="media/favicon.png">
+		
+		<!-- Dependency Styles -->
+		<link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" type="text/css">
+		<link rel="stylesheet" href="libs/feather-font/css/iconfont.css" type="text/css">
+		<link rel="stylesheet" href="libs/icomoon-font/css/icomoon.css" type="text/css">
+		<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.css" type="text/css">
+		<link rel="stylesheet" href="libs/wpbingofont/css/wpbingofont.css" type="text/css">
+		<link rel="stylesheet" href="libs/elegant-icons/css/elegant.css" type="text/css">
+		<link rel="stylesheet" href="libs/slick/css/slick.css" type="text/css">
+		<link rel="stylesheet" href="libs/slick/css/slick-theme.css" type="text/css">
+		<link rel="stylesheet" href="libs/mmenu/css/mmenu.min.css" type="text/css">
+		<link rel="stylesheet" href="libs/slider/css/jslider.css">
+
+		<!-- Site Stylesheet -->
+		<link rel="stylesheet" href="assets/css/app.css" type="text/css">
+		<link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
+		
+		<!-- Google Web Fonts -->
+		<link href="../../css2-1?family=Barlow+Semi+Condensed:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+		<link href="../../css?family=EB+Garamond:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+		<!-- AlertifyJS CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+
 	
+		<style>
+			.shop-details .buttons .add-to-cart-wrap .btn-add-to-cart-btn {
+				-webkit-transition: none;
+				transition: none;
+				font-size: 16px;
+				font-weight: 500;
+				letter-spacing: 1.5px;
+				text-transform: uppercase;
+				line-height: 50px;
+				position: relative;
+				background: rgba(0, 0, 0, 0.75);
+				color: #fff;
+				text-align: center;
+				margin-right: 20px;
+				padding: 0 15px;
+				cursor: pointer;
+				display: inline-block;
+				vertical-align: top;
+				flex: 1;
+				margin: 0;
+				white-space: nowrap;
+			}
+			/* .attributes ul li.active span {
+				border: 2px solid #000; 
+				padding: 2px;
+				border-radius: 4px;
+			} */
+
+		</style>
 	</head>
 	
 	<body class="shop">
 		<div id="page" class="hfeed page-wrapper">
-		<?php include('header.php'); ?>
+			<?php include('header.php'); ?>
 
 			<div id="site-main" class="site-main">
 				<div id="main-content" class="main-content">
@@ -167,9 +201,9 @@
 														$productContent = htmlspecialchars($row['CAT_CONTENT'], ENT_QUOTES, 'UTF-8');
 														$colors = explode(',', htmlspecialchars($row['DRESSCOLOR'], ENT_QUOTES, 'UTF-8'));
 													?>
-													 <h1 class="title"><?php echo $productName; ?></h1>
+													 <h1 class="title productname"><?php echo $productName; ?></h1>
 													<span class="price">
-														<ins><span>$<?php echo $productRate; ?></span></ins>
+														<ins><span>₹<?php echo $productRate; ?></span></ins>
 													</span>
 													<!-- <div class="rating">
 														<div class="star star-5"></div>
@@ -202,7 +236,8 @@
 																					<span class="color-<?php echo ($index + 1); ?>" 
 																					style="background-color: <?php echo $color; ?>;" 
 																					data-image="<?php echo $imagePaths[$index]; ?>" 
-																					data-color="<?php echo $color; ?>"></span>
+																					data-color="<?php echo $color; ?>" value="<?php echo
+																					$dressColor[$index];?>"></span>
 																				</li>
 																			<?php endforeach; ?>
 																		</ul>
@@ -218,12 +253,12 @@
 																<input type="number" class="qty" step="1" min="0" max="" name="quantity" value="1" title="Qty" size="4" placeholder="" inputmode="numeric" autocomplete="off">
 																<button type="button" class="minus">-</button>	
 															</div>
-															<div class="btn-add-to-cart">
-																<a href="#" class="button" tabindex="0">Add to cart</a>
+															<div class="btn-add-to-cart-btn">
+																<a href="#" class="button" tabindex="0" style="color:white;">Add to cart</a>
 															</div>
 														</div>
 														<div class="btn-quick-buy" data-title="Wishlist">
-															<button class="product-btn">Buy It Now</button>
+															<a href="shop-checkout.php" class="product-btn">Buy It Now</a>
 														</div>
 														<div class="btn-wishlist" data-title="Wishlist">
 															<button class="product-btn">Add to wishlist</button>
@@ -388,7 +423,7 @@
 																			</div>		
 																			<div class="product-button">
 																				<div class="btn-add-to-cart" data-title="Add to cart">
-																					<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																					<a rel="nofollow" href="#" class="product-btn button" style="color:white;">Add to cart</a>
 																				</div>
 																				<div class="btn-wishlist" data-title="Wishlist">
 																					<button class="product-btn">Add to wishlist</button>
@@ -734,6 +769,7 @@
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script src="assets/js/app.js"></script>
 		<script src="libs/elevatezoom/js/jquery.elevatezoom.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
 
 		<!-- Site Scripts -->
@@ -743,7 +779,99 @@
 			$(document).ready(function() {
 				console.log($('.image-thumbnail')); // Check if it exists
 				console.log($('.image-additional')); 
+				// Fetch cart data on page load
+				//fetchCart();
+				$('.attributes .text li').on('click', function () {
+					$('.attributes .text li').removeClass('active'); // Remove active class from all
+					$(this).addClass('active'); // Add active class to the clicked item
+				});
 
+				// Handle click on color options
+				$('.attributes .colors li').on('click', function () {
+					$('.attributes .colors li').removeClass('active'); // Remove active class from all
+					$(this).addClass('active'); // Add active class to the clicked item
+				});
+
+				// Add to cart functionality
+				$('.btn-add-to-cart-btn a').on('click', function (e) { 
+					e.preventDefault();
+
+					// Fetch product details
+					const productName = $('h1.productname').text().trim(); // Get product name
+					const productPrice = $('span.price ins span').length > 0 
+						? $('span.price ins span').text().trim().replace('₹', '') // Discounted price
+						: $('span.price span').text().trim().replace('₹', ''); // Regular price
+					const quantity = $(this).closest('.add-to-cart-wrap').find('input[name="quantity"]').val(); // Get quantity
+					const activeImage = $('.img-item.slick-current img.thumbnail-image').attr('src'); // Get active image from the carousel
+					const selectedSize = $('.attributes .text li.active span').text().trim(); // Get selected size
+    				const selectedColor = $('.attributes .colors li.active span').attr('value'); // Get selected color
+
+					// Validate the inputs (optional)
+					if (!productName || !productPrice || !quantity || !activeImage || !selectedSize || !selectedColor) {
+						alert('Failed to fetch product details. Please try again.');
+						return;
+					}
+
+					// Add product to the database via AJAX
+					$.post('Add-to-cart.php', {
+						user_id: userId, // Replace `userId` with the actual user ID logic
+						product_name: productName,
+						price: parseFloat(productPrice), // Convert price to a float
+						image: activeImage,
+						quantity: parseInt(quantity), // Convert quantity to an integer
+						size: selectedSize,
+						color: selectedColor
+					}).done(function (response) {
+						const res = JSON.parse(response);
+						if (res.status === 'success') {
+							alertify.set('notifier','position', 'top-center');
+ 							alertify.success(res.message);
+							console.log(res);
+							fetchCart(); // Update the cart UI
+						} else {
+							alert(res.message);
+						}
+					}).fail(function () {
+						alert('An error occurred while adding the product to the cart.');
+					});
+			});
+
+			$('.btn-quick-buy a').on('click', function (e) {
+				e.preventDefault();
+
+				// Fetch product details
+				const productName = $('h1.productname').text().trim(); // Get product name
+				const productPrice = $('span.price ins span').length > 0 
+					? $('span.price ins span').text().trim().replace('₹', '') // Discounted price
+					: $('span.price span').text().trim().replace('₹', ''); // Regular price
+				const quantity = $('.btn-add-to-cart-btn a').closest('.add-to-cart-wrap').find('input[name="quantity"]').val(); // Get quantity
+				const activeImage = $('.img-item.slick-current img.thumbnail-image').attr('src'); // Get active image from the carousel
+				const selectedSize = $('.attributes .text li.active span').text().trim(); // Get selected size
+				const selectedColor = $('.attributes .colors li.active span').attr('data-color'); // Get selected color
+
+				// Validate the inputs (optional)
+				if (!productName || !productPrice || !quantity || !activeImage || !selectedSize || !selectedColor) {
+					alert('Please select all product options before proceeding to checkout.');
+					return;
+				}
+
+				// Store product details in localStorage
+				const productDetails = {
+					product_name: productName,
+					price: parseFloat(productPrice),
+					quantity: parseInt(quantity),
+					image: activeImage,
+					selectedSize: selectedSize,
+					selectedColor: selectedColor
+				};
+
+				localStorage.setItem('quickBuyProduct', JSON.stringify(productDetails));
+
+				// Redirect to checkout page
+				window.location.href = 'shop-checkout.php'; // Replace with your actual checkout page URL
+			});
+
+			
 				// Initialize the slick carousel
 				setTimeout(function() {
         $('.image-thumbnail').slick({
@@ -785,5 +913,100 @@
         });
     });
 		</script>
+		<!-- <script>
+			let cartCount = 0; // Cart count
+			const userId = localStorage.getItem("userid"); // Replace with the logged-in user's ID
+			// Fetch cart items
+			function fetchCart() {
+				$.get('fetch_cart.php', { user_id: userId }).done(function (response) {
+					const res = JSON.parse(response);
+					if (res.status === 'success') {
+						const cartItems = res.cart_items;
+						const combinedItems = combineCartItems(cartItems);
+						cartCount = cartItems.length;
+						$('.cart-count').text(cartCount);
+						if(cartCount==0){
+							$('.cart-list').empty();
+							const cartItem = `
+								<li class="empty">
+									<span>No products in the cart.</span>
+									<a class="go-shop" href="shop-grid-left.html">GO TO SHOP<i aria-hidden="true" class="arrow_right"></i></a>
+								</li>`;
+							$('.cart-list').append(cartItem);
+							$('.product-list').hide();
+							$('.empty-cart').show();
+						}else{
+							$('.cart-list').empty();
+							//$('.cart-list').show();
+							$('.product-list').show();
+							$('.empty-cart').hide();
+						}
+						cartItems.forEach(item => appendCartItem(item));
+
+						updateCartTotal(cartItems);
+					}
+				});
+			}
+			function combineCartItems(cartItems) {
+				const combined = {};
+
+				cartItems.forEach(item => {
+					const itemName = item.product_name;
+
+					if (combined[itemName]) {
+						// If the product already exists, update quantity and price
+						combined[itemName].quantity += item.quantity;
+						combined[itemName].price += parseFloat(item.price) * item.quantity;
+					} else {
+						// Add new product with initial quantity and price
+						combined[itemName] = {
+							...item,
+							quantity: item.quantity,
+							price: parseFloat(item.price) * item.quantity
+						};
+					}
+				});
+
+				// Convert the object back to an array
+				return Object.values(combined);
+			}
+			// Append a cart item
+			function appendCartItem(item) {
+				const cartItem = `
+					<li class="mini-cart-item">
+						<a href="#" class="remove" title="Remove this item" onclick="removeCartItem('${item.product_id}', event)"><i class="icon_close"></i></a>
+						<a href="shop-details.html" class="product-image"><img width="600" height="600" src="${item.image}" alt=""></a>
+						<a href="shop-details.html" class="product-name">${item.product_name}</a>
+						<div class="quantity">Qty: ${item.quantity}</div>
+						<div class="price">$${parseFloat(item.price).toFixed(2)}</div>
+					</li>`;
+				$('.cart-list').append(cartItem);
+			}
+
+			// Remove an item from the cart
+			function removeCartItem(productName, event) {
+				event.preventDefault();
+
+				$.post('remove_from_cart.php', {
+					user_id: userId,
+					product_name: productName
+				}).done(function (response) {
+					const res = JSON.parse(response);
+					if (res.status === 'success') {
+						fetchCart();
+					} else {
+						alert(res.message);
+					}
+				});
+			}
+
+			// Update total price
+			function updateCartTotal(cartItems) {
+				const total = cartItems.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+				$('.total-price span').text(`$${total.toFixed(2)}`);
+			}
+
+
+		</script> -->
 	</body>
 </html>

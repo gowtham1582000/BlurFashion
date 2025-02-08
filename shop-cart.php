@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Shop Cart | Ruper</title>
+		<title>Shop Cart | Blur Fashion</title>
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="media/favicon.png">
@@ -33,6 +33,7 @@
 
 	<script>
     $(document).ready(function () {
+
         // Function to populate the cart page with data from the server
 		var userId=localStorage.getItem("userid")
         function populateCartPage() {
@@ -62,7 +63,7 @@
                                         </div>
                                     </td>
                                     <td class="product-price">
-                                        <span class="price">$${parseFloat(product.price).toFixed(2)}</span>
+                                        <span class="price">₹${parseFloat(product.price).toFixed(2)}</span>
                                     </td>
                                     <td class="product-quantity">
                                         <div class="quantity">
@@ -72,7 +73,7 @@
                                         </div>
                                     </td>
                                     <td class="product-subtotal">
-                                        <span>$${productTotal.toFixed(2)}</span>
+                                        <span>₹${productTotal.toFixed(2)}</span>
                                     </td>
                                     <td class="product-remove">
                                         <a href="#" class="remove" data-index="${index}" data-id="${product.product_id}">×</a>								
@@ -109,8 +110,8 @@
 
         // Update cart totals
         function updateCartTotals(total) {
-            $('.cart-subtotal span').text(`$${total.toFixed(2)}`);
-            $('.order-total span').text(`$${total.toFixed(2)}`);
+            $('.cart-subtotal span').text(`₹${total.toFixed(2)}`);
+            $('.order-total span').text(`₹${total.toFixed(2)}`);
         }
 
         // Handle quantity change (plus and minus buttons)
@@ -124,6 +125,7 @@
                 action: isPlus ? 'increase' : 'decrease'
             }).done(function (response) {
                 populateCartPage();
+				fetchCart();
             });
         });
 
@@ -138,6 +140,7 @@
                 quantity: quantity
             }).done(function (response) {
                 populateCartPage();
+				fetchCart();
             });
         });
 
@@ -147,14 +150,21 @@
             const productId = $(this).data('id');
 
             $.post('remove_cart_item.php', { user_id: userId, product_id: productId }).done(function (response) {
-                populateCartPage();
+				const res = JSON.parse(response);
+				if (res.status === 'success') {
+					fetchCart();
+					populateCartPage();
+				} else {
+					alert(res.message);
+				}
+               
             });
         });
 
         // Populate the cart page on page load
         populateCartPage();
     });
-</script>
+	</script>
 
 	
 	</head>
@@ -345,8 +355,8 @@
 											<a href="shop-details.html">Pillar Dining Table Round</a>
 										</div>
 										<div class="wishlist-item-price">
-											<del aria-hidden="true"><span>$150.00</span></del> 
-											<ins><span>$100.00</span></ins>
+											<del aria-hidden="true"><span>₹150.00</span></del> 
+											<ins><span>₹100.00</span></ins>
 										</div>
 										<div class="wishlist-item-time">June 4, 2022</div>                                
 									</td>

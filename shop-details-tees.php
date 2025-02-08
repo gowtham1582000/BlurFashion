@@ -87,7 +87,7 @@
 					// Output the result for debugging (optional)
 					// echo "<pre>";
 					// print_r($images);
-					 print_r($result);
+					// print_r($result);
 					// echo "</pre>";
 
 				} else {
@@ -108,7 +108,7 @@
 			<div id="site-main" class="site-main">
 				<div id="main-content" class="main-content">
 					<div id="primary" class="content-area">
-						<div id="title" class="page-title">
+						<!-- <div id="title" class="page-title">
 							<div class="section-container">
 								<div class="content-title-heading">
 									<h1 class="text-title-heading">
@@ -119,7 +119,7 @@
 									<a href="index.php">Home</a><span class="delimiter"></span><a href="shop-grid-left.html">Shop</a><span class="delimiter"></span>Bora Armchair
 								</div>
 							</div>
-						</div>
+						</div> -->
 
 						<div id="content" class="site-content" role="main">
 							<div class="shop-details zoom" data-product_layout_thumb="scroll" data-zoom_scroll="true" data-zoom_contain_lens="true" data-zoomtype="inner" data-lenssize="200" data-lensshape="square" data-lensborder="" data-bordersize="2" data-bordercolour="#f9b61e" data-popup="false">	

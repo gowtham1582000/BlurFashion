@@ -38,15 +38,15 @@
 			<div id="site-main" class="site-main">
 				<div id="main-content" class="main-content">
 					<div id="primary" class="content-area">
-						<div id="title" class="page-title">
+						<div id="title" class="page-title" style="background-position:center; background-image: url(../../media/product/clothing-rack-with-hawaiian-shirts-with-floral-print_23-2149366012.jpg) !important;">
 							<div class="section-container">
 								<div class="content-title-heading">
 									<h1 class="text-title-heading">
-										Bed &amp; Bath		
+										Shirts		
 									</h1>
 								</div>
 								<div class="breadcrumbs">
-									<a href="index.php">Home</a><span class="delimiter"></span><a href="shop-grid-left.html">Shop</a><span class="delimiter"></span>Bed &amp; Bath
+									<a href="index.php">Home</a><span class="delimiter"></span><a href="shop-grid-left.html">Shop</a><span class="delimiter"></span>shirts
 								</div>
 							</div>
 						</div>
@@ -59,7 +59,7 @@
 											<div class="products-topbar clearfix">
 												<div class="products-topbar-left">
 													<div class="products-count">
-														Showing all 21 results
+														Showing results
 													</div>
 												</div>
 												<div class="products-topbar-right">
@@ -97,8 +97,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details-tees.php?category_id=5">
-																				<img width="600" height="600" src="media/product/shirts/18.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shirts/19.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shirts/19.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/18.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
@@ -130,8 +130,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details-tees.php?category_id=2">
-																				<img width="600" height="600" src="media/product/shirts/1.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shirts/2.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shirts/2.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/1.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -279,9 +279,9 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details-tees.php?category_id=106">
-																				<img width="600" height="600" src="media/product/shirts/33.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shirts/34.jpg" class="hover-image back" alt="">
+																			<a href="shop-details-tees.php?category_id=9">
+																				<img width="600" height="600" src="media/product/shirts/slot2delhishirts/08.JPG" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/slot2delhishirts/01.JPG" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -301,7 +301,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=8">Category 8</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=9">Floral printed shirts	</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$100.00</span></del> 
 																				<ins><span>$90.00</span></ins>
@@ -379,7 +379,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=108">Category 108</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=10">Category 10</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$100.00</span></del> 
 																				<ins><span>$90.00</span></ins>
@@ -396,9 +396,9 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details-tees.php?category_id=109">
-																				<img width="600" height="600" src="media/product/shirts/33.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shirts/34.jpg" class="hover-image back" alt="">
+																			<a href="shop-details-tees.php?category_id=10">
+																				<img width="600" height="600" src="media/product/shirts/slot2delhishirts/80.JPG" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/slot2delhishirts/80.JPG" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">

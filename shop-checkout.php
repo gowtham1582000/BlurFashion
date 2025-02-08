@@ -1,27 +1,4 @@
-﻿<?php
-require 'razorpay-php/Razorpay.php'; 
-use Razorpay\Api\Api;
-
-
-// Your Razorpay credentials
-$apiKey = "rzp_test_gH7uWmfygand8W";
-$apiSecret = "wWxnJ1oKTRSDqPnGrGYlIVKk";
-$receiptId = "receipt_" . uniqid();
-// Initialize Razorpay API
-$api = new Api($apiKey, $apiSecret);
-
-// Create an order
-$order = $api->order->create([
-    'receipt' => $receiptId,
-    'amount' => 50000, // Amount in paise (500.00 INR)
-    'currency' => 'INR',
-]);
-
-$orderId = $order['id'];
-?>
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<!-- Meta Data -->
@@ -57,8 +34,11 @@ $orderId = $order['id'];
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
 		<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 		<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	<style>
+		 .error { color: red; font-size: 12px; }
 		.payment-box p {
 			display: flex;
 			align-items: center;
@@ -74,628 +54,445 @@ $orderId = $order['id'];
 		.payment-box p i:hover {
 			color: #007bff; /* Icon color on hover */
 		}
-
+		
+		.btn {
+              padding: 12px 24px;
+              font-size: 18px;
+              border: none;
+              cursor: pointer;
+              border-radius: 8px;
+              font-weight: bold;
+              transition: 0.3s ease;
+          }
+          .confirm-btn {
+              background: linear-gradient(135deg, #ff416c, #ff4b2b);
+              color: white;
+              box-shadow: 0 4px 10px rgba(255, 75, 43, 0.5);
+          }
+          .confirm-btn:hover {
+              transform: scale(1.1);
+          }
 	</style>
 	<script>
-		const userId = localStorage.getItem("userid");
+		//const userId = localStorage.getItem("userid");
 
 		// Check if user_id exists
-		if (!userId) {
+		if (!localStorage.getItem('userid') || localStorage.getItem('userid')==0) {
 			alert("User ID not found. Please log in again.");
 			window.location.href = "index.php"; // Redirect to login if user_id is missing
 		}
 
-		const options = {
-			key: "rzp_test_gH7uWmfygand8W", // Enter the Key ID generated from the Razorpay Dashboard
-			amount: "50000", // Amount in paise
-			currency: "INR",
-			name: "Blur Fashion",
-			description: "Test Transaction",
-			// image: "https://example.com/logo.png", // Optional: Your company logo
-			order_id: "<?php echo $orderId; ?>", // Order ID generated in the backend
-			handler: function (response) {
-				// After successful payment
-				alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
-				// Call your server to verify the payment and save it
-			},
-			prefill: {
-				name: "John Doe",   // Prefill customer name
-				email: "john.doe@example.com",  // Prefill customer email
-				contact: "9999999999", // Prefill customer phone
-			},
-			theme: {
-				color: "#F37254",
-			},
-		};
-		const rzp = new Razorpay(options);
+		
+		//const rzp = new Razorpay(options);
 
-		function RazorpayCheckOut(event){
-			const formData = new FormData(document.getElementById("checkout-form"));
-			formData.append("user_id", userId); // Add user_id to the form data
-			
-			rzp.open();
-			event.preventDefault();
-
-			fetch("Place_order.php", {
+		function RazorpayCheckOut() {
+			// Fetch the Razorpay order ID from your backend
+			fetch("razorpay-orderid.php", {
 				method: "POST",
-				body: formData,
 			})
-				.then((response) => response.json())
-				.then((data) => {
-					if (data.status === "success") {
-						alert("Order placed successfully!");
-						window.location.href = "index.php";
-					} else {
-						alert("Error placing order: " + data.message);
-					}
-				})
+			.then((response) => response.json())
+			.then((data) => {
+				const options = {
+					key: "rzp_test_gH7uWmfygand8W", // Razorpay key
+					currency: "INR",
+					name: "Blur Fashion",
+					description: "Test Transaction",
+					order_id: data.order_id, // Razorpay order ID from backend
+					handler: function (response) {
+						// Step 1: Verify payment with the server
+						console.log("Payment Response:", response);
+
+						fetch("paymentverification.php", {
+							method: "POST",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify({
+								razorpay_payment_id: response.razorpay_payment_id,
+								razorpay_order_id: response.razorpay_order_id,
+								razorpay_signature: response.razorpay_signature,
+							}),
+						})
+						.then((response) => response.json())
+						.then((data) => {
+							if (data.status === "success") {
+								// Step 2: Trigger email sending via mail-trigger.php
+								return fetch("mail-trigger.php", {
+									method: "POST",
+									body: formData, // Send your form data here
+								});
+							} else {
+								throw new Error(data.message);
+							}
+						})
+						.then((response) => response.json())
+						.then((data) => {
+							if (data.success) {
+								// Step 3: Place the order after email is triggered successfully
+								return fetch("Place-order.php", {
+									method: "POST",
+									body: formData, // Send your form data here
+								});
+							} else {
+								throw new Error("Error in sending email: " + data.message);
+							}
+						})
+						.then((response) => response.json())
+						.then((data) => {
+							if (data.success) {
+								alert("Order placed successfully!");
+								// window.location.href = "index.php"; // Optional: Redirect to homepage or order confirmation page
+							} else {
+								alert("Error placing order: " + data.message);
+							}
+						})
+						.catch((error) => {
+							console.error("Error:", error);
+							alert("An error occurred: " + error.message);
+						});
+					},
+					prefill: {
+						name: "John Doe",
+						email: "john.doe@example.com",
+						contact: "9999999999",
+					},
+					theme: {
+						color: "#F37254",
+					},
+				};
+
+				const rzp = new Razorpay(options);
+				rzp.open();
+			})
 			.catch((error) => {
 				console.error("Error:", error);
 			});
-
-			
 		}
+
 		
 	</script>
 
 	<script>
-
+		var orderDetails = [];
 		document.addEventListener("DOMContentLoaded", function () {
-    const userId = localStorage.getItem('userid'); // Replace with the user's ID or fetch dynamically if logged in
+			var totalCart=0
+			
+			// Fetch cart details for the user
+			function fetchCartDetails() {
+				$.get('getCartDetails.php', { user_id: localStorage.getItem('userid') })
+				.done(function(response) {
+					if (response.error) {
+						// Handle error response
+						console.error("Error fetching cart details:", response.error);
+						$('.checkout-review-order-table').html('<p>Your cart could not be loaded. Please try again later.</p>');
+						return;
+					}
+					console.log(response)
+					const cartItems = response; // Assuming the response is an array of cart items
+					if (cartItems.length > 0) {
+						$('.checkout-review-order-table').show();
+						$('.cart-empty-message').hide();
 
-    // Fetch cart details for the user
-	function fetchCartDetails() {
-    	$.get('getCartDetails.php', { user_id: userId })
-       	 .done(function(response) {
-            if (response.error) {
-                // Handle error response
-                console.error("Error fetching cart details:", response.error);
-                $('.checkout-review-order-table').html('<p>Your cart could not be loaded. Please try again later.</p>');
-                return;
-            }
+						let cartItemsHTML = '';
+						let subtotal = 0;
 
-            const cartItems = response; // Assuming the response is an array of cart items
-            if (cartItems.length > 0) {
-                $('.checkout-review-order-table').show();
-                $('.cart-empty-message').hide();
+						cartItems.forEach((product, index) => {
+							const productTotal = parseFloat(product.price) * product.quantity;
+							subtotal += productTotal;
 
-                let cartItemsHTML = '';
-                let subtotal = 0;
+							cartItemsHTML += `
+							<div class="cart-item">
+								<div class="info-product">
+									<div class="product-thumbnail">
+										<img width="600" height="600" src="${product.image}" alt="">					
+									</div>
+									<div class="product-name">
+										${product.product_name}
+										<div>
+											<strong class="product-quantity">QTY : ${product.quantity}</strong>	
+											<strong class="product-quantity">SIZE : ${product.size}</strong>
+											<strong class="product-quantity">COLOR : ${product.color}</strong>
+										</div>							
+									</div>
+								</div>
+								<div class="product-total">
+									<span>₹${productTotal.toFixed(2)}</span>
+								</div>
+							</div>
+							`;
+							orderDetails.push({
+								name: product.product_name,
+								quantity: parseInt(product.quantity),
+								price: parseFloat(productTotal.toFixed(2)),
+								size: product.size,
+								color: product.color,
+								image: product.image
+							});
+						});
 
-                cartItems.forEach((product, index) => {
-                    const productTotal = parseFloat(product.price) * product.quantity;
-                    subtotal += productTotal;
+						// Append the HTML to the cart table body
+						$('.cart-items').html(cartItemsHTML);
 
-                    cartItemsHTML += `
-					 <div class="cart-item">
-                         <div class="info-product">
-                             <div class="product-thumbnail">
-                                <img width="600" height="600" src="${product.image}" alt="">					
-                             </div>
-                             <div class="product-name">
-                                 ${product.product_name}
-                                 <strong class="product-quantity">QTY : ${product.quantity}</strong>											
-                             </div>
-                         </div>
-                         <div class="product-total">
-                             <span>$${productTotal.toFixed(2)}</span>
-                         </div>
-                     </div>
-                    `;
-                });
+						// Update cart totals
+						updateCheckoutTotals(subtotal);
+					} else {
+						// If cart is empty
+						$('.checkout-review-order-table').hide();
+						$('.cart-empty-message').show().html('<p>Your cart is empty. Please add items to the cart.</p>');
+					}
+				})
+				.fail(function(xhr, status, error) {
+					console.error("Failed to fetch cart details:", error);
+					$('.checkout-review-order-table').html('<p>Failed to load your cart. Please try again later.</p>');
+				});
+				
+				console.log(orderDetails)
 
-                // Append the HTML to the cart table body
-                $('.cart-items').html(cartItemsHTML);
+			}
 
-                // Update cart totals
-                updateCheckoutTotals(subtotal);
-            } else {
-                // If cart is empty
-                $('.checkout-review-order-table').hide();
-                $('.cart-empty-message').show().html('<p>Your cart is empty. Please add items to the cart.</p>');
-            }
-        })
-        .fail(function(xhr, status, error) {
-            console.error("Failed to fetch cart details:", error);
-            $('.checkout-review-order-table').html('<p>Failed to load your cart. Please try again later.</p>');
-        });
-}
+			// Function to update checkout totals
+			function updateCheckoutTotals(subtotal) {
+				$('.subtotal-price span').text(`₹${subtotal.toFixed(2)}`);
+				$('.total-price span').text(`₹${subtotal.toFixed(2)}`); // Update the total to match subtotal (if no additional charges)
+				totalCart=subtotal.toFixed(2)
+				console.log(subtotal.toFixed(2))
+			}
 
-    // Function to update checkout totals
-    function updateCheckoutTotals(subtotal) {
-        $('.subtotal-price span').text(`$${subtotal.toFixed(2)}`);
-        $('.total-price span').text(`$${subtotal.toFixed(2)}`); // Update the total to match subtotal (if no additional charges)
-    }
+			// Fetch cart details on page load
+			fetchCartDetails(); 
+		
+		});
 
-    // Fetch cart details on page load
-    fetchCartDetails();
-});
+		const formData = new FormData();
+		function validation(e) {
+				// Clear previous error messages
+				e.preventDefault();
+				$('.error').text('');
+				
+				let isValid = true;
+
+				// Shipping validation (only if checkbox is checked)
+				if ($('input[name="ship_to_different_address"]').is(':checked')) {
+					if ($('input[name="shipping_first_name"]').val().trim() === "") {
+						$('#shipping-first-name-error').text("First name is required.");
+						isValid = false;
+					}
+
+					if ($('input[name="shipping_last_name"]').val().trim() === "") {
+						$('#shipping-last-name-error').text("Last name is required.");
+						isValid = false;
+					}
+
+					if ($('input[name="shiping_address_2"]').val().trim() === "") {
+						$('#shipping-door-no-error').text("Door No is required.");
+						isValid = false;
+					}
+
+					if ($('input[name="shipping_address_1"]').val().trim() === "") {
+						$('#shipping-street-address-error').text("Street address is required.");
+						isValid = false;
+					}
+
+					if ($('input[name="shipping_country"]').val().trim() === "") {
+						$('#shipping-country-error').text("Please select a country.");
+						isValid = false;
+					}
+
+					if ($('input[name="shipping_postcode"]').val().trim() === "") {
+						$('#shipping-postcode-error').text("Postcode is required.");
+						isValid = false;
+					}
+
+					if ($('input[name="shipping_state"]').val().trim() === "") {
+						$('#shipping-state-error').text("Please select a state.");
+						isValid = false;
+					}
+
+					if ($('input[name="shipping_city"]').val().trim() === "") {
+						$('#shipping-city-error').text("Please select a city.");
+						isValid = false;
+					}
+
+					let shippingPhone = $('input[name="shipping_phone"]').val();
+					if (shippingPhone.trim() === "" || !shippingPhone.match(phonePattern)) {
+						$('#shipping-phone-error').text("Please enter a valid phone number.");
+						isValid = false;
+					}
+
+					let shippingEmail = $('input[name="shipping_email"]').val();
+					if (shippingEmail.trim() === "" || !shippingEmail.match(emailPattern)) {
+						$('#shipping-email-error').text("Please enter a valid email address.");
+						isValid = false;
+					}
+				}
+
+				// Validate first name
+				if ($('input[name="billing_first_name"]').val().trim() === "") {
+					$('#first-name-error').text("First name is required.");
+					isValid = false;
+				}
+				
+				// Validate last name
+				if ($('input[name="billing_last_name"]').val().trim() === "") {
+					$('#last-name-error').text("Last name is required.");
+					isValid = false;
+				}
+				
+				// Validate street address
+				if ($('input[name="billing_address_1"]').val().trim() === "") {
+					$('#street-address-error').text("Street address is required.");
+					isValid = false;
+				}
+
+				if ($('input[name="billing_address_2"]').val().trim() === "") {
+					$('#door-no-error').text("Door No is required.");
+					isValid = false;
+				}
+
+				// Validate country
+				if ($('input[name="billing_country"]').val().trim() === "") {
+					$('#country-error').text("Please select a country.");
+					isValid = false;
+				}
+
+				if ($('input[name="billing_postcode"]').val().trim() === "") {
+					$('#Postcode-error').text("Please select a post code.");
+					isValid = false;
+				}
+
+				// Validate state
+				if ($('input[name="billing_state"]').val().trim() === "") {
+					$('#state-error').text("Please select a state.");
+					isValid = false;
+				}
+
+				// Validate city
+				if ($('input[name="billing_city"]').val().trim() === "") {
+					$('#city-error').text("Please select a city.");
+					isValid = false;
+				}
+
+				// Validate phone number (basic validation)
+				let phone = $('input[name="billing_phone"]').val();
+				let phonePattern = /^[0-9]{10}$/;
+				if (phone.trim() === "" || !phone.match(phonePattern)) {
+					$('#phone-error').text("Please enter a valid phone number.");
+					isValid = false;
+				}
+
+				// Validate email address
+				let email = $('input[name="billing_email"]').val();
+				let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+				if (email.trim() === "" || !email.match(emailPattern)) {
+					$('#email-error').text("Please enter a valid email address.");
+					isValid = false;
+				}
+				console.log(orderDetails)
+				// If form is invalid, prevent submission
+				if (isValid) {
+
+					formData.append("user_id", localStorage.getItem("userid"));
+					formData.append("first_name", document.querySelector("input[name='billing_first_name']").value);
+					formData.append("last_name", document.querySelector("input[name='billing_last_name']").value);
+					formData.append("billing_address_1", document.querySelector("input[name='billing_address_1']").value);
+					formData.append("billing_address_2", document.querySelector("input[name='billing_address_2']").value);
+					formData.append("billing_city", document.querySelector("input[name='billing_city']").value);
+					formData.append("billing_state", document.querySelector("input[name='billing_state']").value);
+					formData.append("billing_postcode", document.querySelector("input[name='billing_postcode']").value);
+					formData.append("billing_phone", document.querySelector("input[name='billing_phone']").value);
+					formData.append("billing_email", document.querySelector("input[name='billing_email']").value);
+					formData.append("order_comments", document.querySelector("textarea[name='order_comments']").value);
+					formData.append("billing_country", document.querySelector("input[name='billing_country']").value);
+
+
+					formData.append("shipping_first_name", document.querySelector("input[name='shipping_first_name']").value);
+					formData.append("shipping_last_name", document.querySelector("input[name='shipping_last_name']").value);
+					formData.append("shipping_address_1", document.querySelector("input[name='shipping_address_1']").value);
+					formData.append("shipping_address_2", document.querySelector("input[name='shiping_address_2']").value);
+					formData.append("shipping_city", document.querySelector("input[name='shipping_city']").value);
+					formData.append("shipping_state", document.querySelector("input[name='shipping_state']").value);
+					formData.append("shipping_postcode", document.querySelector("input[name='shipping_postcode']").value);
+					formData.append("shipping_phone", document.querySelector("input[name='shipping_phone']").value);
+					formData.append("shipping_email", document.querySelector("input[name='shipping_email']").value);
+					formData.append("shipping_country", document.querySelector("input[name='shipping_country']").value);
+			
+					formData.append("MailShipAddress", $('input[name="ship_to_different_address"]').is(':checked')?'S':'B');
+
+
+					orderDetails.forEach((item, index) => {
+						formData.append(`order_items[${index}][name]`, item.name);
+						formData.append(`order_items[${index}][quantity]`, item.quantity);
+						formData.append(`order_items[${index}][price]`, item.price);
+						formData.append(`order_items[${index}][size]`, item.size);
+						formData.append(`order_items[${index}][color]`, item.color);
+						formData.append(`order_items[${index}][image]`, item.image);
+					});
+					Swal.fire({
+									title: "🎉 Order Placed!",
+									html: "<b>Thank you for shopping with us! 🎁</b><br>Your order will be delivered soon.",
+									icon: "success",
+									showCancelButton: true,
+									confirmButtonColor: "#ff416c",
+									cancelButtonColor: "#555",
+									confirmButtonText: "ok! 🚀",
+									cancelButtonText: "Maybe Later 😴",
+									background: "#fff",
+									allowOutsideClick: false, // Prevent closing on outside click
+									allowEscapeKey: false, // Prevent closing with ESC key
+									showCloseButton: false, // Hide close (X) button
+									backdrop: `
+										rgba(0,0,0,0.4)
+										url("https://i.gifer.com/7efs.gif")
+										center top
+										no-repeat
+									`,
+								}).then((result) => {
+									formData.append("default_address", result.isConfirmed?'Y':'N');
+								 if (document.querySelector('input[name="payment_method"]:checked').value === "cod") {
+										fetch('mail-trigger.php', {
+											method: 'POST',
+											body: formData
+										})
+										.then(response => response.json())
+										.then(data => {
+											if (data.success) {
+												alert('Order placed successfully!');
+												
+
+												fetch("Place-order.php", {
+													method: "POST",
+													body: formData,
+												})
+												.then(response => response.json())
+												.then(saveData => {
+													if (saveData.success) {
+														alert('Order saved successfully!');
+													} else {
+														console.error('Failed to save order.');
+													}
+												})
+												.catch(err => console.error('Error saving order:', err));
+											} else {
+												alert('Failed to place order.');
+											}
+										})
+										.catch(err => console.error('Error:', err));
+
+											
+									} else {
+										RazorpayCheckOut()
+									}
+								});
+
+					
+					
+					
+					//RazorpayCheckOut()
+				}
+			}
 
 	</script>
 	
-	
-	</head>
-	
 	<body class="shop">
 		<div id="page" class="hfeed page-wrapper">
-			<header id="site-header" class="site-header header-v1 absolute">
-				<div class="header-mobile">
-					<div class="section-padding">
-						<div class="section-container">
-							<div class="row">
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-left">
-									<div class="navbar-header">
-										<button type="button" id="show-megamenu" class="navbar-toggle"></button>
-									</div>
-								</div>
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 header-center">
-									<div class="">
-										<a href="index.php">
-											<img width="400" height="79" src="./assets/img/B-removebg-preview (1).png" alt="Ruper – Furniture HTML Theme">
-										</a>
-									</div>
-								</div>
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-right">
-									<div class="ruper-topcart dropdown">
-										<div class="dropdown mini-cart top-cart">
-											<div class="remove-cart-shadow"></div>
-											<a class="dropdown-toggle cart-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<div class="icons-cart"><i class="icon-large-paper-bag"></i><span class="cart-count">2</span></div>
-											</a>
-											<div class="dropdown-menu cart-popup">
-												<div class="cart-empty-wrap">
-													<ul class="cart-list">
-														<li class="empty">
-															<span>No products in the cart.</span>
-															<a class="go-shop" href="shop-grid-left.html">GO TO SHOP<i aria-hidden="true" class="arrow_right"></i></a>
-														</li>
-													</ul>
-												</div>
-												<div class="cart-list-wrap">
-													<ul class="cart-list ">
-														<li class="mini-cart-item">
-															<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>
-															<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/3.jpg" alt=""></a>
-															<a href="shop-details.html" class="product-name">Chair Oak Matt Lacquered</a>		
-															<div class="quantity">Qty: 1</div>
-															<div class="price">$150.00</div>
-														</li>
-														<li class="mini-cart-item">
-															<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>													
-															<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/1.jpg" alt=""></a>
-															<a href="shop-details.html" class="product-name">Zunkel Schwarz</a>
-															<div class="quantity">Qty: 1</div>
-															<div class="price">$100.00</div>						
-														</li>
-													</ul>
-													<div class="total-cart">
-														<div class="title-total">Total: </div>
-														<div class="total-price"><span>$100.00</span></div>
-													</div>
-													<div class="free-ship">
-														<div class="title-ship">Buy <strong>$400</strong> more to enjoy <strong>FREE Shipping</strong></div>
-														<div class="total-percent"><div class="percent" style="width:20%"></div></div>
-													</div>
-													<div class="buttons">
-														<a href="shop-cart.php" class="button btn view-cart btn-primary">View cart</a>
-														<a href="shop-checkout.php" class="button btn checkout btn-default">Check out</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="header-mobile-fixed">
-						<!-- Shop -->
-						<div class="shop-page">
-							<a href="shop-grid-left.html"><i class="wpb-icon-shop"></i></a>
-						</div>
-
-						<!-- Login -->
-						<div class="my-account">
-							<div class="login-header">
-								<a href="page-my-account.html"><i class="wpb-icon-user"></i></a>
-							</div>
-						</div>
-
-						<!-- Search -->
-						<div class="search-box">
-							<div class="search-toggle"><i class="wpb-icon-magnifying-glass"></i></div>
-						</div>
-
-						<!-- Wishlist -->
-						<div class="wishlist-box">
-							<a href="shop-wishlist.html"><i class="wpb-icon-heart"></i></a>
-						</div>
-					</div>
-				</div>
-
-				<div class="header-desktop">
-					<div class="header-wrapper">
-						<div class="section-padding">
-							<div class="section-container p-l-r">
-								<div class="row">
-									<div class="col-xl-3 col-lg-2 col-md-12 col-sm-12 col-12 header-left">
-										<div class="">
-											<a href="index.php">
-												<img width="400" height="79" src="./assets/img/B-removebg-preview (1).png" alt="Ruper – Furniture HTML Theme">
-											</a>
-										</div>
-									</div>
-
-									<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-center header-center">
-										<div class="site-navigation">
-											<nav id="main-navigation">
-												<ul id="menu-main-menu" class="menu">
-													<li class="level-0 menu-item menu-item-has-children mega-menu">
-														<a href="index.php"><span class="menu-item-text">Home</span></a>
-														<div class="sub-menu">
-															<div class="row">
-																<div class="col-md-6">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Furniture 1</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="index.php"><span class="menu-item-text">Home Categories</span></a>
-																			</li>
-																			<li>
-																				<a href="index2.html"><span class="menu-item-text">Home Clean</span></a>
-																			</li>
-																			<li>
-																				<a href="index3.html"><span class="menu-item-text">Home Collection</span></a>
-																			</li>
-																			<li>
-																				<a href="index4.html"><span class="menu-item-text">Home Grid</span></a>
-																			</li>
-																			<li>
-																				<a href="index5.html"><span class="menu-item-text">Home Minimal</span></a>
-																			</li>
-																			<li>
-																				<a href="index6.html"><span class="menu-item-text">Home Modern</span></a>
-																			</li>
-																			<li>
-																				<a href="index7.html"><span class="menu-item-text">Home Stylish</span></a>
-																			</li>
-																			<li>
-																				<a href="index8.html"><span class="menu-item-text">Home Unique</span></a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="col-md-6">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Furniture 2</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="index9.html"><span class="menu-item-text">Home Split</span></a>
-																			</li>
-																			<li>
-																				<a href="index10.html"><span class="menu-item-text">Home Gothic</span></a>
-																			</li>
-																			<li>
-																				<a href="index11.html"><span class="menu-item-text">Home Luxury</span></a>
-																			</li>
-																			<li>
-																				<a href="index12.html"><span class="menu-item-text">Home Scandinavian</span></a>
-																			</li>
-																			<li>
-																				<a href="index13.html"><span class="menu-item-text">Home Mid-Century</span></a>
-																			</li>
-																			<li>
-																				<a href="index14.html"><span class="menu-item-text">Home Retro</span></a>
-																			</li>
-																			<li>
-																				<a href="index15.html"><span class="menu-item-text">Home Color Block</span></a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</li>
-													<li class="level-0 menu-item menu-item-has-children current-menu-item">
-														<a href="shop-grid-left.html"><span class="menu-item-text">Shop</span></a>
-														<ul class="sub-menu">
-															<li class="level-1 menu-item menu-item-has-children">
-																<a href="shop-grid-left.html"><span class="menu-item-text">Shop - Products</span></a>
-																<ul class="sub-menu">
-																	<li>
-																		<a href="shop-grid-left.html"><span class="menu-item-text">Shop Grid - Left Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-list-left.html"><span class="menu-item-text">Shop List - Left Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-grid-right.html"><span class="menu-item-text">Shop Grid - Right Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-list-right.html"><span class="menu-item-text">Shop List - Right Sidebar</span></a>
-																	</li>
-																	<li>
-																		<a href="shop-grid-fullwidth.html"><span class="menu-item-text">Shop Grid - No Sidebar</span></a>
-																	</li>
-																</ul>
-															</li>
-															<li>
-																<a href="shop-details.html"><span class="menu-item-text">Shop Details</span></a>
-															</li>
-															<li>
-																<a href="shop-cart.php"><span class="menu-item-text">Shop - Cart</span></a>
-															</li>
-															<li>
-																<a href="shop-checkout.php"><span class="menu-item-text">Shop - Checkout</span></a>
-															</li>
-															<li>
-																<a href="shop-wishlist.html"><span class="menu-item-text">Shop - Wishlist</span></a>
-															</li>
-														</ul>
-													</li>
-													<li class="level-0 menu-item menu-item-has-children mega-menu mega-menu-fullwidth align-center">
-														<a href="blog-grid-left.html"><span class="menu-item-text">Blog</span></a>
-														<div class="sub-menu">
-															<div class="row">
-																<div class="col-md-5">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Blog Category</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="blog-grid-left.html"><span class="menu-item-text">Blog Grid - Left Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-grid-right.html"><span class="menu-item-text">Blog Grid - Right Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-list-left.html"><span class="menu-item-text">Blog List - Left Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-list-right.html"><span class="menu-item-text">Blog List - Right Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-grid-fullwidth.html"><span class="menu-item-text">Blog Grid - No Sidebar</span></a>
-																			</li>
-																		</ul>
-																	</div>
-
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Blog Details</h2>
-																		<ul class="menu-list">
-																			<li>
-																				<a href="blog-details-left.html"><span class="menu-item-text">Blog Details - Left Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-details-right.html"><span class="menu-item-text">Blog Details - Right Sidebar</span></a>
-																			</li>
-																			<li>
-																				<a href="blog-details-fullwidth.html"><span class="menu-item-text">Blog Details - No Sidebar</span></a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="col-md-7">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Recent Posts</h2>
-																		<div class="block block-posts recent-posts p-t-5">
-																			<ul class="posts-list">
-																				<li class="post-item">
-																					<a href="blog-details-right.html" class="post-image">
-																						<img src="media/blog/1.jpg">
-																					</a>
-																					<div class="post-content">
-																						<h2 class="post-title">
-																							<a href="blog-details-right.html">
-																								Easy Fixes For Home Decor
-																							</a>
-																						</h2>
-																						<div class="post-time">
-																							<span class="post-date">May 30, 2022</span>
-																							<span class="post-comment">4 Comments</span>
-																						</div>
-																					</div>
-																				</li>
-																				<li class="post-item">
-																					<a href="blog-details-right.html" class="post-image">
-																						<img src="media/blog/2.jpg">
-																					</a>
-																					<div class="post-content">
-																						<h2 class="post-title">
-																							<a href="blog-details-right.html">
-																								How To Make Your Home A Showplace
-																							</a>
-																						</h2>
-																						<div class="post-time">
-																							<span class="post-date">Aug 24, 2022</span>
-																							<span class="post-comment">2 Comments</span>
-																						</div>
-																					</div>
-																				</li>
-																				<li class="post-item">
-																					<a href="blog-details-right.html" class="post-image">
-																						<img src="media/blog/3.jpg">
-																					</a>
-																					<div class="post-content">
-																						<h2 class="post-title">
-																							<a href="blog-details-right.html">
-																								Stunning Furniture With Aesthetic Appeal
-																							</a>
-																						</h2>
-																						<div class="post-time">
-																							<span class="post-date">Dec 06, 2022</span>
-																							<span class="post-comment">1 Comment</span>	
-																						</div>
-																					</div>
-																				</li>
-																			</ul>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</li>
-													<li class="level-0 menu-item menu-item-has-children">
-														<a href="#"><span class="menu-item-text">Pages</span></a>
-														<ul class="sub-menu">
-															<li>
-																<a href="page-login.html"><span class="menu-item-text">Login / Register</span></a>
-															</li>
-															<li>
-																<a href="page-forgot-password.html"><span class="menu-item-text">Forgot Password</span></a>
-															</li>
-															<li>
-																<a href="page-my-account.html"><span class="menu-item-text">My Account</span></a>
-															</li>
-															<li>
-																<a href="page-about.html"><span class="menu-item-text">About Us</span></a>
-															</li>
-															<li>
-																<a href="page-contact.html"><span class="menu-item-text">Contact</span></a>
-															</li>
-															<li>
-																<a href="page-faq.html"><span class="menu-item-text">FAQ</span></a>
-															</li>
-															<li>
-																<a href="page-404.html"><span class="menu-item-text">Page 404</span></a>
-															</li>
-														</ul>
-													</li>
-													<li class="level-0 menu-item">
-														<a href="page-contact.html"><span class="menu-item-text">Contact</span></a>
-													</li>
-												</ul>
-											</nav>
-										</div>
-									</div>
-
-									<div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 header-right">
-										<div class="header-page-link">
-											<!-- Login -->
-											<div class="login-header">
-												<a class="active-login" href="#">Login</a>
-												<div class="form-login-register">
-													<div class="box-form-login">
-														<div class="active-login"></div>
-														<div class="box-content">
-															<div class="form-login active">
-																<form id="login_ajax" method="post" class="login">
-																	<h2>Sign in</h2>
-																	<p class="status"></p>
-																	<div class="content">
-																		<div class="username">
-																			<input type="text" required="required" class="input-text" name="username" id="username" placeholder="Your name">
-																		</div>
-																		<div class="password">
-																			<input class="input-text" required="required" type="password" name="password" id="password" placeholder="Password">
-																		</div>
-																		<div class="rememberme-lost">
-																			<div class="rememberme">
-																				<input name="rememberme" type="checkbox" id="rememberme" value="forever">
-																				<label for="rememberme" class="inline">Remember me</label>
-																			</div>
-																			<div class="lost_password">
-																				<a href="forgot-password.html">Lost your password?</a>
-																			</div>
-																		</div>
-																		<div class="button-login">
-																			<input type="submit" class="button" name="login" value="Login">
-																		</div>
-																		<div class="button-next-reregister">Create An Account</div>
-																	</div>						
-																</form>
-															</div>
-															<div class="form-register">
-																<form method="post" class="register">
-																	<h2>REGISTER</h2>
-																	<div class="content">
-																		<div class="email">
-																			<input type="email" class="input-text" placeholder="Email" name="email" id="reg_email" value="">
-																		</div>
-																		<div class="password">
-																			<input type="password" class="input-text" placeholder="Password" name="password" id="reg_password">
-																		</div>															
-																		<div class="button-register">
-																			<input type="submit" class="button" name="register" value="Register">
-																		</div>
-																		<div class="button-next-login">Already has an account</div>
-																	</div>
-																</form>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<!-- Search -->
-											<div class="search-box">
-												<div class="search-toggle"><i class="icon-search"></i></div>
-											</div>
-											
-											<!-- Wishlist -->
-											<div class="wishlist-box">
-												<a href="shop-wishlist.html"><i class="icon-heart"></i></a>
-												<span class="count-wishlist">1</span>
-											</div>
-											
-											<!-- Cart -->
-											<div class="ruper-topcart dropdown light">
-												<div class="dropdown mini-cart top-cart">
-													<div class="remove-cart-shadow"></div>
-													<a class="dropdown-toggle cart-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-														<div class="icons-cart"><i class="icon-large-paper-bag"></i><span class="cart-count">2</span></div>
-													</a>
-													<div class="dropdown-menu cart-popup">
-														<div class="cart-empty-wrap">
-															<ul class="cart-list">
-																<li class="empty">
-																	<span>No products in the cart.</span>
-																	<a class="go-shop" href="shop-grid-left.html">GO TO SHOP<i aria-hidden="true" class="arrow_right"></i></a>
-																</li>
-															</ul>
-														</div>
-														<div class="cart-list-wrap">
-															<ul class="cart-list ">
-																<li class="mini-cart-item">
-																	<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>
-																	<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/3.jpg" alt=""></a>
-																	<a href="shop-details.html" class="product-name">Chair Oak Matt Lacquered</a>		
-																	<div class="quantity">Qty: 1</div>
-																	<div class="price">$150.00</div>
-																</li>
-																<li class="mini-cart-item">
-																	<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>													
-																	<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/1.jpg" alt=""></a>
-																	<a href="shop-details.html" class="product-name">Zunkel Schwarz</a>
-																	<div class="quantity">Qty: 1</div>
-																	<div class="price">$100.00</div>						
-																</li>
-															</ul>
-															<div class="total-cart">
-																<div class="title-total">Total: </div>
-																<div class="total-price"><span>$100.00</span></div>
-															</div>
-															<div class="free-ship">
-																<div class="title-ship">Buy <strong>$400</strong> more to enjoy <strong>FREE Shipping</strong></div>
-																<div class="total-percent"><div class="percent" style="width:20%"></div></div>
-															</div>
-															<div class="buttons">
-																<a href="shop-cart.php" class="button btn view-cart btn-primary">View cart</a>
-																<a href="shop-checkout.php" class="button btn checkout btn-default">Check out</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</header>
-
 			<div id="site-main" class="site-main">
 				<div id="main-content" class="main-content">
 					<div id="primary" class="content-area">
@@ -726,73 +523,78 @@ $orderId = $order['id'];
 																<p class="form-row form-row-first validate-required">
 																	<label>First name <span class="required" title="required">*</span></label>
 																	<span class="input-wrapper"><input type="text" class="input-text" name="billing_first_name" value=""></span>
+																	<span class="error" id="first-name-error"></span>
 																</p>
 																<p class="form-row form-row-last validate-required">
 																	<label>Last name <span class="required" title="required">*</span></label>
 																	<span class="input-wrapper"><input type="text" class="input-text" name="billing_last_name" value=""></span>
+																	<span class="error" id="last-name-error"></span>
 																</p>
-																<p class="form-row form-row-wide validate-required">
-																	<label>Country / Region <span class="required" title="required">*</span></label>
+																<p class="form-row address-field form-row-wide">
+																	<label>Door No<span class="required" title="required">*</span></label>
 																	<span class="input-wrapper">
-																		<select name="billing_country" class="country-select custom-select">
-																			<option value="">Select a country / region…</option>
-																			<option value="AF">Afghanistan</option>
-																			<option value="AX">Åland Islands</option>
-																			<option value="AL">Albania</option>
-																			<option value="DZ">Algeria</option>
-																			<option value="AS">American Samoa</option>
-																			<option value="AD">Andorra</option>
-																		</select>
+																		<input type="text" class="input-text" name="billing_address_2" placeholder="House no, Door no.." value="">
 																	</span>
+																	<span class="error" id="door-no-error"></span>
 																</p>
 																<p class="form-row address-field validate-required form-row-wide">
 																	<label>Street address <span class="required" title="required">*</span></label>
 																	<span class="input-wrapper">
 																		<input type="text" class="input-text" name="billing_address_1" placeholder="House number and street name" value="">
 																	</span>
+																	<span class="error" id="street-address-error"></span>
 																</p>
-																<p class="form-row address-field form-row-wide">
-																	<label>Apartment, suite, unit, etc.&nbsp;<span class="optional">(optional)</span></label>
+																<p class="form-row address-field validate-required validate-country form-row-wide">
+																	<label>Select Country<span class="required" title="required">*</span></label>
 																	<span class="input-wrapper">
-																		<input type="text" class="input-text" name="billing_address_2" placeholder="Apartment, suite, unit, etc. (optional)" value="">
+																		<input type="text" class="input-text" name="billing_country" placeholder="Enter the Country...." value="">
 																	</span>
+																	<span class="error" id="country-error"></span>
+																</p>
+																<!-- <div class="form-row">
+																<label>Select Country<span class="required">*</span></label>
+																<span class="input-wrapper">
+																	<select name="country" id="country-dropdown" class="country-select custom-select">
+																		<option value="" disabled selected>Select a country</option>
+																		
+																	</select>
+																</span>
+																
+															</div> -->
+																<p class="form-row address-field validate-required validate-state form-row-wide">
+																	<label>Select State<span class="required" title="required">*</span></label>
+																	<span class="input-wrapper">
+																		<input type="text" class="input-text" name="billing_state" placeholder="Enter the State...." value="">
+																	</span>
+																	<span class="error" id="state-error"></span>
 																</p>
 																<p class="form-row address-field validate-required form-row-wide">
-																	<label for="billing_city" class="">Town / City <span class="required" title="required">*</span></label>
+																	<label for="billing_city" class="">Select City <span class="required" title="required">*</span></label>
 																	<span class="input-wrapper">
-																		<input type="text" class="input-text" name="billing_city" value="">
+																		<input type="text" class="input-text" name="billing_city" placeholder="Enter the City...." value="">
 																	</span>
-																</p>
-																<p class="form-row address-field validate-required validate-state form-row-wide">
-																	<label>State / County <span class="required" title="required">*</span></label>
-																	<span class="input-wrapper">
-																		<select name="billing_state" class="state-select custom-select">
-																			<option value="">Select a state / county…</option>
-																			<option value="VN">Vinnytsia Oblast</option>
-																			<option value="VL">Volyn Oblast</option>
-																			<option value="DP">Dnipropetrovsk Oblast</option>
-																			<option value="DT">Donetsk Oblast</option>
-																			<option value="ZT">Zhytomyr Oblast</option>
-																		</select>
-																	</span>
+																	<span class="error" id="city-error"></span>
 																</p>
 																<p class="form-row address-field validate-required validate-postcode form-row-wide">
 																	<label>Postcode / ZIP <span class="required" title="required">*</span></label>
 																	<span class="input-wrapper">
 																		<input type="text" class="input-text" name="billing_postcode" value="">
 																	</span>
+																	<span class="error" id="Postcode-error"></span>
 																</p>
 																<p class="form-row form-row-wide validate-required validate-phone">
 																	<label>Phone <span class="required" title="required">*</span></label>
 																	<span class="input-wrapper">
 																		<input type="tel" class="input-text" name="billing_phone" value="">
 																	</span>
+																	<span class="error" id="phone-error"></span>
 																</p>
 																<p class="form-row form-row-wide validate-required validate-email">
 																	<label>Email address <span class="required" title="required">*</span></label>
 																	<span class="input-wrapper">
 																		<input type="email" class="input-text" name="billing_email" value="" autocomplete="off">
 																	</span>
+																	<span class="error" id="email-error"></span>
 																</p>
 															</div>
 														</div>
@@ -815,7 +617,7 @@ $orderId = $order['id'];
 															</div>
 														</div>
 													</div>
-													<!--<div class="shipping-fields">
+													<div class="shipping-fields">
 														<p class="form-row form-row-wide ship-to-different-address">
 															<label class="checkbox">
 																<input class="input-checkbox" type="checkbox" name="ship_to_different_address" value="1"> 
@@ -828,69 +630,73 @@ $orderId = $order['id'];
 																<span class="input-wrapper">
 																	<input type="text" class="input-text" name="shipping_first_name" value="">
 																</span>
+																<span class="error" id="shipping-first-name-error"></span>
 															</p>
 															<p class="form-row form-row-last validate-required">
 																<label>Last name <span class="required" title="required">*</span></label>
 																<span class="input-wrapper">
 																	<input type="text" class="input-text" name="shipping_last_name" value="">
 																</span>
+																<span class="error" id="shipping-last-name-error"></span>
 															</p>
 															<p class="form-row form-row-wide">
-																<label>Company name <span class="optional">(optional)</span></label>
+																<label>Door No<span class="required" title="required">*</span></label>
 																<span class="input-wrapper">
-																	<input type="text" class="input-text" name="shipping_company" value="">
+																	<input type="text" class="input-text" name="shiping_address_2" placeholder="House no, Door no.." value="">
 																</span>
-															</p>
-															<p class="form-row form-row-wide address-field validate-required">
-																<label for="shipping_country" class="">Country / Region <span class="required" title="required">*</span></label>
-																<span class="input-wrapper">
-																	<select name="billing_state" class="state-select custom-select">
-																		<option value="">Select a country / region…</option>
-																		<option value="VN">Vinnytsia Oblast</option>
-																		<option value="VL">Volyn Oblast</option>
-																		<option value="DP">Dnipropetrovsk Oblast</option>
-																		<option value="DT">Donetsk Oblast</option>
-																		<option value="ZT">Zhytomyr Oblast</option>
-																	</select>
-																</span>
+																<span class="error" id="shipping-door-no-error"></span>
 															</p>
 															<p class="form-row address-field validate-required form-row-wide">
 																<label>Street address <span class="required" title="required">*</span></label>
 																<span class="input-wrapper">
 																	<input type="text" class="input-text" name="shipping_address_1" placeholder="House number and street name" value="">
 																</span>
+																<span class="error" id="shipping-street-address-error"></span>
 															</p>
-															<p class="form-row address-field form-row-wide">
-																<label>Apartment, suite, unit, etc. <span class="optional">(optional)</span></label>
+															<p class="form-row form-row-wide address-field validate-required">
+																<label for="shipping_country" class="">Select Country<span class="required" title="required">*</span></label>
 																<span class="input-wrapper">
-																	<input type="text" class="input-text" name="shipping_address_2" placeholder="Apartment, suite, unit, etc. (optional)" value="">
+																	<input type="text" class="input-text" name="shipping_country" placeholder="Enter the Country...." value="">
 																</span>
+																<span class="error" id="shipping-country-error"></span>
 															</p>
-															<p class="form-row address-field validate-required form-row-wide">
-																<label>Town / City <span class="required" title="required">*</span></label>
-																<span class="input-wrapper"><input type="text" class="input-text" name="shipping_city" value=""></span>
-															</p>
-															<p class="form-row address-field validate-required validate-state form-row-wide">
-																<label for="shipping_state" class="">State / County <span class="required" title="required">*</span></label>
+															<p class="form-row form-row-wide address-field validate-required">
+																<label for="shipping_state" class="">Select State<span class="required" title="required">*</span></label>
 																<span class="input-wrapper">
-																	<select name="billing_state" class="state-select custom-select">
-																		<option value="">Select a state / county…</option>
-																		<option value="VN">Vinnytsia Oblast</option>
-																		<option value="VL">Volyn Oblast</option>
-																		<option value="DP">Dnipropetrovsk Oblast</option>
-																		<option value="DT">Donetsk Oblast</option>
-																		<option value="ZT">Zhytomyr Oblast</option>
-																	</select>
+																	<input type="text" class="input-text" name="shipping_state" placeholder="Enter the State...." value="">
 																</span>
+																<span class="error" id="shipping-state-error"></span>
+															</p>
+															<p class="form-row form-row-wide address-field validate-required">
+																<label for="shipping_city" class="">Select City<span class="required" title="required">*</span></label>
+																<span class="input-wrapper">
+																	<input type="text" class="input-text" name="shipping_city" placeholder="Enter the City...." value="">
+																</span>
+																<span class="error" id="shipping-city-error"></span>
 															</p>
 															<p class="form-row address-field validate-required validate-postcode form-row-wide">
 																<label>Postcode / ZIP <span class="required" title="required">*</span></label>
 																<span class="input-wrapper">
 																	<input type="text" class="input-text" name="shipping_postcode" value="">
 																</span>
+																<span class="error" id="shipping-postcode-error"></span>
+															</p>
+															<p class="form-row form-row-wide validate-required validate-phone">
+																<label>Phone <span class="required" title="required">*</span></label>
+																<span class="input-wrapper">
+																	<input type="tel" class="input-text" name="shipping_phone" value="">
+																</span>
+																<span class="error" id="shipping-phone-error"></span>
+															</p>
+															<p class="form-row form-row-wide validate-required validate-email">
+																<label>Email address <span class="required" title="required">*</span></label>
+																<span class="input-wrapper">
+																	<input type="email" class="input-text" name="shipping_email" value="" autocomplete="off">
+																</span>
+																<span class="error" id="shipping-email-error"></span>
 															</p>
 														</div>
-													</div>-->
+													</div>
 													<div class="additional-fields">
 														<p class="form-row notes">
 															<label>Order notes <span class="optional">(optional)</span></label>
@@ -937,21 +743,7 @@ $orderId = $order['id'];
 														<div id="payment" class="checkout-payment">
 															<ul class="payment-methods methods custom-radio">
 																<li class="payment-method">
-																	<input type="radio" class="input-radio" name="payment_method" value="bacs" checked="checked">
-																	<label for="payment_method_bacs">Direct bank transfer</label>
-																	<div class="payment-box">
-																		<p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</p>
-																	</div>
-																</li>
-																<li class="payment-method">
-																	<input type="radio" class="input-radio" name="payment_method" value="cheque">
-																	<label>Check payments</label>
-																	<div class="payment-box">
-																		<p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-																	</div>
-																</li>
-																<li class="payment-method">
-																	<input type="radio" class="input-radio" name="payment_method" value="cod">
+																	<input type="radio" class="input-radio" name="payment_method" value="cod" checked="true">
 																	<label>Cash on delivery</label>
 																	<div class="payment-box">
 																		<p>Pay with cash upon delivery.</p>
@@ -959,7 +751,7 @@ $orderId = $order['id'];
 																</li>
 																<li class="payment-method">
 																	<input type="radio" class="input-radio" name="payment_method" value="upi">
-																	<label>UPI</label>
+																	<label>Online Payment</label>
 																	<div class="payment-box">
 																		<p>
 																			Pay via 
@@ -975,10 +767,7 @@ $orderId = $order['id'];
 																
 															</ul>
 															<div class="form-row place-order">
-																<div class="terms-and-conditions-wrapper">
-																	<div class="privacy-policy-text"></div>
-																</div>
-																<button type="submit" class="button alt" onclick="RazorpayCheckOut(event)" id="checkout-button" name="checkout_place_order" value="Place order">Place order</button>
+																<button type="submit" class="button alt" onclick="validation(event)" id="checkout-button" name="checkout_place_order" value="Place order">Place order</button>
 															</div>
 														</div>
 													</div>
@@ -992,112 +781,6 @@ $orderId = $order['id'];
 					</div><!-- #primary -->
 				</div><!-- #main-content -->
 			</div>
-
-			<footer id="site-footer" class="site-footer background">
-				<div class="footer">
-					<div class="section-padding">
-						<div class="section-container">
-							<div class="block-widget-wrap">
-								<div class="row">
-									<div class="col-lg-3 col-md-6">
-										<div class="block block-menu m-b-20">
-											<h2 class="block-title">Contact Us</h2>
-											<div class="block-content">
-												<ul>
-													<li>
-														<a href="page-contact.html">616.774.0561</a>
-													</li>
-													<li>
-														<a href="page-contact.html">866.453.4748</a>
-													</li>
-													<li>
-														<a href="page-contact.html">HR Fax: 810.222.5439</a>
-													</li>
-													<li>
-														<a href="page-contact.html">sales@ruperfurniture.com</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-
-										<div class="block block-social">
-											<ul class="social-link">
-												<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-												<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-												<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-												<li><a href="#"><i class="fa fa-behance"></i></a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-lg-3 col-md-6">
-										<div class="block block-menu">
-											<h2 class="block-title">Showroom</h2>
-											<div class="block-content">
-												<p>1000 84th Street SW , Byron Center, MI 49315</p>
-												<p>AmericasMart Bldg. #1</p>
-												<p>Suite 5C-1, Atlanta, GA 30303</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-3 col-md-6">
-										<div class="block block-menu">
-											<h2 class="block-title">Services</h2>
-											<div class="block-content">
-												<ul>
-													<li>
-														<a href="page-about.html">Sale</a>
-													</li>
-													<li>
-														<a href="page-about.html">Quick Ship</a>
-													</li>
-													<li>
-														<a href="page-about.html">New Designs</a>
-													</li>
-													<li>
-														<a href="page-about.html">Accidental Fabric Protection</a>
-													</li>
-													<li>
-														<a href="page-about.html">Furniture Care</a>
-													</li>
-													<li>
-														<a href="page-about.html">Gift Cards</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-3 col-md-6">
-										<div class="block block-newsletter">
-											<h2 class="block-title">Newsletter</h2>
-											<div class="block-content">
-												<div class="newsletter-text">Enter your email below to be the first to know about new collections and product launches.</div>
-												<form action="" method="post" class="newsletter-form">
-													<input type="email" class="bg-white" name="your-email" value="" size="40" placeholder="Email address">
-													<span class="btn-submit">
-														<input type="submit" value="Subscribe">
-													</span>
-												</form>
-											</div>
-										</div>
-										<div class="block block-image">
-											<img width="309" height="32" src="media/payments.png" alt="">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="footer-bottom">
-					<div class="section-padding">
-						<div class="section-container">
-							<div class="block-widget-wrap">
-								<p class="copyright text-center">Copyright © 2022. All Right Reserved</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
 		</div>
 
 		<!-- Back Top button -->
@@ -1357,4 +1040,6 @@ $orderId = $order['id'];
 		<!-- Site Scripts -->
 		<script src="assets/js/app.js"></script>
 	</body>
+	
+
 </html>

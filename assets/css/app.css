@@ -30621,7 +30621,7 @@ body i[class~="slick-arrow"][class~="fa-angle-right"] {
   display: inline-block;
   margin-right: 10px;
 }
-.shop-details .variations .attributes ul.text li span {
+.shop-details .variations .attributes ul.text li.active span {
   width: 28px;
   height: 28px;
   line-height: 26px;
@@ -30633,12 +30633,23 @@ body i[class~="slick-arrow"][class~="fa-angle-right"] {
   -o-border-radius: 50%;
   font-size: 13px;
   text-align: center;
-  border: 1px solid #d5d5d5;
+  border: 1px solid #000000;
   cursor: pointer;
 }
 .shop-details .variations .attributes ul.text li span:hover {
-  border: 1px solid #000;
-  color: #000;
+  width: 28px;
+  height: 28px;
+  line-height: 26px;
+  display: inline-block;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  font-size: 13px;
+  text-align: center;
+  border: 1px solidrgb(18, 18, 18);
+  cursor: pointer;
 }
 .shop-details .variations .attributes ul.colors li span {
   width: 28px;
@@ -30659,7 +30670,7 @@ body i[class~="slick-arrow"][class~="fa-angle-right"] {
 .shop-details .variations .attributes ul.colors li span.color-3 {
   background: #20b2aa;
 }
-.shop-details .variations .attributes ul.colors li span:before {
+.shop-details .variations .attributes ul.colors li.active span:before {
   content: "";
   position: absolute;
   top: calc(50% - 18px);
@@ -30675,8 +30686,8 @@ body i[class~="slick-arrow"][class~="fa-angle-right"] {
   -webkit-transform: unset;
   transform: unset;
   margin: 0;
-  opacity: 0;
-  visibility: hidden;
+  border: 1px solidrgb(15, 15, 15);
+  cursor: pointer;
 }
 .shop-details .variations .attributes ul.colors li span:hover:before {
   opacity: 1;

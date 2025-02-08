@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = intval($_POST['user_id']);
     $product_name = $_POST['product_name'];
 
-    $sql = "DELETE FROM cart_details WHERE user_id = ? AND product_name = ?";
+    $sql = "DELETE FROM cart_details WHERE user_id = ? AND product_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("is", $user_id, $product_name);
 

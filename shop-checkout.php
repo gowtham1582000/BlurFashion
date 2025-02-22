@@ -167,7 +167,43 @@
 			});
 		}
 
-		
+		defaultaddressLoader()
+
+		var addressbillid=0,addressdefaultflag='N'
+		function defaultaddressLoader(){
+			$.ajax({
+					url: 'DefaultAddress.php', // Path to the PHP file
+					method: 'GET',
+					data: { user_id: localStorage.getItem('userid') },
+					dataType: 'json',
+					success: function(response) {
+						if (response.status === 'success') {
+							const billingInfo = `
+								<p><strong>${response.first_name} ${response.last_name}</strong></p>
+								<p>${response.address}</p>
+								<p>Phone: ${response.phone}</p>
+								<p>Email: ${response.email}</p>
+							`;
+							$('#billing-address').html(billingInfo);
+							$('#billing-address').show()
+							$('.customer-details').hide()
+							addressbillid=response.billid
+							addressdefaultflag='Y'
+						} else if (response.status === 'no_default') {
+							$('#billing-address').hide()	
+							$('.customer-details').show()
+							//$('#billing-address').html('<p>No default address found. Please add your billing details.</p>');
+						} else if (response.status === 'not_logged_in') {
+							$('#billing-address').html('<p>Please log in to load your billing information.</p>');
+						} else {
+							$('#billing-address').html('<p>Error: ' + response.error + '</p>');
+						}
+					},
+					error: function() {
+						$('#billing-address').html('<p>Error loading billing information.</p>');
+					}
+				});
+		}
 	</script>
 
 	<script>
@@ -268,8 +304,72 @@
 				$('.error').text('');
 				
 				let isValid = true;
+				if(addressdefaultflag=='N'){
+						// Validate first name
+					if ($('input[name="billing_first_name"]').val().trim() === "") {
+						$('#first-name-error').text("First name is required.");
+						isValid = false;
+					}
+					
+					// Validate last name
+					if ($('input[name="billing_last_name"]').val().trim() === "") {
+						$('#last-name-error').text("Last name is required.");
+						isValid = false;
+					}
+					
+					// Validate street address
+					if ($('input[name="billing_address_1"]').val().trim() === "") {
+						$('#street-address-error').text("Street address is required.");
+						isValid = false;
+					}
+
+					if ($('input[name="billing_address_2"]').val().trim() === "") {
+						$('#door-no-error').text("Door No is required.");
+						isValid = false;
+					}
+
+					// Validate country
+					if ($('input[name="billing_country"]').val().trim() === "") {
+						$('#country-error').text("Please select a country.");
+						isValid = false;
+					}
+
+					if ($('input[name="billing_postcode"]').val().trim() === "") {
+						$('#Postcode-error').text("Please select a post code.");
+						isValid = false;
+					}
+
+					// Validate state
+					if ($('input[name="billing_state"]').val().trim() === "") {
+						$('#state-error').text("Please select a state.");
+						isValid = false;
+					}
+
+					// Validate city
+					if ($('input[name="billing_city"]').val().trim() === "") {
+						$('#city-error').text("Please select a city.");
+						isValid = false;
+					}
+
+					// Validate phone number (basic validation)
+					let phone = $('input[name="billing_phone"]').val();
+					let phonePattern = /^[0-9]{10}$/;
+					if (phone.trim() === "" || !phone.match(phonePattern)) {
+						$('#phone-error').text("Please enter a valid phone number.");
+						isValid = false;
+					}
+
+					// Validate email address
+					let email = $('input[name="billing_email"]').val();
+					let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+					if (email.trim() === "" || !email.match(emailPattern)) {
+						$('#email-error').text("Please enter a valid email address.");
+						isValid = false;
+					}
+				}
 
 				// Shipping validation (only if checkbox is checked)
+
 				if ($('input[name="ship_to_different_address"]').is(':checked')) {
 					if ($('input[name="shipping_first_name"]').val().trim() === "") {
 						$('#shipping-first-name-error').text("First name is required.");
@@ -324,67 +424,7 @@
 					}
 				}
 
-				// Validate first name
-				if ($('input[name="billing_first_name"]').val().trim() === "") {
-					$('#first-name-error').text("First name is required.");
-					isValid = false;
-				}
 				
-				// Validate last name
-				if ($('input[name="billing_last_name"]').val().trim() === "") {
-					$('#last-name-error').text("Last name is required.");
-					isValid = false;
-				}
-				
-				// Validate street address
-				if ($('input[name="billing_address_1"]').val().trim() === "") {
-					$('#street-address-error').text("Street address is required.");
-					isValid = false;
-				}
-
-				if ($('input[name="billing_address_2"]').val().trim() === "") {
-					$('#door-no-error').text("Door No is required.");
-					isValid = false;
-				}
-
-				// Validate country
-				if ($('input[name="billing_country"]').val().trim() === "") {
-					$('#country-error').text("Please select a country.");
-					isValid = false;
-				}
-
-				if ($('input[name="billing_postcode"]').val().trim() === "") {
-					$('#Postcode-error').text("Please select a post code.");
-					isValid = false;
-				}
-
-				// Validate state
-				if ($('input[name="billing_state"]').val().trim() === "") {
-					$('#state-error').text("Please select a state.");
-					isValid = false;
-				}
-
-				// Validate city
-				if ($('input[name="billing_city"]').val().trim() === "") {
-					$('#city-error').text("Please select a city.");
-					isValid = false;
-				}
-
-				// Validate phone number (basic validation)
-				let phone = $('input[name="billing_phone"]').val();
-				let phonePattern = /^[0-9]{10}$/;
-				if (phone.trim() === "" || !phone.match(phonePattern)) {
-					$('#phone-error').text("Please enter a valid phone number.");
-					isValid = false;
-				}
-
-				// Validate email address
-				let email = $('input[name="billing_email"]').val();
-				let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-				if (email.trim() === "" || !email.match(emailPattern)) {
-					$('#email-error').text("Please enter a valid email address.");
-					isValid = false;
-				}
 				console.log(orderDetails)
 				// If form is invalid, prevent submission
 				if (isValid) {
@@ -402,7 +442,6 @@
 					formData.append("order_comments", document.querySelector("textarea[name='order_comments']").value);
 					formData.append("billing_country", document.querySelector("input[name='billing_country']").value);
 
-
 					formData.append("shipping_first_name", document.querySelector("input[name='shipping_first_name']").value);
 					formData.append("shipping_last_name", document.querySelector("input[name='shipping_last_name']").value);
 					formData.append("shipping_address_1", document.querySelector("input[name='shipping_address_1']").value);
@@ -415,7 +454,7 @@
 					formData.append("shipping_country", document.querySelector("input[name='shipping_country']").value);
 			
 					formData.append("MailShipAddress", $('input[name="ship_to_different_address"]').is(':checked')?'S':'B');
-
+					formData.append("userbillId", addressbillid);
 
 					orderDetails.forEach((item, index) => {
 						formData.append(`order_items[${index}][name]`, item.name);
@@ -425,67 +464,65 @@
 						formData.append(`order_items[${index}][color]`, item.color);
 						formData.append(`order_items[${index}][image]`, item.image);
 					});
-					Swal.fire({
-									title: "🎉 Order Placed!",
-									html: "<b>Thank you for shopping with us! 🎁</b><br>Your order will be delivered soon.",
-									icon: "success",
-									showCancelButton: true,
-									confirmButtonColor: "#ff416c",
-									cancelButtonColor: "#555",
-									confirmButtonText: "ok! 🚀",
-									cancelButtonText: "Maybe Later 😴",
-									background: "#fff",
-									allowOutsideClick: false, // Prevent closing on outside click
-									allowEscapeKey: false, // Prevent closing with ESC key
-									showCloseButton: false, // Hide close (X) button
-									backdrop: `
-										rgba(0,0,0,0.4)
-										url("https://i.gifer.com/7efs.gif")
-										center top
-										no-repeat
-									`,
-								}).then((result) => {
-									formData.append("default_address", result.isConfirmed?'Y':'N');
-								 if (document.querySelector('input[name="payment_method"]:checked').value === "cod") {
-										fetch('mail-trigger.php', {
-											method: 'POST',
-											body: formData
-										})
-										.then(response => response.json())
-										.then(data => {
-											if (data.success) {
-												alert('Order placed successfully!');
-												
 
-												fetch("Place-order.php", {
-													method: "POST",
-													body: formData,
-												})
-												.then(response => response.json())
-												.then(saveData => {
-													if (saveData.success) {
-														alert('Order saved successfully!');
-													} else {
-														console.error('Failed to save order.');
-													}
-												})
-												.catch(err => console.error('Error saving order:', err));
-											} else {
-												alert('Failed to place order.');
-											}
-										})
-										.catch(err => console.error('Error:', err));
+					if(addressbillid==0){
+						Swal.fire({
+							title: "🎉 Order Placed!",
+							html: "<b>Thank you for shopping with us! 🎁</b><br>Your order will be delivered soon.",
+							icon: "success",
+							showCancelButton: true,
+							confirmButtonColor: "#ff416c",
+							cancelButtonColor: "#555",
+							confirmButtonText: "ok! 🚀",
+							cancelButtonText: "Maybe Later 😴",
+							background: "#fff",
+							allowOutsideClick: false, // Prevent closing on outside click
+							allowEscapeKey: false, // Prevent closing with ESC key
+							showCloseButton: false, // Hide close (X) button
+							backdrop: `
+								rgba(0,0,0,0.4)
+								url("https://i.gifer.com/7efs.gif")
+								center top
+								no-repeat
+							`,
+						}).then((result) => {
+							formData.append("default_address", result.isConfirmed?'Y':'N');
+						});
+					}
+					
+					if (document.querySelector('input[name="payment_method"]:checked').value === "cod") {
+						formData.append("default_address",'N');
+							fetch('mail-trigger.php', {
+								method: 'POST',
+								body: formData
+							})
+							.then(response => response.json())
+							.then(data => {
+								if (data.success) {
+									alert('Order placed successfully!');
+									fetch("Place-order.php", {
+										method: "POST",
+										body: formData,
+									})
+									.then(response => response.json())
+									.then(saveData => {
+										if (saveData.success) {
+											alert('Order saved successfully!');
+										} else {
+											console.error('Failed to save order.');
+										}
+									})
+									.catch(err => console.error('Error saving order:', err));
+								} else {
+									alert('Failed to place order.');
+								}
+							})
+							.catch(err => console.error('Error:', err));
 
-											
-									} else {
-										RazorpayCheckOut()
-									}
-								});
-
-					
-					
-					
-					//RazorpayCheckOut()
+								
+						} else {
+							RazorpayCheckOut()
+					}
 				}
 			}
 
@@ -516,9 +553,14 @@
 										<form name="checkout" id="checkout-form" class="checkout" action="" autocomplete="on">
 											<div class="row">
 												<div class="col-xl-8 col-lg-7 col-md-12 col-12">
+													<h3>Billing details</h3>
+													<div id="billing-address">
+														<!-- Billing details will load here -->
+													</div>
+
 													<div class="customer-details">
 														<div class="billing-fields">
-															<h3>Billing details</h3>
+															
 															<div class="billing-fields-wrapper">
 																<p class="form-row form-row-first validate-required">
 																	<label>First name <span class="required" title="required">*</span></label>
@@ -718,7 +760,7 @@
 																	<span></span>
 																</div>
 															</div>
-															<div class="shipping-totals shipping">
+															<!-- <div class="shipping-totals shipping">
 																<h2>Shipping</h2>
 																<div data-title="Shipping">
 																	<ul class="shipping-methods custom-radio">
@@ -730,7 +772,7 @@
 																		</li>
 																	</ul>
 																</div>
-															</div>
+															</div> -->
 															<div class="order-total">
 																<h2>Total</h2>
 																<div class="total-price">

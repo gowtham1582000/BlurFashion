@@ -5,22 +5,74 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 
 // Parse form data
-$MailShipAddress = $_POST['MailShipAddress'];
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "bfdb";
 
-if ($MailShipAddress === 'B') {
-    // Use Billing Address
-    $deliveryAddress = $_POST['billing_address_1'] . ', ' . $_POST['billing_address_2'] . ', ' . $_POST['billing_city'] . ', ' . $_POST['billing_state'] . ', ' . $_POST['billing_postcode'] . ', ' . $_POST['billing_country'];
-    $customerName = $_POST['first_name'] . ' ' . $_POST['last_name'];
-    $customerEmail = $_POST['billing_email'];
-} elseif ($MailShipAddress === 'S') {
-    // Use Shipping Address
-    $deliveryAddress = $_POST['shipping_address_1'] . ', ' . $_POST['shipping_address_2'] . ', ' . $_POST['shipping_city'] . ', ' . $_POST['shipping_state'] . ', ' . $_POST['shipping_postcode'] . ', ' . $_POST['shipping_country'];
-    $customerName = $_POST['shipping_first_name'] . ' ' . $_POST['shipping_last_name'];
-    $customerEmail = $_POST['shipping_email'];
-} else {
-    echo json_encode(['success' => false, 'message' => 'Invalid address type.']);
-    exit;
+$conn = new mysqli($host, $user, $password, $dbname);
+
+
+$MailShipAddress = $_POST['MailShipAddress'];
+$userBillingId = isset($_POST['userbillId']) ? intval($_POST['userbillId']) : 0;
+
+if ($userBillingId > 0) {
+    // Fetch the billing or shipping details from the database
+    $sql = "SELECT * FROM useraddressdetails WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $userBillingId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $billingData = $result->fetch_assoc();
+
+        if ($MailShipAddress === 'B') {
+            // Use Billing Address from database
+            $deliveryAddress = $billingData['address_1'] . ', ' . 
+                               $billingData['address_2'] . ', ' . 
+                               $billingData['city'] . ', ' . 
+                               $billingData['state'] . ', ' . 
+                               $billingData['postcode'] . ', ' . 
+                               $billingData['country'];
+
+            $customerName = $billingData['first_name'] . ' ' . $billingData['last_name'];
+            $customerEmail = $billingData['email'];
+
+        } elseif ($MailShipAddress === 'S') {
+            // Use Shipping Address from database
+            $deliveryAddress = $_POST['shipping_address_1'] . ', ' . $_POST['shipping_address_2'] . ', ' . $_POST['shipping_city'] . ', ' . $_POST['shipping_state'] . ', ' . $_POST['shipping_postcode'] . ', ' . $_POST['shipping_country'];
+            $customerName = $_POST['shipping_first_name'] . ' ' . $_POST['shipping_last_name'];
+            $customerEmail = $_POST['shipping_email'];
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Invalid address type.']);
+            exit;
+        }
+
+    } else {
+        echo json_encode(['success' => false, 'message' => 'No billing details found for the provided ID.']);
+        exit;
+    }
+
+    $stmt->close();
+
+}else{
+    if ($MailShipAddress === 'B') {
+        // Use Billing Address
+        $deliveryAddress = $_POST['billing_address_1'] . ', ' . $_POST['billing_address_2'] . ', ' . $_POST['billing_city'] . ', ' . $_POST['billing_state'] . ', ' . $_POST['billing_postcode'] . ', ' . $_POST['billing_country'];
+        $customerName = $_POST['first_name'] . ' ' . $_POST['last_name'];
+        $customerEmail = $_POST['billing_email'];
+    } elseif ($MailShipAddress === 'S') {
+        // Use Shipping Address
+        $deliveryAddress = $_POST['shipping_address_1'] . ', ' . $_POST['shipping_address_2'] . ', ' . $_POST['shipping_city'] . ', ' . $_POST['shipping_state'] . ', ' . $_POST['shipping_postcode'] . ', ' . $_POST['shipping_country'];
+        $customerName = $_POST['shipping_first_name'] . ' ' . $_POST['shipping_last_name'];
+        $customerEmail = $_POST['shipping_email'];
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Invalid address type.']);
+        exit;
+    }
 }
+
 
 // Parse order comments
 $orderComments = $_POST['order_comments'];
@@ -84,7 +136,7 @@ try {
         echo json_encode(['success' => false, 'message' => 'Failed to send email.']);
     }
 } catch (Exception $e) {
-    echo json_encode(['success' => false, 'message' => 'Mailer Error: ' . $mail->ErrorInfo]);
+    echo json_encode(['success' => false,'email'=> $customerEmail, 'message' => 'Mailer Error: ' . $mail->ErrorInfo]);
 }
 
 ?>

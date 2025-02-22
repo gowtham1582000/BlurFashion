@@ -40,19 +40,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Default address flag
     $defaultAddress = $conn->real_escape_string($_POST['default_address']); // Default to 'N'
     $MailShipAddress = $conn->real_escape_string($_POST['MailShipAddress']); // Default to 'N'
-    
+    $p_useraddressId=$conn->real_escape_string($_POST['userbillId']);
     // Assuming you have form data in $_POST
     $orderItems = $_POST['order_items'];
 
     // Convert $orderItems to JSON
     $orderItemsJson = json_encode($orderItems);
 
-    $sql = "CALL InsertUserBillingDetails(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
+    $sql = "CALL InsertUserBillingDetails(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
 
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
-        "issssssssssssssssssssssss", 
+        "issssssssssssssssssssssssi", 
         $userId, 
         $firstName, 
         $lastName, 
@@ -77,7 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $shippingCountry, 
         $defaultAddress, 
         $MailShipAddress, 
-        $orderItemsJson // Pass the JSON data for order items
+        $orderItemsJson ,// Pass the JSON data for order items
+        $p_useraddressId
     );
     
 

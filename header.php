@@ -41,8 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
         // Set session variables after successful registration
         $_SESSION['logged_in'] = true;
         $_SESSION['username'] = $full_name; // You can use email or any unique identifier
-        header("Location: index.php");
-        exit();
+        //header("Location: index.php");
+		echo '<script type="text/javascript">
+		
+		useriddetail();
+	  </script>';
+       // exit();
     } else {
         echo "Please enter all required fields: Full Name, Email, and Password.";
     }
@@ -89,16 +93,20 @@ $conn = null; // Close connection
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
  		<script>
 			debugger
-			
-			let cartCount = 0; // Cart count
-			const userId = localStorage.getItem("userid") || <?php echo $_SESSION['user_id']?>;
-			if(userId!=localStorage.getItem("userid") &&  <?php echo $_SESSION['user_id']?> != 0){
-				localStorage.clear();
-				localStorage.setItem("userid", userId);
+			var userId
+			function useriddetail(){
+				userId = localStorage.getItem("userid") || <?php echo $_SESSION['user_id']?>;
+				if(userId!=localStorage.getItem("userid") &&  <?php echo $_SESSION['user_id']?> != 0){
+					localStorage.clear();
+					localStorage.setItem("userid", userId);
+				}
 			}
+			let cartCount = 0; // Cart count
+			
 			
 			$(document).ready(function () {
 				// Fetch cart data on page load
+				useriddetail()
 				fetchCart();
 				console.log(document.title);
 			});

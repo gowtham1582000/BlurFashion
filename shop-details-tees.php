@@ -182,7 +182,7 @@
 																<?php foreach ($images as $index => $image) : ?>
 																	<div class="img-item slick-slide">
 																		<span class="img-thumbnail-scroll">
-																		<img class="main-image" width="600" height="600" src="<?php echo $image; ?>" alt="Product Image" data-color="<?php echo $colors[$index]; ?>">
+																		<img class="main-image scroll-main-image" width="600" height="600" src="<?php echo $image; ?>" alt="Product Image" data-color="<?php echo $colors[$index]; ?>">
 																		</span>
 																	</div>
 																<?php endforeach; ?>
@@ -898,17 +898,22 @@
                 const selectedIndex = this.getAttribute('data-index'); // Get the index for the corresponding image
                 
                 // Select the main image carousel and thumbnails carousel
-                const thumbnails = document.querySelectorAll('.thumbnail-image');
+                const thumbnails = document.querySelectorAll('.scroll-main-image');
                 const mainImages = document.querySelectorAll('.main-image');
 
                 // Loop through the thumbnails and main images to find the matching color
-                thumbnails.forEach((img, index) => {
-                    if (img.getAttribute('data-color') === selectedColor) {
-                        // Use slickGoTo to go to the specific image
-                        $('.image-additional').slick('slickGoTo', index);
-                        $('.image-thumbnail').slick('slickGoTo', index); // Sync the thumbnails with main image
-                    }
-                });
+				thumbnails.forEach((img, i) => {
+					if (img.getAttribute('data-color') === selectedColor) {
+						let slickIndex = $(img).closest('.slick-slide').attr('data-slick-index'); // Get slick index
+						
+						if (slickIndex !== undefined) {
+							slickIndex = parseInt(slickIndex); // Convert to integer
+							$('.image-additional').slick('slickGoTo', slickIndex);
+							$('.image-thumbnail').slick('slickGoTo', slickIndex);
+							return false; // Stop loop after first match
+						}
+					}
+				});
             });
         });
     });

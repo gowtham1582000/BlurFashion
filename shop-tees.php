@@ -55,7 +55,7 @@
 							<div class="section-padding">
 								<div class="section-container p-l-r">
 									<div class="row">
-										<div class="col-xl-9 col-lg-9 col-md-12 col-12 products-column">
+										<div class="col-xl-12 col-lg-12 col-md-12 col-12 products-column">
 											<div class="products-topbar clearfix">
 												<div class="products-topbar-left">
 													<div class="products-count">
@@ -115,7 +115,7 @@
 																	</div>	
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=1">Category 1</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=1">Butterfly T-shirt</a></h3>
 																			<span class="price">$150.00</span>
 																		</div>
 																	</div>
@@ -128,13 +128,13 @@
 																			<div class="onsale">-33%</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details-tees.php?category_id=2">
-																				<img width="600" height="600" src="media/product/Tees/t-1.jpeg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/Tees/l-t-1.jpeg" class="hover-image back" alt="">
+																			<a href="shop-details-tees.php?category_id=14">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3438.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3439.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<!-- <div class="product-button">
-																			<div class="btn-add-to-cart" data-title="Add to cart">
+																		<div class="product-button">
+																			<!-- <div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div>
 																			<div class="btn-wishlist" data-title="Wishlist">
@@ -145,12 +145,12 @@
 																			</div>
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
-																			</span>		
-																		</div> -->
+																			</span>		 -->
+																		</div> 
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=2">Category 2</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=14">Chicago Printed T-shirt</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$150.00</span></del> 
 																				<ins><span>$100.00</span></ins>
@@ -163,9 +163,9 @@
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
 																		<div class="product-thumb-hover">
-																			<a href="shop-details-tees.php?category_id=3">
-																				<img width="600" height="600" src="media/product/Tees/t-3.jpeg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/Tees/t-4.jpeg	" class="hover-image back" alt="">
+																			<a href="shop-details-tees.php?category_id=16">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3428.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3430.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -185,7 +185,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=3">Category 3</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=16">Hoodie Printed T-shirt</a></h3>
 																			<span class="price">$150.00</span>
 																		</div>
 																	</div>
@@ -199,9 +199,9 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details-tees.php?category_id=4">
-																				<img width="600" height="600" src="media/product/Tees/13.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/Tees/4.jpg" class="hover-image back" alt="">
+																			<a href="shop-details-tees.php?category_id=15">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3465.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3467.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -221,7 +221,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=4">Category 4</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=15">Dimensions T-shirt</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$150.00</span></del> 
 																				<ins><span>$100.00</span></ins>
@@ -239,8 +239,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details-tees.php?category_id=5">
-																				<img width="600" height="600" src="media/product/Tees/16.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/Tees/5.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3454.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3455.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -845,140 +845,7 @@
 											</nav>
 										</div>
 
-										<div class="col-xl-3 col-lg-3 col-md-12 col-12 sidebar right-sidebar md-b-50">
-											<!-- Block Product Categories -->
-											<!-- <div class="block block-product-cats">
-												<div class="block-title"><h2>Categories</h2></div>
-												<div class="block-content">
-													<div class="product-cats-list">
-														<ul>
-															<li class="current">
-																<a href="shop-grid-left.html">Bed & Bath <span class="count">9</span></a>
-															</li>
-															<li>
-																<a href="shop-grid-left.html">Furniture <span class="count">4</span></a>
-															</li>
-															<li>
-																<a href="shop-grid-left.html">Home Décor <span class="count">3</span></a>
-															</li>
-															<li>
-																<a href="shop-grid-left.html">Lighting <span class="count">6</span></a>
-															</li>
-															<li>
-																<a href="shop-grid-left.html">Office <span class="count">2</span></a>
-															</li>
-															<li>
-																<a href="shop-grid-left.html">Outdoor <span class="count">4</span></a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div> -->
-
-											<!-- Block Product Filter -->
-											<!-- <div class="block block-product-filter">
-												<div class="block-title"><h2>Price</h2></div>
-												<div class="block-content">
-													<div id="slider-range" class="price-filter-wrap">
-														<div class="filter-item price-filter">
-															<div class="layout-slider">
-																<input id="price-filter" name="price" value="0;100">
-															</div>
-															<div class="layout-slider-settings"></div>
-														</div>
-													</div>
-												</div>
-											</div> -->
-
-											<!-- Block Product Filter -->
-											<!-- <div class="block block-product-filter clearfix">
-												<div class="block-title"><h2>Size</h2></div>
-												<div class="block-content">
-													<ul class="filter-items text">
-														<li><span>L</span></li>
-														<li><span>M</span></li>
-														<li><span>S</span></li>
-													</ul>
-												</div>
-											</div> -->
-
-											<!-- Block Product Filter -->
-											<!-- <div class="block block-product-filter clearfix">
-												<div class="block-title"><h2>Brands</h2></div>
-												<div class="block-content">
-													<ul class="filter-items image">
-														<li><span><img src="media/brand/1.jpg" alt="Brand"></span></li>
-														<li><span><img src="media/brand/2.jpg" alt="Brand"></span></li>
-														<li><span><img src="media/brand/3.jpg" alt="Brand"></span></li>
-														<li><span><img src="media/brand/4.jpg" alt="Brand"></span></li>
-														<li><span><img src="media/brand/5.jpg" alt="Brand"></span></li>
-													</ul>
-												</div>
-											</div> -->
-
-											<!-- Block Products -->
-											<!-- <div class="block block-products">
-												<div class="block-title"><h2>Feature Product</h2></div>
-												<div class="block-content">
-													<ul class="products-list">
-														<li class="product-item">
-															<a href="shop-details.html" class="product-image">
-																<img src="media/product/6.jpg">
-															</a>
-															<div class="product-content">
-																<h2 class="product-title">
-																	<a href="shop-details.html">
-																		Dining Table
-																	</a>
-																</h2>
-																<div class="rating small">
-																	<div class="star star-5"></div>
-																</div>
-																<span class="price">
-																	<del aria-hidden="true"><span>$150.00</span></del> 
-																	<ins><span>$100.00</span></ins>
-																</span>
-															</div>
-														</li>
-														<li class="product-item">
-															<a href="shop-details.html" class="product-image">
-																<img src="media/product/8.jpg">
-															</a>
-															<div class="product-content">
-																<h2 class="product-title">
-																	<a href="shop-details.html">
-																		Spinning Pendant Lamp
-																	</a>
-																</h2>
-																<div class="rating small">
-																	<div class="star star-0"></div>
-																</div>
-																<span class="price">$120.00</span>
-															</div>
-														</li>
-														<li class="product-item">
-															<a href="shop-details.html" class="product-image">
-																<img src="media/product/9.jpg">
-															</a>
-															<div class="product-content">
-																<h2 class="product-title">
-																	<a href="shop-details.html">
-																		Bora Armchair
-																	</a>
-																</h2>
-																<div class="rating small">
-																	<div class="star star-5"></div>
-																</div>
-																<span class="price">
-																	<del aria-hidden="true"><span>$200.00</span></del> 
-																	<ins><span>$180.00</span></ins>
-																</span>
-															</div>
-														</li>
-													</ul>
-												</div>
-											</div>  -->
-										</div>
+										
 									</div>
 								</div>
 							</div>

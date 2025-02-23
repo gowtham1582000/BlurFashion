@@ -181,9 +181,9 @@
 													<div class="section-container">
 														<div class="item-info horizontal-start vertical-middle">
 															<div class="content">
-																<div class="subtitle-slider">Unleash Your Confidence with - </div>
-																<h2 class="title-slider"><b>Our BlurFashion</b></h2>
-																<div class="description-slider">Save up to 10% on outdoor packages </div>
+																<div class="subtitle-slider" style="color: white;">Unleash Your Confidence with - </div>
+																<h2 class="title-slider" style="color: white;"><b>Our BlurFashion</b></h2>
+																<div class="description-slider" style="color: white;">Save up to 10% on outdoor packages </div>
 																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
 															</div>
 														</div>
@@ -200,9 +200,9 @@
 													<div class="section-container">
 														<div class="item-info horizontal-start vertical-middle">
 															<div class="content">
-																<div  class="subtitle-slider">Discover the Perfect Fit –</div>
-																<h2  class="title-slider">Trendy & Timeless Men’s Apparel</h2>
-																<div class="description-slider">Save up to 50%</div>
+																<div  class="subtitle-slider" style="color: white;">Discover the Perfect Fit –</div>
+																<h2  class="title-slider" style="color: white;">Trendy & Timeless Men’s Apparel</h2>
+																<div class="description-slider" style="color: white;">Save up to 50%</div>
 																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
 															</div>
 														</div>

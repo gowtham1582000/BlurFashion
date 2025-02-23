@@ -55,7 +55,7 @@
 							<div class="section-padding">
 								<div class="section-container p-l-r">
 									<div class="row">
-										<div class="col-xl-9 col-lg-9 col-md-12 col-12 products-column">
+										<div class="col-xl-12 col-lg-12 col-md-12 col-12 products-column">
 											<div class="products-topbar clearfix">
 												<div class="products-topbar-left">
 													<div class="products-count">

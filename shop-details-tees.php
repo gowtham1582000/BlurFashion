@@ -28,7 +28,7 @@
 							GROUP_CONCAT(CAT_PATHLOCATION) AS IMAGE_LOCATIONS 
 						FROM category_details 
 						WHERE CAT_CATID = :category_id
-						GROUP BY CAT_NAME, CAT_RATE, CAT_CONTENT
+						GROUP BY CAT_CATID
 						order by CAT_ID";
 
 					// Prepare and execute the query
@@ -54,6 +54,7 @@
 					// Output the result for debugging (optional)
 					// echo "<pre>";
 					// print_r($images);
+					//print_r(value: $colors);
 					// print_r($result);
 					// echo "</pre>";
 

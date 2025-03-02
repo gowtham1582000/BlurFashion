@@ -422,33 +422,34 @@ $conn = null; // Close connection
 															</li>
 														</ul> -->
 													</li>
-													<li class="level-0 menu-item mega-menu mega-menu-fullwidth align-center">
+													<li class="level-0 menu-item mega-menu mega-menu-fullwidth align-center"> <!-- menu-item-has-children - dropdown icon  -->
 														<a href="shop-shirts.php"><span class="menu-item-text">Shirts</span></a>
-														<!-- <div class="sub-menu">
+														
+														 <!-- <div class="sub-menu">
 															<div class="row">
-																<div class="col-md-5">
-																	<div class="menu-section">
-																		<h2 class="sub-menu-title">Blog Category</h2>
+																<div class="col-md-5"> -->
+																	<!-- <div class="menu-section">
+																		<h2 class="sub-menu-title">Shirts Category</h2>
 																		<ul class="menu-list">
 																			<li>
-																				<a href="blog-grid-left.html"><span class="menu-item-text">Blog Grid - Left Sidebar</span></a>
+																				<a href="blog-grid-left.html"><span class="menu-item-text">Ryan</span></a>
 																			</li>
 																			<li>
-																				<a href="blog-grid-right.html"><span class="menu-item-text">Blog Grid - Right Sidebar</span></a>
+																				<a href="blog-grid-right.html"><span class="menu-item-text">Checked</span></a>
 																			</li>
 																			<li>
-																				<a href="blog-list-left.html"><span class="menu-item-text">Blog List - Left Sidebar</span></a>
+																				<a href="blog-list-left.html"><span class="menu-item-text">Cotton</span></a>
 																			</li>
 																			<li>
 																				<a href="blog-list-right.html"><span class="menu-item-text">Blog List - Right Sidebar</span></a>
 																			</li>
 																			<li>
 																				<a href="blog-grid-fullwidth.html"><span class="menu-item-text">Blog Grid - No Sidebar</span></a>
-																			</li>
+																			</li> 
 																		</ul>
-																	</div>
+																	</div>  -->
 
-																	<div class="menu-section">
+																	<!-- <div class="menu-section">
 																		<h2 class="sub-menu-title">Blog Details</h2>
 																		<ul class="menu-list">
 																			<li>

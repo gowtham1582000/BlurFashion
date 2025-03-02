@@ -9526,7 +9526,7 @@ body i[class~="slick-arrow"][class~="fa-angle-right"] {
   [class~="header-search-form"]
   [class~="result-search-products-content"],
 [class~="search-overlay"] [class~="wrapper-search"] {
-  width: 100%;
+  width: 75%;
 }
 [class~="search-overlay"]
   [class~="search-from"]

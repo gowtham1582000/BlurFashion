@@ -270,7 +270,6 @@
 																	</div>
 																</div>
 															</div>
-															
 															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
@@ -357,9 +356,9 @@
 																			<div class="hot">Hot</div>
 																		</div>
 																		<div class="product-thumb-hover">
-																			<a href="shop-details-tees.php?category_id=108">
-																				<img width="600" height="600" src="media/product/shirts/33.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shirts/34.jpg" class="hover-image back" alt="">
+																			<a href="shop-details-tees.php?category_id=17">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/1.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/2.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -379,7 +378,7 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=10">Category 10</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=17">Red collar - Rayon half sleeve</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$100.00</span></del> 
 																				<ins><span>$90.00</span></ins>
@@ -397,8 +396,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details-tees.php?category_id=10">
-																				<img width="600" height="600" src="media/product/shirts/slot2delhishirts/80.JPG" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shirts/slot2delhishirts/80.JPG" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/48.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/51.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -418,7 +417,670 @@
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
-																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=109">Category 109</a></h3>
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=109">Printed casuals</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=4">
+																				<img width="600" height="600" src="media/product/shirts/11.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/13.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=4">Kerala printed- premium drop shoulder</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=18">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/4.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/6.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=18">Aari popcorn</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=19">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/7.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/9.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=19">Red collar - Rayon half sleeve</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=20">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/10.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/11.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=20">Red collar - Rayon half sleeve</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=21">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/15.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/14.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=21">Red collar - Rayon half sleeve</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=22">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/16.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/17.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=22">Printed checked casuals</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=23">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/19.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/20.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=23">Red collar - Rayon half sleeve</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=24">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/21.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/23.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=24">Aari popcorn</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=25">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/24.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/25.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=25">Red collar - Rayon half sleeve</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=26">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/27.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/29.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=26">Printed casuals</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=27">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/35.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/34.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=27">Printed casuals</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=28">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/39.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/40.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=28">Aari popcorn</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=29">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/45.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/46.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=29">Aari popcorn</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=30">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/30.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/31.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=30">Red collar - Rayon half sleeve</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=31">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/36.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/37.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=31">Red collar - Rayon half sleeve</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=32">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/42.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/43.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=32">Red collar - Rayon half sleeve</a></h3>
+																			<span class="price">
+																				<del aria-hidden="true"><span>$100.00</span></del> 
+																				<ins><span>$90.00</span></ins>
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+																<div class="products-entry clearfix product-wapper">
+																	<div class="products-thumb">
+																		<div class="product-lable">
+																			<div class="onsale">-23%</div>
+																			<div class="hot">Hot</div>
+																		</div>
+																		<div class="product-thumb-hover">
+																			<a href="shop-details-tees.php?category_id=33">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/55.jpg" class="post-image" alt="">
+																				<img width="600" height="600" src="media/product/shirts/Edited Photos/56.jpg" class="hover-image back" alt="">
+																			</a>
+																		</div>		
+																		<!-- <div class="product-button">
+																			<div class="btn-add-to-cart" data-title="Add to cart">
+																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
+																			</div>
+																			<div class="btn-wishlist" data-title="Wishlist">
+																				<button class="product-btn">Add to wishlist</button>
+																			</div>
+																			<div class="btn-compare" data-title="Compare">
+																				<button class="product-btn">Compare</button>
+																			</div>
+																			<span class="product-quickview" data-title="Quick View">
+																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
+																			</span>		
+																		</div> -->
+																	</div>
+																	<div class="products-content">
+																		<div class="contents text-center">
+																			<h3 class="product-title"><a href="shop-details-tees.php?category_id=33">Red collar - Rayon half sleeve</a></h3>
 																			<span class="price">
 																				<del aria-hidden="true"><span>$100.00</span></del> 
 																				<ins><span>$90.00</span></ins>
@@ -575,7 +1237,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="tab-pane fade" id="layout-list" role="tabpanel">
+												<!-- <div class="tab-pane fade" id="layout-list" role="tabpanel">
 													<div class="products-list list">
 														<div class="products-entry clearfix product-wapper">
 															<div class="row">
@@ -989,7 +1651,7 @@
 															</div>
 														</div>
 													</div>
-												</div>
+												</div> -->
 											</div>
 
 											<nav class="pagination">

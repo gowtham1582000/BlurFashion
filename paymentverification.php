@@ -34,10 +34,17 @@ try {
 
     $api->utility->verifyPaymentSignature($attributes);
 
+    $payment = $api->payment->fetch($razorpayPaymentId);
+
+    $paymentStatus = $payment->status;
+
     // Payment verified successfully
     echo json_encode([
         "status" => "success",
         "message" => "Payment verified successfully.",
+        "payment_status" => $paymentStatus,  // Shows "captured", "failed", etc.
+        "amount" => $payment->amount / 100,  // Amount in rupees
+        "payment_method" => $payment->method, // Card, UPI, Netbanking, etc.
     ]);
 } catch (Exception $e) {
     // Verification failed

@@ -19,5 +19,5 @@ $order = $api->order->create([
 $orderId = $order['id'];
 
 // Return order_id to the frontend
-echo json_encode(['order_id' => $orderId]);
+echo json_encode(['order_id' => $orderId,'ReceiptId'=>$receiptId]);
 ?>

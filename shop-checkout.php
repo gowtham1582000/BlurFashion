@@ -109,6 +109,7 @@
 								razorpay_payment_id: response.razorpay_payment_id,
 								razorpay_order_id: response.razorpay_order_id,
 								razorpay_signature: response.razorpay_signature,
+								ReceiptId:data.ReceiptId
 							}),
 						})
 						.then((response) => response.json())
@@ -367,62 +368,7 @@
 						isValid = false;
 					}
 				}
-
-				// Shipping validation (only if checkbox is checked)
-
-				if ($('input[name="ship_to_different_address"]').is(':checked')) {
-					if ($('input[name="shipping_first_name"]').val().trim() === "") {
-						$('#shipping-first-name-error').text("First name is required.");
-						isValid = false;
-					}
-
-					if ($('input[name="shipping_last_name"]').val().trim() === "") {
-						$('#shipping-last-name-error').text("Last name is required.");
-						isValid = false;
-					}
-
-					if ($('input[name="shiping_address_2"]').val().trim() === "") {
-						$('#shipping-door-no-error').text("Door No is required.");
-						isValid = false;
-					}
-
-					if ($('input[name="shipping_address_1"]').val().trim() === "") {
-						$('#shipping-street-address-error').text("Street address is required.");
-						isValid = false;
-					}
-
-					if ($('input[name="shipping_country"]').val().trim() === "") {
-						$('#shipping-country-error').text("Please select a country.");
-						isValid = false;
-					}
-
-					if ($('input[name="shipping_postcode"]').val().trim() === "") {
-						$('#shipping-postcode-error').text("Postcode is required.");
-						isValid = false;
-					}
-
-					if ($('input[name="shipping_state"]').val().trim() === "") {
-						$('#shipping-state-error').text("Please select a state.");
-						isValid = false;
-					}
-
-					if ($('input[name="shipping_city"]').val().trim() === "") {
-						$('#shipping-city-error').text("Please select a city.");
-						isValid = false;
-					}
-
-					let shippingPhone = $('input[name="shipping_phone"]').val();
-					if (shippingPhone.trim() === "" || !shippingPhone.match(phonePattern)) {
-						$('#shipping-phone-error').text("Please enter a valid phone number.");
-						isValid = false;
-					}
-
-					let shippingEmail = $('input[name="shipping_email"]').val();
-					if (shippingEmail.trim() === "" || !shippingEmail.match(emailPattern)) {
-						$('#shipping-email-error').text("Please enter a valid email address.");
-						isValid = false;
-					}
-				}
+			 
 
 				
 				console.log(orderDetails)
@@ -441,19 +387,7 @@
 					formData.append("billing_email", document.querySelector("input[name='billing_email']").value);
 					formData.append("order_comments", document.querySelector("textarea[name='order_comments']").value);
 					formData.append("billing_country", document.querySelector("input[name='billing_country']").value);
-
-					formData.append("shipping_first_name", document.querySelector("input[name='shipping_first_name']").value);
-					formData.append("shipping_last_name", document.querySelector("input[name='shipping_last_name']").value);
-					formData.append("shipping_address_1", document.querySelector("input[name='shipping_address_1']").value);
-					formData.append("shipping_address_2", document.querySelector("input[name='shiping_address_2']").value);
-					formData.append("shipping_city", document.querySelector("input[name='shipping_city']").value);
-					formData.append("shipping_state", document.querySelector("input[name='shipping_state']").value);
-					formData.append("shipping_postcode", document.querySelector("input[name='shipping_postcode']").value);
-					formData.append("shipping_phone", document.querySelector("input[name='shipping_phone']").value);
-					formData.append("shipping_email", document.querySelector("input[name='shipping_email']").value);
-					formData.append("shipping_country", document.querySelector("input[name='shipping_country']").value);
-			
-					formData.append("MailShipAddress", $('input[name="ship_to_different_address"]').is(':checked')?'S':'B');
+ 
 					formData.append("userbillId", addressbillid);
 
 					orderDetails.forEach((item, index) => {
@@ -659,7 +593,7 @@
 															</div>
 														</div>
 													</div>
-													<div class="shipping-fields">
+													<!--<div class="shipping-fields">
 														<p class="form-row form-row-wide ship-to-different-address">
 															<label class="checkbox">
 																<input class="input-checkbox" type="checkbox" name="ship_to_different_address" value="1"> 
@@ -738,7 +672,7 @@
 																<span class="error" id="shipping-email-error"></span>
 															</p>
 														</div>
-													</div>
+													</div>-->
 													<div class="additional-fields">
 														<p class="form-row notes">
 															<label>Order notes <span class="optional">(optional)</span></label>

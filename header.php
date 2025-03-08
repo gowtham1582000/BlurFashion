@@ -26,30 +26,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
  
     // Validate input
     if (!empty($full_name) && filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($password)) {
-        // Hash the password for security
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
-        // Insert data into the users table
-        $sql = "INSERT INTO users (full_name, email, password, phone) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$full_name, $email, $hashedPassword, $phone]);
-		$userId = $conn->lastInsertId();
-
-		// Store user_id in the session
-		$_SESSION['user_id'] = $userId;
-
-        // Set session variables after successful registration
-        $_SESSION['logged_in'] = true;
-        $_SESSION['username'] = $full_name; // You can use email or any unique identifier
-        //header("Location: index.php");
-		echo '<script type="text/javascript">
-		
-		useriddetail();
-	  </script>';
-       // exit();
-    } else {
-        echo "Please enter all required fields: Full Name, Email, and Password.";
-    }
+		// Check if Email or Phone already exists
+		$checkSql = "SELECT * FROM users WHERE email = ? OR phone = ?";
+		$checkStmt = $conn->prepare($checkSql);
+		$checkStmt->execute([$email, $phone]);
+		$existingUser = $checkStmt->fetch();
+			
+		if ($existingUser) {
+			if ($existingUser['email'] == $email) {
+				echo "Email already registered. Please use another email.";
+			} elseif ($existingUser['phone'] == $phone) {
+				echo "Phone number already registered. Please use another number.";
+			}
+		} else {
+			// Hash the password for security
+			$hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+	
+			// Insert data into the users table
+			$sql = "INSERT INTO users (full_name, email, password, phone) VALUES (?, ?, ?, ?)";
+			$stmt = $conn->prepare($sql);
+			$stmt->execute([$full_name, $email, $hashedPassword, $phone]);
+			$userId = $conn->lastInsertId();
+	
+			// Store user_id in session
+			$_SESSION['user_id'] = $userId;
+			$_SESSION['logged_in'] = true;
+			$_SESSION['username'] = $full_name; 
+	
+			echo '<script type="text/javascript">
+					useriddetail();
+				  </script>';
+		}
+	} else {
+		echo "Please enter all required fields: Full Name, Email, and Password.";
+	}
+	
 }
 
 // Handle Login (optional for login)
@@ -91,6 +102,8 @@ $conn = null; // Close connection
 <head>
 
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
  		<script>
 			debugger
 			var userId
@@ -99,6 +112,19 @@ $conn = null; // Close connection
 				if(userId!=localStorage.getItem("userid") &&  <?php echo $_SESSION['user_id']?> != 0){
 					localStorage.clear();
 					localStorage.setItem("userid", userId);
+					
+				}
+
+				if(userId!=0){
+					setTimeout(function () {
+ 						document.querySelector(".active-login").style.display = "none"; // Hide login text
+						document.querySelector(".user-icon").style.display = "inline-block"; // Show man icon
+					}, 1000);
+				}else{
+					setTimeout(function () {
+						document.querySelector(".active-login").style.display = "inline-block"; // Hide login text
+						document.querySelector(".user-icon").style.display = "none"; // Show man icon
+					}, 1000);
 				}
 			}
 			let cartCount = 0; // Cart count
@@ -286,7 +312,7 @@ $conn = null; // Close connection
 						<!-- Login -->
 						<div class="my-account">
 							<div class="login-header">
-								<a href="page-my-account.html"><i class="wpb-icon-user"></i></a>
+								<a href="page-login.html"><i class="wpb-icon-user"></i></a>
 							</div>
 						</div>
 
@@ -566,6 +592,9 @@ $conn = null; // Close connection
 											<!-- Login -->
 											<div class="login-header">
 												<a class="active-login" href="#">Login</a>
+												<a class="user-icon" href="page-my-account.php" style="display: none;">
+													<i class="fas fa-user"></i> <!-- Font Awesome Man Icon -->
+												</a>
 												<div class="form-login-register">
 													<div class="box-form-login">
 														<div class="active-login"></div>

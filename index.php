@@ -139,6 +139,12 @@
 		}
 
 	</style>
+	<style>
+			.uniform-width {
+        width: 470px;
+        height: 475px !important;
+        }
+	</style>
 	</head>
 	
 	<body class="home">
@@ -300,8 +306,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/Tees/2.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/Tees/7.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/2.jpg" class="post-image uniform-width" alt="">
+																				<img width="600" height="600" src="media/product/Tees/7.jpg" class="hover-image back uniform-width" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -339,8 +345,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/shirts/11.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shirts/14.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shirts/11.jpg" class="post-image uniform-width" alt="">
+																				<img width="600" height="600" src="media/product/shirts/14.jpg" class="hover-image back uniform-width" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -378,8 +384,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/shirts/31.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shirts/30.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shirts/31.jpg" class="post-image uniform-width" alt="">
+																				<img width="600" height="600" src="media/product/shirts/30.jpg" class="hover-image back uniform-width" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -417,8 +423,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
-																				<img width="600" height="600" src="media/product/shirts/22.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shirts/24.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shirts/22.jpg" class="post-image uniform-width" alt="">
+																				<img width="600" height="600" src="media/product/shirts/24.jpg" class="hover-image back uniform-width" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">

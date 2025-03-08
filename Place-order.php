@@ -24,22 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $conn->real_escape_string($_POST['billing_email']);
     $orderNotes = $conn->real_escape_string($_POST['order_comments']);
     $country = $conn->real_escape_string($_POST['billing_country']);
-
-    // Shipping address fields
-    $shippingFirstName = $conn->real_escape_string($_POST['shipping_first_name'] ?? '');
-    $shippingLastName = $conn->real_escape_string($_POST['shipping_last_name'] ?? '');
-    $shippingAddress1 = $conn->real_escape_string($_POST['shipping_address_1'] ?? '');
-    $shippingAddress2 = $conn->real_escape_string($_POST['shipping_address_2'] ?? '');
-    $shippingCity = $conn->real_escape_string($_POST['shipping_city'] ?? '');
-    $shippingState = $conn->real_escape_string($_POST['shipping_state'] ?? '');
-    $shippingPostcode = $conn->real_escape_string($_POST['shipping_postcode'] ?? '');
-    $shippingPhone = $conn->real_escape_string($_POST['shipping_phone'] ?? '');
-    $shippingEmail = $conn->real_escape_string($_POST['shipping_email'] ?? '');
-    $shippingCountry = $conn->real_escape_string($_POST['shipping_country'] ?? '');
+ 
 
     // Default address flag
     $defaultAddress = $conn->real_escape_string($_POST['default_address']); // Default to 'N'
-    $MailShipAddress = $conn->real_escape_string($_POST['MailShipAddress']); // Default to 'N'
     $p_useraddressId=$conn->real_escape_string($_POST['userbillId']);
     // Assuming you have form data in $_POST
     $orderItems = $_POST['order_items'];
@@ -47,12 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Convert $orderItems to JSON
     $orderItemsJson = json_encode($orderItems);
 
-    $sql = "CALL InsertUserBillingDetails(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
+    $sql = "CALL InsertUserBillingDetails(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
-        "issssssssssssssssssssssssi", 
+        "isssssssssssssi", 
         $userId, 
         $firstName, 
         $lastName, 
@@ -64,19 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $phone, 
         $email, 
         $orderNotes, 
-        $country, 
-        $shippingFirstName, 
-        $shippingLastName, 
-        $shippingAddress1, 
-        $shippingAddress2, 
-        $shippingCity, 
-        $shippingState, 
-        $shippingPostcode, 
-        $shippingPhone, 
-        $shippingEmail, 
-        $shippingCountry, 
+        $country,  
         $defaultAddress, 
-        $MailShipAddress, 
         $orderItemsJson ,// Pass the JSON data for order items
         $p_useraddressId
     );

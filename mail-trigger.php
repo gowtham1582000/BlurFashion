@@ -12,8 +12,6 @@ $dbname = "bfdb";
 
 $conn = new mysqli($host, $user, $password, $dbname);
 
-
-$MailShipAddress = $_POST['MailShipAddress'];
 $userBillingId = isset($_POST['userbillId']) ? intval($_POST['userbillId']) : 0;
 
 if ($userBillingId > 0) {
@@ -27,7 +25,6 @@ if ($userBillingId > 0) {
     if ($result->num_rows > 0) {
         $billingData = $result->fetch_assoc();
 
-        if ($MailShipAddress === 'B') {
             // Use Billing Address from database
             $deliveryAddress = $billingData['address_1'] . ', ' . 
                                $billingData['address_2'] . ', ' . 
@@ -39,16 +36,6 @@ if ($userBillingId > 0) {
             $customerName = $billingData['first_name'] . ' ' . $billingData['last_name'];
             $customerEmail = $billingData['email'];
 
-        } elseif ($MailShipAddress === 'S') {
-            // Use Shipping Address from database
-            $deliveryAddress = $_POST['shipping_address_1'] . ', ' . $_POST['shipping_address_2'] . ', ' . $_POST['shipping_city'] . ', ' . $_POST['shipping_state'] . ', ' . $_POST['shipping_postcode'] . ', ' . $_POST['shipping_country'];
-            $customerName = $_POST['shipping_first_name'] . ' ' . $_POST['shipping_last_name'];
-            $customerEmail = $_POST['shipping_email'];
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Invalid address type.']);
-            exit;
-        }
-
     } else {
         echo json_encode(['success' => false, 'message' => 'No billing details found for the provided ID.']);
         exit;
@@ -57,20 +44,10 @@ if ($userBillingId > 0) {
     $stmt->close();
 
 }else{
-    if ($MailShipAddress === 'B') {
-        // Use Billing Address
         $deliveryAddress = $_POST['billing_address_1'] . ', ' . $_POST['billing_address_2'] . ', ' . $_POST['billing_city'] . ', ' . $_POST['billing_state'] . ', ' . $_POST['billing_postcode'] . ', ' . $_POST['billing_country'];
         $customerName = $_POST['first_name'] . ' ' . $_POST['last_name'];
         $customerEmail = $_POST['billing_email'];
-    } elseif ($MailShipAddress === 'S') {
-        // Use Shipping Address
-        $deliveryAddress = $_POST['shipping_address_1'] . ', ' . $_POST['shipping_address_2'] . ', ' . $_POST['shipping_city'] . ', ' . $_POST['shipping_state'] . ', ' . $_POST['shipping_postcode'] . ', ' . $_POST['shipping_country'];
-        $customerName = $_POST['shipping_first_name'] . ' ' . $_POST['shipping_last_name'];
-        $customerEmail = $_POST['shipping_email'];
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Invalid address type.']);
-        exit;
-    }
+    
 }
 
 

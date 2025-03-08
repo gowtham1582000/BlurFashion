@@ -143,7 +143,7 @@
 	
 	<body class="home">
 		<div id="page" class="hfeed page-wrapper">
-		<?php include('header.php'); ?>
+			<?php include('header.php'); ?>
 
 			<div id="site-main" class="site-main">
 				<div id="main-content" class="main-content">

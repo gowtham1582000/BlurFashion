@@ -29,6 +29,12 @@
 		<!-- Google Web Fonts -->
 		<link href="../../css2-1?family=Barlow+Semi+Condensed:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 		<link href="../../css?family=EB+Garamond:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&display=swap" rel="stylesheet">
+	    <style>
+			.uniform-width {
+        width: 450px;
+        height: 530px !important;
+        }
+		 </style>
 	</head>
 	
 	<body class="shop">
@@ -41,8 +47,8 @@
 						<div id="title" class="page-title" style="background-position: center; background-image: url(../../media/product/shorts/964d0bb5-a4ce-440d-99bc-25290f5a07f4.jpg);">
 							<div class="section-container">
 								<div class="content-title-heading">
-									<h1 class="text-title-heading">
-										Bed &amp; Bath		
+									<h1 class="text-title-heading" style="color: white;">
+										Shorts		
 									</h1>
 								</div>
 								<div class="breadcrumbs">
@@ -97,8 +103,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details-tees.php?category_id=11">
-																				<img width="600" height="600" src="media/product/shorts/41-1.JPG" aria-valuetext="" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shorts/42-2.JPG" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shorts/41-1.JPG" aria-valuetext="" class="post-image uniform-width" alt="">
+																				<img width="600" height="600" src="media/product/shorts/42-2.JPG" class="hover-image back uniform-width" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
@@ -129,8 +135,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details-tees.php?category_id=12">
-																				<img width="600" height="600" src="media/product/shorts/46-6.JPG" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shorts/47-7.JPG" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shorts/46-6.JPG" class="post-image uniform-width" alt="">
+																				<img width="600" height="600" src="media/product/shorts/47-7.JPG" class="hover-image back uniform-width" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -164,8 +170,8 @@
 																	<div class="products-thumb">
 																		<div class="product-thumb-hover">
 																			<a href="shop-details-tees.php?category_id=13">
-																				<img width="600" height="600" src="media/product/shorts/56-16.JPG" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/shorts/56-16.JPG" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/shorts/56-16.JPG" class="post-image uniform-width" alt="">
+																				<img width="600" height="600" src="media/product/shorts/56-16.JPG" class="hover-image back uniform-width" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -191,7 +197,7 @@
 																	</div>
 																</div>
 															</div>
-															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+															<!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
 																		<div class="product-lable">
@@ -204,7 +210,7 @@
 																				<img width="600" height="600" src="media/product/Tees/4.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<!-- <div class="product-button">
+																		 <div class="product-button">
 																			<div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div>
@@ -217,7 +223,7 @@
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div> -->
+																		</div> 
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
@@ -229,8 +235,8 @@
 																		</div>
 																	</div>
 																</div>
-															</div>
-															<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+															</div> -->
+															<!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
 																		<div class="product-lable">
@@ -243,7 +249,7 @@
 																				<img width="600" height="600" src="media/product/Tees/5.jpg" class="hover-image back" alt="">
 																			</a>
 																		</div>		
-																		<!-- <div class="product-button">
+																		 <div class="product-button">
 																			<div class="btn-add-to-cart" data-title="Add to cart">
 																				<a rel="nofollow" href="#" class="product-btn button">Add to cart</a>
 																			</div>
@@ -256,7 +262,7 @@
 																			<span class="product-quickview" data-title="Quick View">
 																				<a href="#" class="quickview quickview-button">Quick View <i class="icon-search"></i></a>
 																			</span>		
-																		</div> -->
+																		</div> 
 																	</div>
 																	<div class="products-content">
 																		<div class="contents text-center">
@@ -268,7 +274,7 @@
 																		</div>
 																	</div>
 																</div>
-															</div>
+															</div> -->
 															<!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">

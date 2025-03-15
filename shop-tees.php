@@ -29,6 +29,13 @@
 		<!-- Google Web Fonts -->
 		<link href="../../css2-1?family=Barlow+Semi+Condensed:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 		<link href="../../css?family=EB+Garamond:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&display=swap" rel="stylesheet">
+		<style>
+			.uniform-width {
+        width: 450px;
+        height: 530px !important;
+        }
+		 </style>
+	
 	</head>
 	
 	<body class="shop">
@@ -97,8 +104,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details-tees.php?category_id=1">
-																				<img width="600" height="600" src="media/product/Tees/8.jpg" aria-valuetext="" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/Tees/1.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/8.jpg" aria-valuetext="" class="post-image uniform-width" alt="">
+																				<img width="600" height="600" src="media/product/Tees/1.jpg" class="hover-image back uniform-width" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
@@ -129,8 +136,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details-tees.php?category_id=14">
-																				<img width="600" height="600" src="media/product/Tees/IMG_3438.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/Tees/IMG_3439.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3438.jpg" class="post-image uniform-width" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3439.jpg" class="hover-image back uniform-width" alt="">
 																			</a>
 																		</div>		
 																		<div class="product-button">
@@ -164,8 +171,8 @@
 																	<div class="products-thumb">
 																		<div class="product-thumb-hover">
 																			<a href="shop-details-tees.php?category_id=16">
-																				<img width="600" height="600" src="media/product/Tees/IMG_3428.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/Tees/IMG_3430.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3428.jpg" class="post-image uniform-width" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3430.jpg" class="hover-image back uniform-width" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -200,8 +207,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details-tees.php?category_id=15">
-																				<img width="600" height="600" src="media/product/Tees/IMG_3465.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/Tees/IMG_3467.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3465.jpg" class="post-image uniform-width" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3467.jpg" class="hover-image back uniform-width" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -239,8 +246,8 @@
 																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details-tees.php?category_id=5">
-																				<img width="600" height="600" src="media/product/Tees/IMG_3454.jpg" class="post-image" alt="">
-																				<img width="600" height="600" src="media/product/Tees/IMG_3455.jpg" class="hover-image back" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3454.jpg" class="post-image uniform-width" alt="">
+																				<img width="600" height="600" src="media/product/Tees/IMG_3455.jpg" class="hover-image back uniform-width" alt="">
 																			</a>
 																		</div>		
 																		<!-- <div class="product-button">
@@ -417,7 +424,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="tab-pane fade" id="layout-list" role="tabpanel">
+												<!-- <div class="tab-pane fade" id="layout-list" role="tabpanel">
 													<div class="products-list list">
 														<div class="products-entry clearfix product-wapper">
 															<div class="row">
@@ -831,7 +838,7 @@
 															</div>
 														</div>
 													</div>
-												</div>
+												</div> -->
 											</div>
 
 											<nav class="pagination">

@@ -32,7 +32,6 @@
 		<link href="../../css?family=EB+Garamond:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&display=swap" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
-		<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 		<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -140,9 +139,11 @@
 						.then((data) => {
 							if (data.success) {
 								alert("Order placed successfully!");
+								localStorage.removeItem("quickBuyProduct");
 								// window.location.href = "index.php"; // Optional: Redirect to homepage or order confirmation page
 							} else {
 								alert("Error placing order: " + data.message);
+								localStorage.removeItem("quickBuyProduct");
 							}
 						})
 						.catch((error) => {
@@ -211,9 +212,65 @@
 		var orderDetails = [];
 		document.addEventListener("DOMContentLoaded", function () {
 			var totalCart=0
-			
+
+
+			function getQueryParam(name) {
+				const urlParams = new URLSearchParams(window.location.search);
+				return urlParams.get(name) || ""; // Returns an empty string if the parameter is missing
+			}
+			var receivedValue = getQueryParam('BuyIt');
+
 			// Fetch cart details for the user
 			function fetchCartDetails() {
+				if(receivedValue){	
+						var buyitnow = localStorage.getItem('quickBuyProduct')
+						const cartItems = JSON.parse(buyitnow); // Assuming the response is an array of cart items
+						$('.checkout-review-order-table').show();
+						$('.cart-empty-message').hide();
+
+						let cartItemsHTML = '';
+						let subtotal = 0;
+
+						cartItems.forEach((product, index) => {
+							const productTotal = parseFloat(product.price) * product.quantity;
+							subtotal += productTotal;
+
+							cartItemsHTML += `
+							<div class="cart-item">
+								<div class="info-product">
+									<div class="product-thumbnail">
+										<img width="600" height="600" src="${product.image}" alt="">					
+									</div>
+									<div class="product-name">
+										${product.product_name}
+										<div>
+											<strong class="product-quantity">QTY : ${product.quantity}</strong>	
+											<strong class="prod6 status">SIZE : ${product.size}</strong>
+											<strong class="product-quantity">COLOR : ${product.color}</strong>
+										</div>							
+									</div>
+								</div>
+								<div class="product-total">
+									<span>₹${productTotal.toFixed(2)}</span>
+								</div>
+							</div>
+							`;
+							orderDetails.push({
+								name: product.product_name,
+								quantity: parseInt(product.quantity),
+								price: parseFloat(productTotal.toFixed(2)),
+								size: product.size,
+								color: product.color,
+								image: product.image
+							});
+						});
+
+						// Append the HTML to the cart table body
+						$('.cart-items').html(cartItemsHTML);
+
+						// Update cart totals
+						updateCheckoutTotals(subtotal);
+				}else
 				$.get('getCartDetails.php', { user_id: localStorage.getItem('userid') })
 				.done(function(response) {
 					if (response.error) {
@@ -245,7 +302,7 @@
 										${product.product_name}
 										<div>
 											<strong class="product-quantity">QTY : ${product.quantity}</strong>	
-											<strong class="product-quantity">SIZE : ${product.size}</strong>
+											<strong class="prod6 status">SIZE : ${product.size}</strong>
 											<strong class="product-quantity">COLOR : ${product.color}</strong>
 										</div>							
 									</div>
@@ -442,13 +499,16 @@
 									.then(saveData => {
 										if (saveData.success) {
 											alert('Order saved successfully!');
+											localStorage.removeItem("quickBuyProduct");
 										} else {
 											console.error('Failed to save order.');
+											localStorage.removeItem("quickBuyProduct");
 										}
 									})
 									.catch(err => console.error('Error saving order:', err));
 								} else {
 									alert('Failed to place order.');
+									localStorage.removeItem("quickBuyProduct");
 								}
 							})
 							.catch(err => console.error('Error:', err));
@@ -673,7 +733,7 @@
 															</p>
 														</div>
 													</div>-->
-													<div class="additional-fields">
+													<div class="additional-fields" style="display: none;">
 														<p class="form-row notes">
 															<label>Order notes <span class="optional">(optional)</span></label>
 															<span class="input-wrapper">

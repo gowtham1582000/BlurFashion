@@ -848,7 +848,7 @@
 				const quantity = $('.btn-add-to-cart-btn a').closest('.add-to-cart-wrap').find('input[name="quantity"]').val(); // Get quantity
 				const activeImage = $('.img-item.slick-current img.thumbnail-image').attr('src'); // Get active image from the carousel
 				const selectedSize = $('.attributes .text li.active span').text().trim(); // Get selected size
-				const selectedColor = $('.attributes .colors li.active span').attr('data-color'); // Get selected color
+				const selectedColor = $('.attributes .colors li.active span').attr('value'); // Get selected color
 
 				// Validate the inputs (optional)
 				if (!productName || !productPrice || !quantity || !activeImage || !selectedSize || !selectedColor) {
@@ -857,19 +857,20 @@
 				}
 
 				// Store product details in localStorage
-				const productDetails = {
+				const productDetails = [{
 					product_name: productName,
 					price: parseFloat(productPrice),
 					quantity: parseInt(quantity),
 					image: activeImage,
-					selectedSize: selectedSize,
-					selectedColor: selectedColor
-				};
+					size: selectedSize,
+					color: selectedColor
+				}];
+				localStorage.removeItem("quickBuyProduct");
 
 				localStorage.setItem('quickBuyProduct', JSON.stringify(productDetails));
 
 				// Redirect to checkout page
-				window.location.href = 'shop-checkout.php'; // Replace with your actual checkout page URL
+				window.location.href = 'shop-checkout.php?BuyIt=Y';
 			});
 
 			

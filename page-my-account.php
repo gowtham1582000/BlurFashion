@@ -143,11 +143,11 @@
 			.modal {
 				display: none;
 				position:absolute;
-				top: 0;
-				left: 0;
+				transform: translate(-50%, 10%); 
+				top: 50%;
+    			left: 50%;
 				width: 100%;
 				height: 100%;
-				background: rgba(0, 0, 0, 0.6);
 				justify-content: center;
 				align-items: center;
 				z-index: 1000;
@@ -196,6 +196,83 @@
 			.save-btn:hover {
 				background: #218838;
 			}
+			.form-group {
+				display: flex;
+				gap: 10px;  /* Adds spacing between inputs */
+				flex-wrap: wrap;  /* Ensures responsiveness on smaller screens */
+			}
+
+			.form-group input {
+				flex: 1;  /* Makes input fields take equal width */
+				min-width: 150px;  /* Prevents fields from getting too small */
+			}
+			.my-account-addresses {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin: auto;
+    }
+    
+    .my-account-addresses p {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .add-btn {
+        background: #28a745;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+        margin: 10px auto;
+    }
+
+    .add-btn:hover {
+        background: #218838;
+    }
+	.no-data {
+    text-align: center;
+    font-size: 16px;
+    color: #888;
+    padding: 20px;
+    font-weight: 600;
+}
+.address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.address-header p {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.add-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 14px;
+}
+
+.add-btn:hover {
+    background: #0056b3;
+}
+
 		</style> 
 	</head>
 	
@@ -246,7 +323,7 @@
 															<table class="DataTable" id="OrderTable">
 																<thead>
 																	<tr>
-																		<th>Order Details</th>
+																		<th style="align-items: center;">Order Details</th>
 																	</tr>
 																</thead>
 																<tbody>
@@ -259,35 +336,29 @@
 												</div>
 												<div class="tab-pane fade" id="addresses" role="tabpanel">
 													<div class="my-account-addresses">
-														<p>
-															The following addresses will be used on the checkout page by default.
-														</p>
+														<div class="address-header">
+															<p>The following addresses will be used on the checkout page by default.</p>
+															<button class="add-btn" onclick="OpenEditModal(0,'I',null)">➕ Add</button>
+														</div>
+														
+
 														<div class="address-container" id="AddressList">
 														</div>
 													</div>
 												</div>
 												<div class="tab-pane fade" id="account-details" role="tabpanel">
 													<div class="my-account-account-details">
+														<p class="form-row">
+															<label>Display name <span class="required">*</span></label>
+															<input type="text" class="input-text" name="account_display_name"> 
+															<span><em>This will be how your name will be displayed in the account section and in reviews</em></span>
+														</p>
+														<div class="clear"></div>
+														<p class="form-row">
+															<label>Email address <span class="required">*</span></label>
+															<input type="email" class="input-text" name="account_email">
+														</p>
 														<form class="edit-account" action="" method="post">
-															<p class="form-row">
-																<label for="account_first_name">First name <span class="required">*</span></label>
-																<input type="text" class="input-text" name="account_first_name">
-															</p>
-															<p class="form-row">
-																<label>Last name <span class="required">*</span></label>
-																<input type="text" class="input-text" name="account_last_name">
-															</p>
-															<div class="clear"></div>
-															<p class="form-row">
-																<label>Display name <span class="required">*</span></label>
-																<input type="text" class="input-text" name="account_display_name"> 
-																<span><em>This will be how your name will be displayed in the account section and in reviews</em></span>
-															</p>
-															<div class="clear"></div>
-															<p class="form-row">
-																<label>Email address <span class="required">*</span></label>
-																<input type="email" class="input-text" name="account_email">
-															</p>
 															<fieldset>
 																<legend>Password change</legend>
 																<p class="form-row">
@@ -639,18 +710,21 @@
 		<div class="modal" id="EditModal">
 			<div class="modal-content">
 				<span class="close-btn" onclick="CloseModal()">&times;</span>
-				<h3>Edit Address</h3>
+				<h3 id="ModalHeader">Edit Address</h3>
 				<form id="EditAddressForm">
 					<input type="hidden" id="AddressId" name="AddressId">
 					<div class="form-group">
-						<input type="text" id="FullName" name="FullName" placeholder="Full Name" class="input-field">
+						<input type="text" id="FirstName" name="FirstName" placeholder="First Name" class="input-field">
+						<input type="text" id="LastName" name="LastName" placeholder="Last Name" class="input-field">
 					</div>
 					<div class="form-group">
+						<input type="text" id="DoorNo" name="DoorNo" placeholder="Door No" class="input-field">
 						<input type="text" id="StreetAddress" name="StreetAddress" placeholder="Street Address" class="input-field">
 					</div>
 					<div class="form-group">
 						<input type="text" id="City" name="City" placeholder="City" class="input-field">
 						<input type="text" id="State" name="State" placeholder="State" class="input-field">
+						<input type="text" id="Country" name="Country" placeholder="Country" class="input-field">
 					</div>
 					<div class="form-group">
 						<input type="text" id="Postcode" name="Postcode" placeholder="Postcode" class="input-field">
@@ -680,6 +754,8 @@
 	<link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
 		
 		UserDashboard();
@@ -694,6 +770,7 @@
 				success: function (response) {
 					if (response.success) {
 						console.log("Success:", response.message);
+						$('#OrderTable tbody').empty()
 						DisplayProducts(response.data.OrderList);
 						DisplayAddresses(response.data.UserAddress)
 						console.log("Products:", response);
@@ -707,6 +784,46 @@
 			});
 		}
 		function DisplayProducts(products) {
+			
+			if(products.length>0){
+				products.forEach(product => {
+					let orderCard = `
+						<tr>
+							<td>
+								<div class="order-card">
+									<div class="order-card-header">
+										<h4>${product.OrderName} - ${product.OrderSize} - ${product.OrderColor}</h4>
+										<span class="order-date">${new Date(product.OrderDate).toLocaleDateString("en-IN", {
+											year: 'numeric',
+											month: 'long',
+											day: 'numeric'
+										})}</span>
+									</div>
+									<div class="order-card-body">
+										<div class="order-image">
+											<img src="${product.OrderImage}" alt="${product.OrderName}">
+										</div>
+										<div class="order-info">
+											<p><strong>Quantity:</strong> ${product.OrderQuantity}</p>
+											<p><strong>Rate:</strong> ₹${product.Rate}</p>
+											<p><strong>Total:</strong> ₹${product.Total}</p>
+										</div>
+										<div class="order-info">
+											<p><strong>Shipping Address:</strong> ${product.OrderAddress}</p>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+					`;
+					$('#OrderTable tbody').append(orderCard)
+					//orderTable.row.add($(orderCard)).draw(false);
+				});
+
+			}else{
+				
+			}
+		
 			let orderTable = $('#OrderTable').DataTable({
 				"paging": true,
 				"pageLength": 1,
@@ -716,86 +833,160 @@
 				"ordering": false,
 				"destroy": true // Destroy previous instance to avoid duplication
 			});
-
-			products.forEach(product => {
-				let orderCard = `
-					<tr>
-						<td>
-							<div class="order-card">
-								<div class="order-card-header">
-									<h4>${product.OrderName} - ${product.OrderSize} - ${product.OrderColor}</h4>
-									<span class="order-date">${new Date(product.OrderDate).toLocaleDateString("en-IN", {
-										year: 'numeric',
-										month: 'long',
-										day: 'numeric'
-									})}</span>
-								</div>
-								<div class="order-card-body">
-									<div class="order-image">
-										<img src="${product.OrderImage}" alt="${product.OrderName}">
-									</div>
-									<div class="order-info">
-										<p><strong>Quantity:</strong> ${product.OrderQuantity}</p>
-										<p><strong>Rate:</strong> ₹${product.Rate}</p>
-										<p><strong>Total:</strong> ₹${product.Total}</p>
-									</div>
-									<div class="order-info">
-										<p><strong>Shipping Address:</strong> ${product.OrderAddress}</p>
-									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-				`;
-				orderTable.row.add($(orderCard)).draw(false);
-			});
 		}
 		function DisplayAddresses(addresses) {
 			let addressList = document.getElementById("AddressList");
 			addressList.innerHTML = "";
-
-			addresses.forEach(address => {
-				let isDefault = address.DefaultAddress === "Y" ? "checked" : "";
-				let addressCard = `
-					<div class="address-card">
-						<div class="address-header">
-							<h4>${address.first_name} ${address.last_name}</h4>
-							<div class="address-actions">
-                        		<button class="add-btn" onclick="OpenEditModal('${address.id}')">➕ Add</button>
-								<button class="edit-btn" onclick="OpenEditModal('${address.id}')">✏️ Edit</button>
-								<button class="delete-btn" onclick="DeleteAddress('${address.id}')">🗑️ Delete</button>
+			if(addresses.length>0){
+				addresses.forEach(address => {
+					let isDefault = address.DefaultAddress === "Y" ? "checked" : "";
+					let addressCard = `
+						<div class="address-card">
+							<div class="address-header">
+								<h4>${address.first_name} ${address.last_name}</h4>
+								<div class="address-actions">
+									<button class="edit-btn" onclick="OpenEditModal('${address.id}','U',${JSON.stringify(address).replace(/"/g, '&quot;')})">✏️ Edit</button>
+									<button class="delete-btn" onclick="DeleteAddress('${address.id}')">🗑️ Delete</button>
+								</div>
+							</div>
+							<div class="address-body">
+								<p>${address.address_1}, ${address.address_2}</p>
+								<p>${address.city} - ${address.postcode}, ${address.state}</p>
+								<p>Phone: ${address.phone}</p>
+								<div class="address-footer">
+									<label>
+										<input type="radio" name="defaultAddress" ${isDefault} onclick="SetDefaultAddress('${address.id}')"> Default Address
+									</label>
+								</div>
 							</div>
 						</div>
-						<div class="address-body">
-							<p>${address.address_1}, ${address.address_2}</p>
-							<p>${address.city} - ${address.postcode}, ${address.state}</p>
-							<p>Phone: ${address.phone}</p>
-							<div class="address-footer">
-								<label>
-									<input type="radio" name="defaultAddress" ${isDefault} onclick="SetDefaultAddress('${address.id}')"> Default Address
-								</label>
-							</div>
-						</div>
+					`;
+					addressList.innerHTML += addressCard;
+				});
+			}else{
+				let noDataMessage = `
+					<div class="no-data">
+						<p>No addresses found. Add New Address</p>
 					</div>
 				`;
-				addressList.innerHTML += addressCard;
-			});
+				addressList.innerHTML = noDataMessage;
+			}
+
 		}
-		function OpenEditModal(addressId) {
+		
+		function OpenEditModal(addressId,type,address) {
 			document.getElementById("EditModal").style.display = "block";
-			document.getElementById("AddressId").value = addressId;
+			document.getElementById("AddressId").value = addressId?addressId:null;
+			if(type=='U'){
+				document.getElementById("ModalHeader").innerHTML = 'EDIT ADDRESS';
+
+				address = typeof address === "string" ? JSON.parse(address) : address;
+
+				document.getElementById("FirstName").value = address.first_name || "";
+				document.getElementById("LastName").value = address.last_name || "";
+				document.getElementById("DoorNo").value = address.address_2 || "";
+				document.getElementById("StreetAddress").value = address.address_1 || "";
+				document.getElementById("City").value = address.city || "";
+				document.getElementById("State").value = address.state || "";
+				document.getElementById("Country").value = address.country || "";
+				document.getElementById("Postcode").value = address.postcode || "";
+				document.getElementById("Phone").value = address.phone || "";
+			}else {
+				document.getElementById("ModalHeader").innerHTML = 'ADD ADDRESS';
+
+				// Reset form for new entry
+				document.getElementById("EditAddressForm").reset();
+			}
 		}
+
+		function saveAddress() {
+			let formData = new FormData(document.getElementById("EditAddressForm"));
+			formData.append("UserId", localStorage.getItem("userid")); // Replace with logged-in user ID
+			formData.append("OperationType", document.getElementById("AddressId").value ? "U" : "I"); // 'U' for update, 'I' for insert
+
+			fetch("UserAddressDetail.php", {
+				method: "POST",
+				body: formData
+			})
+			.then(response => response.json())
+			.then(data => {
+				alert(data.message);
+				if (data.status === "success") {
+					document.getElementById("EditModal").style.display = "none";
+					UserDashboard();
+				}
+			})
+			.catch(error => console.error("Error:", error));
+		}
+
+		document.getElementById("EditAddressForm").addEventListener("submit", function (event) {
+			event.preventDefault(); // Prevent default form submission
+			saveAddress();
+		});
+
 
 		function CloseModal() {
 			document.getElementById("EditModal").style.display = "none";
 		}
 
 		function DeleteAddress(addressId) {
-			alert("Address " + addressId + " will be deleted!");
+			Swal.fire({
+				title: "🗑️ Delete Address?",
+				html: "<b>Are you sure you want to remove this address? ⚠️</b><br>This action cannot be undone.",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#d33",
+				cancelButtonColor: "#555",
+				confirmButtonText: "Yes, Delete! ❌",
+				cancelButtonText: "Cancel ❎",
+				background: "#fff",
+				allowOutsideClick: false, // Prevent closing on outside click
+				allowEscapeKey: false, // Prevent closing with ESC key
+				showCloseButton: false
+			}).then((result) => {
+				if (result.isConfirmed) {
+					let formData = new FormData();
+					formData.append("UserId", 13); // Replace with logged-in user ID
+					formData.append("AddressId", addressId);
+					formData.append("OperationType", "R"); // 'D' for default update
+
+					fetch("UserAddressDetail.php", {
+						method: "POST",
+						body: formData
+					})
+					.then(response => response.json())
+					.then(data => {
+						alert(data.message);
+						if (data.status === "success") {
+							UserDashboard();
+						}
+					})
+					.catch(error => console.error("Error:", error));
+				}
+			});
+
+			
 		}
 
 		function SetDefaultAddress(addressId) {
-			alert("Address " + addressId + " set as default!");
+			let formData = new FormData();
+			formData.append("UserId", 13); // Replace with logged-in user ID
+			formData.append("AddressId", addressId);
+			formData.append("DefaultAddress", "Y");
+			formData.append("OperationType", "D"); // 'D' for default update
+
+			fetch("UserAddressDetail.php", {
+				method: "POST",
+				body: formData
+			})
+			.then(response => response.json())
+			.then(data => {
+				alert(data.message);
+				if (data.status === "success") {
+					UserDashboard();
+				}
+			})
+			.catch(error => console.error("Error:", error));
 		}
 	</script>
 </html>

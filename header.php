@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
 
 // Handle Login (optional for login)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
-    $username = trim($_POST['username']);
+    $username = trim($_POST['usermail']);
     $password = trim($_POST['password']);
 
     // Query for user
@@ -604,8 +604,8 @@ $conn = null; // Close connection
 																	<h2>Sign in</h2>
 																	<p class="status"></p>
 																	<div class="content">
-																		<div class="username">
-																			<input type="text" required="required" class="input-text" name="username" id="username" placeholder="Your name">
+																		<div class="usermail">
+																			<input type="text" required="required" class="input-text" name="usermail" id="usermail" placeholder="Your mail">
 																		</div>
 																		<div class="password">
 																			<input class="input-text" required="required" type="password" name="password" id="password" placeholder="Password">

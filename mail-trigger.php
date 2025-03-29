@@ -94,13 +94,13 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'kishorekumar6961608@gmail.com';
-    $mail->Password = 'ljho prod yoec mvrq'; // Replace with your actual password or app-specific password
+    $mail->Username = 'blurfashion007@gmail.com';
+    $mail->Password = 'lkxz svtk pjqt wayl'; // Replace with your actual password or app-specific password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
     // Set email parameters
-    $mail->setFrom('blurfashion07@gmail.com', 'Blur Fashion');
+    $mail->setFrom('blurfashion007@gmail.com', 'Blur Fashion');
     $mail->addAddress($customerEmail);
     $mail->isHTML(true);
     $mail->Subject = 'Order Confirmation';

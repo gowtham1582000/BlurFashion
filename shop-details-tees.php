@@ -132,6 +132,22 @@
 				padding: 2px;
 				border-radius: 4px;
 			} */
+			.swal-title-custom {
+				font-size: 18px;
+			}
+			.swal-popup-custom {
+				padding: 1.5rem;
+			}
+			@media (min-width: 992px) {
+				.swal-popup-custom {
+					padding: 1.5rem;
+					margin-right: 310px;
+				}
+			}
+			.swal-confirm-button-custom {
+				font-size: 14px;
+				padding: 8px 20px;
+			}
 
 		</style>
 	</head>
@@ -261,9 +277,9 @@
 														<div class="btn-quick-buy" data-title="Wishlist">
 															<a href="shop-checkout.php" class="product-btn">Buy It Now</a>
 														</div>
-														<div class="btn-wishlist" data-title="Wishlist">
+														<!-- <div class="btn-wishlist" data-title="Wishlist">
 															<button class="product-btn">Add to wishlist</button>
-														</div>
+														</div> -->
 														
 													</div>
 													<br>
@@ -281,7 +297,7 @@
 									</div>
 								</div>
 								
-								<div class="product-related">
+								<!-- <div class="product-related">
 									<div class="section-padding">
 										<div class="section-container p-l-r">
 											<div class="block block-products slider">
@@ -504,7 +520,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div><!-- #content -->
 					</div><!-- #primary -->
@@ -772,6 +788,7 @@
 		<script src="libs/elevatezoom/js/jquery.elevatezoom.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 		<!-- Site Scripts -->
 
@@ -796,6 +813,21 @@
 				// Add to cart functionality
 				$('.btn-add-to-cart-btn a').on('click', function (e) { 
 					e.preventDefault();
+					if (!userId || userId == 0) {
+						Swal.fire({
+							title: "Account not Exists!",
+							text: "Please Create or Login to account for purchase.",
+							icon: "warning",
+							width: '400px', // Custom width
+							customClass: {
+								title: 'swal-title-custom',
+								popup: 'swal-popup-custom',
+								confirmButton: 'swal-confirm-button-custom'
+							},
+							confirmButtonColor: "#d33"
+						});
+						return
+					}
 
 					// Fetch product details
 					const productName = $('h1.productname').text().trim(); // Get product name
@@ -809,7 +841,7 @@
 
 					// Validate the inputs (optional)
 					if (!productName || !productPrice || !quantity || !activeImage || !selectedSize || !selectedColor) {
-						alert('Failed to fetch product details. Please try again.');
+						alert('Please select product size and color before proceeding to checkout.');
 						return;
 					}
 
@@ -840,6 +872,21 @@
 			$('.btn-quick-buy a').on('click', function (e) {
 				e.preventDefault();
 
+				if (!userId || userId == 0) {
+					Swal.fire({
+						title: "Account not Exists!",
+						text: "Please Create or Login to account for purchase.",
+						icon: "warning",
+						width: '400px', // Custom width
+						customClass: {
+							title: 'swal-title-custom',
+							popup: 'swal-popup-custom',
+							confirmButton: 'swal-confirm-button-custom'
+						},
+						confirmButtonColor: "#d33"
+					});
+					return
+				}
 				// Fetch product details
 				const productName = $('h1.productname').text().trim(); // Get product name
 				const productPrice = $('span.price ins span').length > 0 
@@ -848,28 +895,29 @@
 				const quantity = $('.btn-add-to-cart-btn a').closest('.add-to-cart-wrap').find('input[name="quantity"]').val(); // Get quantity
 				const activeImage = $('.img-item.slick-current img.thumbnail-image').attr('src'); // Get active image from the carousel
 				const selectedSize = $('.attributes .text li.active span').text().trim(); // Get selected size
-				const selectedColor = $('.attributes .colors li.active span').attr('data-color'); // Get selected color
+				const selectedColor = $('.attributes .colors li.active span').attr('value'); // Get selected color
 
 				// Validate the inputs (optional)
 				if (!productName || !productPrice || !quantity || !activeImage || !selectedSize || !selectedColor) {
-					alert('Please select all product options before proceeding to checkout.');
+					alert('Please select product size and color before proceeding to checkout.');
 					return;
 				}
 
 				// Store product details in localStorage
-				const productDetails = {
+				const productDetails = [{
 					product_name: productName,
 					price: parseFloat(productPrice),
 					quantity: parseInt(quantity),
 					image: activeImage,
-					selectedSize: selectedSize,
-					selectedColor: selectedColor
-				};
+					size: selectedSize,
+					color: selectedColor
+				}];
+				localStorage.removeItem("quickBuyProduct");
 
 				localStorage.setItem('quickBuyProduct', JSON.stringify(productDetails));
 
 				// Redirect to checkout page
-				window.location.href = 'shop-checkout.php'; // Replace with your actual checkout page URL
+				window.location.href = 'shop-checkout.php?BuyIt=Y';
 			});
 
 			

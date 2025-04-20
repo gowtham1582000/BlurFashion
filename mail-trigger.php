@@ -14,6 +14,8 @@ $conn = new mysqli($host, $user, $password, $dbname);
 
 $userBillingId = isset($_POST['userbillId']) ? intval($_POST['userbillId']) : 0;
 
+$userId= isset($_POST['user_id']) ? intval($_POST['user_id']) : 0;
+
 if ($userBillingId > 0) {
     // Fetch the billing or shipping details from the database
     $sql = "SELECT * FROM useraddressdetails WHERE id = ?";
@@ -73,8 +75,8 @@ foreach ($orderItems as $item) {
 
 // Add email template details
 $logoUrl = "./assets/img/B-removebg-preview (1).png";
-$yourOrdersUrl = "https://example.com/your-orders";
-$myAccountUrl = "https://example.com/my-account";
+$yourOrdersUrl = "https://example.com/your-orders?user_id=" . urlencode($userId) . "&order=Y";
+$myAccountUrl = "https://example.com/my-account?user_id=" . urlencode($userId);
 $websiteUrl = "https://www.blurfashion.in";
 
 // Load the email template
@@ -94,13 +96,13 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'kishorekumar6961608@gmail.com';
-    $mail->Password = 'ljho prod yoec mvrq'; // Replace with your actual password or app-specific password
+    $mail->Username = 'blurfashion007@gmail.com';
+    $mail->Password = 'lkxz svtk pjqt wayl'; // Replace with your actual password or app-specific password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
     // Set email parameters
-    $mail->setFrom('blurfashion07@gmail.com', 'Blur Fashion');
+    $mail->setFrom('blurfashion007@gmail.com', 'Blur Fashion');
     $mail->addAddress($customerEmail);
     $mail->isHTML(true);
     $mail->Subject = 'Order Confirmation';

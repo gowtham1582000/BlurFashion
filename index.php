@@ -171,7 +171,7 @@
 																<div class="subtitle-slider">Elevate Your Style with – </div>
 																<h2 class="title-slider">BlurFashion</h2>
 																<div class="description-slider">Shop Now!</div>
-																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
+																<a class="button-slider button-white" href="shop-tees.php">SHOP NOW</a>
 															</div>
 														</div>
 													</div>
@@ -190,7 +190,7 @@
 																<div class="subtitle-slider" style="color: white;">Unleash Your Confidence with - </div>
 																<h2 class="title-slider" style="color: white;"><b>Our BlurFashion</b></h2>
 																<div class="description-slider" style="color: white;">Save up to 10% on outdoor packages </div>
-																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
+																<a class="button-slider button-white" href="shop-pants.php">SHOP NOW</a>
 															</div>
 														</div>
 													</div>
@@ -209,7 +209,7 @@
 																<div  class="subtitle-slider" style="color: white;">Discover the Perfect Fit –</div>
 																<h2  class="title-slider" style="color: white;">Trendy & Timeless Men’s Apparel</h2>
 																<div class="description-slider" style="color: white;">Save up to 50%</div>
-																<a class="button-slider button-white" href="shop-grid-left.html">SHOP NOW</a>
+																<a class="button-slider button-white" href="shop-shirts.php">SHOP NOW</a>
 															</div>
 														</div>
 													</div>
@@ -245,7 +245,7 @@
 																				<!-- <div class="banner-image-description">
 																					Sed lectus. Aliquam lorem ante, <br>dapibus in, viverra quis, feugiat a, tellus
 																				</div> -->
-																				<a class="button button-outline" href="shop-grid-left.html" style="color:aliceblue">SHOP NOW</a>
+																				<a class="button button-outline" href="shop-tees.php" style="color:aliceblue">SHOP NOW</a>
 																			</div>
 																		</div>
 																	</div>
@@ -269,7 +269,7 @@
 																	<div class="banner-wrapper-infor">
 																		<div class="info">
 																			<div class="content">
-																				<a class="link-title" href="shop-grid-left.html">
+																				<a class="link-title" href="shop-shirts.php">
 																					<h3 class="title-banner" style="color:azure">UP TO <span>20% OFF</span></h3>
 																				</a>
 																				<div class="banner-image-description" style="color:azure">
@@ -301,9 +301,6 @@
 															<div class="items">
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
-																		<div class="product-lable">
-																			<div class="hot">Hot</div>
-																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
 																				<img width="600" height="600" src="media/product/Tees/2.jpg" class="post-image uniform-width" alt="">
@@ -340,9 +337,6 @@
 															<div class="items">
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
-																		<div class="product-lable">
-																			<div class="hot">Hot</div>
-																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
 																				<img width="600" height="600" src="media/product/shirts/11.jpg" class="post-image uniform-width" alt="">
@@ -379,9 +373,6 @@
 															<div class="items">
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
-																		<div class="product-lable">
-																			<div class="hot">Hot</div>
-																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
 																				<img width="600" height="600" src="media/product/shirts/31.jpg" class="post-image uniform-width" alt="">
@@ -418,9 +409,6 @@
 															<div class="items">
 																<div class="products-entry clearfix product-wapper">
 																	<div class="products-thumb">
-																		<div class="product-lable">
-																			<div class="onsale">-33%</div>
-																		</div>
 																		<div class="product-thumb-hover">
 																			<a href="shop-details.html">
 																				<img width="600" height="600" src="media/product/shirts/22.jpg" class="post-image uniform-width" alt="">
@@ -521,14 +509,14 @@
 															<div class="bg-banner">
 																<div class="banner-wrapper banners">
 																	<div class="banner-image">
-																		<a href="shop-grid-left.html">
+																		<a href="shop-tees.php">
 																			<img width="571" height="622" src="./assets/img/seraj.jpg" alt="Banner Image">
 																		</a>
 																	</div>
 																	<div class="banner-wrapper-infor">
 																		<div class="info">
 																			<div class="content">
-																				<a class="button button-white" href="shop-shirts.php">T-Shirts</a>
+																				<a class="button button-white" href="shop-tees.php">T-Shirts</a>
 																			</div>
 																		</div>
 																	</div>
@@ -550,14 +538,14 @@
 																				<div class="bg-banner">
 																					<div class="banner-wrapper banners">
 																						<div class="banner-image">
-																							<a href="shop-grid-left.html" style="height: 423px;">
+																							<a href="shop-shirts.php" style="height: 423px;">
 																								<img width="406" src="./assets/img/suraj-1.jpg" alt="Banner Image">
 																							</a>
 																						</div>
 																						<div class="banner-wrapper-infor">
 																							<div class="info">
 																								<div class="content">
-																									<a class="button button-white" href="shop-tees.php">Shirts</a>
+																									<a class="button button-white" href="shop-shirts.php">Shirts</a>
 																								</div>
 																							</div>
 																						</div>
@@ -572,7 +560,7 @@
 																				<div class="bg-banner">
 																					<div class="banner-wrapper banners">
 																						<div class="banner-image">
-																							<a href="shop-grid-left.html" style="height: 423xpx;">
+																							<a href="shop-pants.php" style="height: 423xpx;">
 																								<img width="406" height="304" src="./assets/img/baggy-pant.jpg" alt="Banner Image">
 																							</a>
 																						</div>
@@ -600,14 +588,14 @@
 																				<div class="bg-banner">
 																					<div class="banner-wrapper banners">
 																						<div class="banner-image">
-																							<a href="shop-grid-left.html">
+																							<a href="#">
 																								<img width="406" height="304" src="./assets/img/accessiors.jpg" alt="Banner Image">
 																							</a>
 																						</div>
 																						<div class="banner-wrapper-infor">
 																							<div class="info">
 																								<div class="content">
-																									<a class="button button-white" href="shop-grid-right.php">Accessories</a>
+																									<a class="button button-white" href="#">Accessories</a>
 																								</div>
 																							</div>
 																						</div>

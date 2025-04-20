@@ -16,6 +16,7 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 $_SESSION['user_id']=0;
+$_SESSION['username']='';
 // Handle Registration
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     // Collect form data
@@ -34,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
 			
 		if ($existingUser) {
 			if ($existingUser['email'] == $email) {
-				echo "Email already registered. Please use another email.";
+				//echo "Email already registered. Please use another email.";
 			} elseif ($existingUser['phone'] == $phone) {
-				echo "Phone number already registered. Please use another number.";
+				//echo "Phone number already registered. Please use another number.";
 			}
 		} else {
 			// Hash the password for security
@@ -57,8 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
 					useriddetail();
 				  </script>';
 		}
+		//echo "Register successful!";
 	} else {
-		echo "Please enter all required fields: Full Name, Email, and Password.";
+		//echo "Please enter all required fields: Full Name, Email, and Password.";
 	}
 	
 }
@@ -83,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 
        // echo "Login successful!";
     } else {
-        echo "Invalid username or password.";
+        //echo "Invalid username or password.";
     }
 }
 
@@ -103,27 +105,58 @@ $conn = null; // Close connection
 
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  		<script>
+			function confirmLogout() {
+				Swal.fire({
+					title: "Are you sure?",
+					text: "You will be logged out of your account.",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#d33",
+					cancelButtonColor: "#6c757d",
+					confirmButtonText: "Yes, Logout!",
+					cancelButtonText: "Cancel ❎"
+				}).then((result) => {
+					if (result.isConfirmed) {
+						localStorage.removeItem("userid"); // Remove user ID
+						window.location.href = "logout.php"; // Redirect to PHP logout script
+					}
+				});
+			}
 			debugger
-			var userId
+			var userId,userName=''
 			function useriddetail(){
 				userId = localStorage.getItem("userid") || <?php echo $_SESSION['user_id']?>;
+				userName= localStorage.getItem("userName") || '<?php echo $_SESSION['username']?>';
 				if(userId!=localStorage.getItem("userid") &&  <?php echo $_SESSION['user_id']?> != 0){
 					localStorage.clear();
 					localStorage.setItem("userid", userId);
-					
+					localStorage.setItem("userName", userName);
+				}
+
+				let userNameDisplay = document.getElementById("userNameDisplay");
+
+				if (userName) {
+					let nameParts = userName.split(" ");
+					let shortName = nameParts.length > 1 ? nameParts[0] + " " + nameParts[1][0] + "." : userName;
+					userNameDisplay.textContent = shortName; 
+					userNameDisplay.title = userName; // Full name on hover
 				}
 
 				if(userId!=0){
 					setTimeout(function () {
  						document.querySelector(".active-login").style.display = "none"; // Hide login text
-						document.querySelector(".user-icon").style.display = "inline-block"; // Show man icon
+						document.querySelector(".user-actions").style.display = "inline-block"; // Show man icon
+						document.querySelector(".mobile-active-login").style.display = "none"; // Hide login text
+						document.querySelector(".mobile-user-icon").style.display = "inline-block"; // Show man icon
 					}, 1000);
 				}else{
 					setTimeout(function () {
 						document.querySelector(".active-login").style.display = "inline-block"; // Hide login text
-						document.querySelector(".user-icon").style.display = "none"; // Show man icon
+						document.querySelector(".user-actions").style.display = "none"; // Show man icon
+						document.querySelector(".mobile-active-login").style.display = "inline-block"; // Hide login text
+						document.querySelector(".mobile-user-icon").style.display = "none"; // Show man icon
 					}, 1000);
 				}
 			}
@@ -178,29 +211,7 @@ $conn = null; // Close connection
 					}
 				});
 			}
-			// function combineCartItems(cartItems) {
-			//     const combined = {};
-
-			//     cartItems.forEach(item => {
-			//         const itemName = item.product_name;
-
-			//         if (combined[itemName]) {
-			//             // If the product already exists, update quantity and price
-			//             combined[itemName].quantity += item.quantity;
-			//             combined[itemName].price += parseFloat(item.price) * item.quantity;
-			//         } else {
-			//             // Add new product with initial quantity and price
-			//             combined[itemName] = {
-			//                 ...item,
-			//                 quantity: item.quantity,
-			//                 price: parseFloat(item.price) * item.quantity
-			//             };
-			//         }
-			//     });
-
-			//     // Convert the object back to an array
-			//     return Object.values(combined);
-			// }
+			
 			// Append a cart item
 
 			function appendCartItem(item) {
@@ -312,7 +323,11 @@ $conn = null; // Close connection
 						<!-- Login -->
 						<div class="my-account">
 							<div class="login-header">
-								<a href="page-login.html"><i class="wpb-icon-user"></i></a>
+								<a class="mobile-active-login" href="page-login.php"><i class="wpb-icon-user"></i></a>
+
+								<a class="mobile-user-icon" href="page-my-account.php" style="display: none;">
+									<i class="fas fa-user"></i> <!-- Font Awesome Man Icon -->
+								</a>
 							</div>
 						</div>
 
@@ -592,9 +607,15 @@ $conn = null; // Close connection
 											<!-- Login -->
 											<div class="login-header">
 												<a class="active-login" href="#">Login</a>
-												<a class="user-icon" href="page-my-account.php" style="display: none;">
-													<i class="fas fa-user"></i> <!-- Font Awesome Man Icon -->
-												</a>
+												<div class="user-actions" style="display: none;">
+													<a class="user-icon" href="page-my-account.php">
+														<i class="fas fa-user"></i> <!-- Font Awesome User Icon -->
+														<span id="userNameDisplay" style="margin-left: 5px; font-weight: bold;"></span>
+													</a>&nbsp;&nbsp;&nbsp;
+													<a class="logout-btn text-danger" href="#" onclick="confirmLogout()" style="align-items: center;">
+														<i class="fas fa-sign-out-alt"></i> Logout
+													</a>												
+												</div>
 												<div class="form-login-register">
 													<div class="box-form-login">
 														<div class="active-login"></div>
@@ -655,15 +676,15 @@ $conn = null; // Close connection
 											</div>
 
 											<!-- Search -->
-											<div class="search-box">
+											<!-- <div class="search-box">
 												<div class="search-toggle"><i class="icon-search"></i></div>
-											</div>
+											</div> -->
 											
 											<!-- Wishlist -->
-											<div class="wishlist-box">
+											<!-- <div class="wishlist-box">
 												<a href="shop-wishlist.html"><i class="icon-heart"></i></a>
 												<span class="count-wishlist">1</span>
-											</div>
+											</div> -->
 											
 											<!-- Cart -->
 											<div class="ruper-topcart dropdown light">

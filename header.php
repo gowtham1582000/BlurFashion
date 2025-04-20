@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
 
 // Handle Login (optional for login)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
-    $username = trim($_POST['username']);
+    $username = trim($_POST['usermail']);
     $password = trim($_POST['password']);
 
     // Query for user
@@ -258,7 +258,7 @@ $conn = null; // Close connection
 								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 header-center">
 									<div class="">
 										<a href="index.php">
-											<img width="400" height="79" src="./assets/img/B-removebg-preview (1).png" alt="Ruper – Furniture HTML Theme">
+											<img width="400" height="79" src="./assets/img/B-removebg-preview (1).png" style="width: 251PX;" alt="Ruper – Furniture HTML Theme">
 										</a>
 									</div>
 								</div>
@@ -336,7 +336,7 @@ $conn = null; // Close connection
 									<div class="col-xl-3 col-lg-2 col-md-12 col-sm-12 col-12 header-left">
 										<div>
 											<a href="index.php">
-												<img width="400" height="200" src="./assets/img/B-removebg-preview (1).png" alt="Ruper – Furniture HTML Theme">
+												<img width="400" height="200" src="./assets/img/B-removebg-preview (1).png" style="width: 251PX;"  alt="Ruper – Furniture HTML Theme">
 											</a>
 										</div>
 									</div>
@@ -451,20 +451,20 @@ $conn = null; // Close connection
 													<li class="level-0 menu-item mega-menu mega-menu-fullwidth align-center"> <!-- menu-item-has-children - dropdown icon  -->
 														<a href="shop-shirts.php"><span class="menu-item-text">Shirts</span></a>
 														
-														 <!-- <div class="sub-menu">
+														 <div class="sub-menu">
 															<div class="row">
-																<div class="col-md-5"> -->
-																	<!-- <div class="menu-section">
+																<div class="col-md-5"> 
+																	 <div class="menu-section">
 																		<h2 class="sub-menu-title">Shirts Category</h2>
 																		<ul class="menu-list">
 																			<li>
-																				<a href="blog-grid-left.html"><span class="menu-item-text">Ryan</span></a>
+																				<a href="rayon-shirts.php"><span class="menu-item-text">Rayon</span></a>
 																			</li>
 																			<li>
-																				<a href="blog-grid-right.html"><span class="menu-item-text">Checked</span></a>
+																				<a href="Drop-shoulder-shirts.php"><span class="menu-item-text">Drop shoulder</span></a>
 																			</li>
 																			<li>
-																				<a href="blog-list-left.html"><span class="menu-item-text">Cotton</span></a>
+																				<a href="shop-shirts.php"><span class="menu-item-text">Cotton</span></a>
 																			</li>
 																			<li>
 																				<a href="blog-list-right.html"><span class="menu-item-text">Blog List - Right Sidebar</span></a>
@@ -473,7 +473,7 @@ $conn = null; // Close connection
 																				<a href="blog-grid-fullwidth.html"><span class="menu-item-text">Blog Grid - No Sidebar</span></a>
 																			</li> 
 																		</ul>
-																	</div>  -->
+																	</div>
 
 																	<!-- <div class="menu-section">
 																		<h2 class="sub-menu-title">Blog Details</h2>
@@ -604,8 +604,8 @@ $conn = null; // Close connection
 																	<h2>Sign in</h2>
 																	<p class="status"></p>
 																	<div class="content">
-																		<div class="username">
-																			<input type="text" required="required" class="input-text" name="username" id="username" placeholder="Your name">
+																		<div class="usermail">
+																			<input type="text" required="required" class="input-text" name="usermail" id="usermail" placeholder="Your mail">
 																		</div>
 																		<div class="password">
 																			<input class="input-text" required="required" type="password" name="password" id="password" placeholder="Password">

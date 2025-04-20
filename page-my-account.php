@@ -273,6 +273,58 @@
     background: #0056b3;
 }
 
+.edit-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.save-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.input-text {
+    width: 80% !important;
+    padding: 8px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.edit-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #218838;
+}
 		</style> 
 	</head>
 	
@@ -305,19 +357,57 @@
 				
 												<ul class="nav nav-tabs">
 													<li class="nav-item">
+														<a class="nav-link" data-toggle="tab" href="#account-details" role="tab">Account details</a>
+													</li>
+													<li class="nav-item">
 														<a class="nav-link" data-toggle="tab" href="#orders" role="tab">Orders</a>
 													</li>
 													<li class="nav-item">
 														<a class="nav-link" data-toggle="tab" href="#addresses" role="tab">Addresses</a>
 													</li>
 													<li class="nav-item">
-														<a class="nav-link" data-toggle="tab" href="#account-details" role="tab">Account details</a>
+														<a class="nav-link text-danger" href="#" onclick="confirmLogout()">Logout</a>
 													</li>
 												</ul>
 											</nav>
 											<div class="my-account-content tab-content">
-												
-												<div class="tab-pane fade show active" id="orders" role="tabpanel">
+												<div class="tab-pane fade show active" id="account-details" role="tabpanel">
+													<div class="my-account-account-details">
+														<p class="form-row">
+															<label>Display Name <span class="required">*</span></label>
+															<input type="text" class="input-text" name="account_display_name" id="nameField">
+															<button class="edit-btn" onclick="updateField('name')">✏️ Edit</button>
+														</p>
+
+														<p class="form-row">
+															<label>Email Address <span class="required">*</span></label>
+															<input type="email" class="input-text" name="account_email" id="emailField">
+															<button class="edit-btn" onclick="updateField('email')">✏️ Edit</button>
+														</p>
+
+														<form class="edit-account">
+															<fieldset>
+																<legend>Password Change</legend>
+																<p class="form-row">
+																	<label>Current Password</label>
+																	<input type="password" class="input-text" name="password_current" autocomplete="off">
+																</p>
+																<p class="form-row">
+																	<label>New Password</label>
+																	<input type="password" class="input-text" name="password_1" autocomplete="off">
+																</p>
+																<p class="form-row">
+																	<label>Confirm New Password</label>
+																	<input type="password" class="input-text" name="password_2" autocomplete="off">
+																</p>
+																<p class="form-row">
+																	<button type="button" class="button" onclick="updateField('password')">🔑 Change Password</button>
+																</p>
+															</fieldset>
+														</form>
+													</div>
+												</div>
+												<div class="tab-pane fade" id="orders" role="tabpanel">
 													<div class="my-account-orders">
 														<div class="order-list">
 															<table class="DataTable" id="OrderTable">
@@ -346,41 +436,8 @@
 														</div>
 													</div>
 												</div>
-												<div class="tab-pane fade" id="account-details" role="tabpanel">
-													<div class="my-account-account-details">
-														<p class="form-row">
-															<label>Display name <span class="required">*</span></label>
-															<input type="text" class="input-text" name="account_display_name"> 
-															<span><em>This will be how your name will be displayed in the account section and in reviews</em></span>
-														</p>
-														<div class="clear"></div>
-														<p class="form-row">
-															<label>Email address <span class="required">*</span></label>
-															<input type="email" class="input-text" name="account_email">
-														</p>
-														<form class="edit-account" action="" method="post">
-															<fieldset>
-																<legend>Password change</legend>
-																<p class="form-row">
-																	<label>Current password (leave blank to leave unchanged)</label>
-																	<input type="password" class="input-text" name="password_current" autocomplete="off">
-																</p>
-																<p class="form-row">
-																	<label>New password (leave blank to leave unchanged)</label>
-																	<input type="password" class="input-text" name="password_1" autocomplete="off">
-																</p>
-																<p class="form-row">
-																	<label>Confirm new password</label>
-																	<input type="password" class="input-text" name="password_2" autocomplete="off">
-																</p>
-															</fieldset>
-															<div class="clear"></div>
-															<p class="form-row">
-																<button type="submit" class="button" name="save_account_details" value="Save changes">Save changes</button>
-															</p>
-														</form>
-													</div>
-												</div>
+												
+
 											</div>
 										</div>
 									</div>
@@ -757,7 +814,147 @@
 		
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
-		
+
+		function updateField(type) {
+			let fieldName, fieldValue;
+			let formData = new FormData();
+			let userId = localStorage.getItem("userid"); // Fetch user ID dynamically
+
+			if (!userId) {
+				Swal.fire({
+					title: "User Not Found!",
+					text: "Please log in again.",
+					icon: "error",
+					confirmButtonColor: "#d33"
+				});
+				return;
+			}
+
+			formData.append("UserId", userId);
+			formData.append("Field", type); // Append field type
+
+			if (type === "name") {
+				fieldName = "Name";
+				fieldValue = document.querySelector("input[name='account_display_name']").value.trim();
+				formData.append("Value", fieldValue);
+
+			} else if (type === "email") {
+				fieldName = "Email";
+				let oldEmail = document.querySelector("input[name='account_email']").dataset.oldValue; // Store original email in data attribute
+				fieldValue = document.querySelector("input[name='account_email']").value.trim();
+				
+				if (fieldValue === oldEmail) {
+					Swal.fire({
+						title: "No Change!",
+						text: "The new email cannot be the same as the old email.",
+						icon: "info",
+						confirmButtonColor: "#007bff"
+					});
+					return;
+				}
+
+				formData.append("Value", fieldValue);
+				formData.append("OldEmail", oldEmail);
+
+			} else if (type === "password") {
+				fieldName = "Password";
+				let currentPassword = document.querySelector("input[name='password_current']").value.trim();
+				let newPassword = document.querySelector("input[name='password_1']").value.trim();
+				let confirmPassword = document.querySelector("input[name='password_2']").value.trim();
+
+				if (!currentPassword || !newPassword || !confirmPassword) {
+					Swal.fire({
+						title: "Missing Fields!",
+						text: "Please fill out all password fields.",
+						icon: "warning",
+						confirmButtonColor: "#d33"
+					});
+					return;
+				}
+
+				if (newPassword !== confirmPassword) {
+					Swal.fire({
+						title: "Passwords Do Not Match!",
+						text: "Make sure the new password and confirm password are the same.",
+						icon: "error",
+						confirmButtonColor: "#d33"
+					});
+					return;
+				}
+
+				formData.append("CurrentPassword", currentPassword);
+				formData.append("Value", newPassword); // Append new password
+
+				fieldValue = newPassword;
+			}
+
+			if (!fieldValue) {
+				Swal.fire({
+					title: "Empty Field!",
+					text: `${fieldName} cannot be empty.`,
+					icon: "warning",
+					confirmButtonColor: "#d33"
+				});
+				return;
+			}
+
+			// Confirmation Alert
+			Swal.fire({
+				title: `Confirm ${fieldName} Change?`,
+				text: `Are you sure you want to update your ${fieldName}?`,
+				icon: "question",
+				showCancelButton: true,
+				confirmButtonColor: "#28a745",
+				cancelButtonColor: "#6c757d",
+				confirmButtonText: "Yes, Update!",
+				cancelButtonText: "Cancel ❎"
+			}).then((result) => {
+				if (result.isConfirmed) {
+					fetch("UpdateUserDetails.php", {
+						method: "POST",
+						body: formData
+					})
+					.then(response => response.json())
+					.then(data => {
+						if (data.success) {
+							Swal.fire({
+								title: "Updated!",
+								text: `${fieldName} has been updated successfully.`,
+								icon: "success",
+								confirmButtonColor: "#28a745"
+							}).then(() => {
+								if (type === "email") {
+									Swal.fire({
+										title: "Email Confirmation Sent",
+										text: "A confirmation email has been sent to both old and new email addresses.",
+										icon: "info",
+										confirmButtonColor: "#007bff"
+									});
+								}
+								location.reload();
+							});
+						} else {
+							Swal.fire({
+								title: "Error!",
+								text: data.message || "Something went wrong. Please try again!",
+								icon: "error",
+								confirmButtonColor: "#d33"
+							});
+						}
+					})
+					.catch(error => {
+						console.error("Error:", error);
+						Swal.fire({
+							title: "Error!",
+							text: "Could not update. Please check your connection.",
+							icon: "error",
+							confirmButtonColor: "#d33"
+						});
+					});
+				}
+			});
+		}
+	
 		UserDashboard();
 		function UserDashboard() { 
 			$.ajax({
@@ -773,6 +970,10 @@
 						$('#OrderTable tbody').empty()
 						DisplayProducts(response.data.OrderList);
 						DisplayAddresses(response.data.UserAddress)
+						if(response.data.UserDetails.length>0){
+							$('#nameField').val(response.data.UserDetails[0].UserName)
+							$('#emailField').val(response.data.UserDetails[0].Email)
+						}
 						console.log("Products:", response);
 					} else {
 						console.log("Error:", response.message);
@@ -783,6 +984,25 @@
 				}
 			});
 		}
+
+		function confirmLogout() {
+			Swal.fire({
+				title: "Are you sure?",
+				text: "You will be logged out of your account.",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#d33",
+				cancelButtonColor: "#6c757d",
+				confirmButtonText: "Yes, Logout!",
+				cancelButtonText: "Cancel ❎"
+			}).then((result) => {
+				if (result.isConfirmed) {
+					localStorage.removeItem("userid"); // Remove user ID
+					window.location.href = "logout.php"; // Redirect to PHP logout script
+				}
+			});
+		}
+
 		function DisplayProducts(products) {
 			
 			if(products.length>0){
@@ -834,6 +1054,7 @@
 				"destroy": true // Destroy previous instance to avoid duplication
 			});
 		}
+		
 		function DisplayAddresses(addresses) {
 			let addressList = document.getElementById("AddressList");
 			addressList.innerHTML = "";

@@ -49,11 +49,11 @@
 							<div class="section-container">
 								<div class="content-title-heading">
 									<h1 class="text-title-heading">
-										Bed &amp; Bath		
+										Tees &amp; Hoodies		
 									</h1>
 								</div>
 								<div class="breadcrumbs">
-									<a href="index.php">Home</a><span class="delimiter"></span><a href="shop-grid-left.html">Shop</a><span class="delimiter"></span>Bed &amp; Bath
+									<a href="index.php">Home</a><span class="delimiter"></span><a href="shop-grid-left.html">Shop</a><span class="delimiter"></span>Tees &amp; Hoodies
 								</div>
 							</div>
 						</div>
@@ -841,7 +841,7 @@
 												</div> -->
 											</div>
 
-											<nav class="pagination">
+											<!-- <nav class="pagination">
 												<ul class="page-numbers">
 													<li><a class="prev page-numbers" href="#">Previous</a></li>
 													<li><span aria-current="page" class="page-numbers current">1</span></li>
@@ -849,7 +849,7 @@
 													<li><a class="page-numbers" href="#">3</a></li>
 													<li><a class="next page-numbers" href="#">Next</a></li>
 												</ul>
-											</nav>
+											</nav> -->
 										</div>
 
 										
